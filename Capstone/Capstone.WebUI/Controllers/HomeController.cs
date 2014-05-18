@@ -93,10 +93,10 @@ namespace Capstone.WebUI.Controllers
             User u = uRepo.GetUser(11);
             BvLocation bvLocation = lRepo.GetBvLocation(u.BvLocation.BvLocationId);
             var db = new CapstoneDbContext();
-            List<PartnershipNight> events = (from e in db.PartnershipNights.Include("BvLocation")
-                                             where e.BVLocation.BvLocationId == bvLocation.BvLocationId
-                                             select e).ToList<PartnershipNight>();
-            return View(events);
+            bvLocation.PartnershipNights = lRepo.GetPartnershipNights(bvLocation);
+
+            return View(bvLocation);
+
         }
 
         public ActionResult Documents()

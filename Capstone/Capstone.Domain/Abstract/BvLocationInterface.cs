@@ -15,5 +15,6 @@ namespace Capstone.Domain.Abstract
          BvLocation DeleteBvLocation(int bvLocationId);
          BvLocation GetBvLocation(string storeNum);
          void SaveBvLocation(BvLocation l);
+         List<PartnershipNight> GetPartnershipNights(BvLocation l);
     }
 }

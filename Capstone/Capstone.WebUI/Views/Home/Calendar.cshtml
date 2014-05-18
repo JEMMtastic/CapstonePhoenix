@@ -1,5 +1,5 @@
 ﻿<!--model needs to be based on a list from the db of pn's per store-->
-@model IEnumerable<Capstone.Domain.Entities.PartnershipNight>
+@model Capstone.Domain.Entities.BvLocation
 
 @{
     ViewBag.Title = "Calendar";
@@ -7,7 +7,7 @@
 <script src="~/Scripts/js-calendarFunctions.js"></script>
 <h2>Calendar</h2>
 
-	@foreach(var e in Model)
+	@foreach(var e in Model.PartnershipNights)
 	{
 	    <ul>
 	        <li>@e.BVLocation.BvStoreNum</li>

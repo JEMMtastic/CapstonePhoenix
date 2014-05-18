@@ -73,5 +73,15 @@ namespace Capstone.Domain.Concrete
             }
             db.SaveChanges();
         }
+
+        public List<PartnershipNight> GetPartnershipNights(BvLocation l)
+        {
+            var db = new CapstoneDbContext();
+            List<PartnershipNight> partnershipnights = (from c in db.PartnershipNights.Include("BvLocation").Include("Charity")
+                                                        where c.BVLocation.BvLocationId == l.BvLocationId
+                                                        select c).ToList<PartnershipNight>();
+            return partnershipnights;
+        }
+
     }
 }
