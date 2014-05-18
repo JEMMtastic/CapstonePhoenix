@@ -1,0 +1,15 @@
+﻿@model Capstone.Domain.Entities.Form
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h1>Edit Form, @Model.pNight.Date</h1>
+
+@using (Html.BeginForm("Edit", "AdminFormController")) {
+
+    @Html.EditorForModel()
+    <input type="submit" value="Save" />
+
+    @Html.ActionLink("Cancel and return to List", "Index")
+}

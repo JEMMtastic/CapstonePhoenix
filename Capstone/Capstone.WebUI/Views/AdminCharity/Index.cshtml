@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Capstone.Domain.Entities.Charity>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.Address)</th>
+        <th>@Html.DisplayNameFor(model => model.City)</th>
+        <th>@Html.DisplayNameFor(model => model.Zip)</th>
+        <th>@Html.DisplayNameFor(model => model.Phone)</th>
+        <th>TaxId</th>
+        <th>Type</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.ActionLink(item.Name, "Edit", new {item.CharityId})</td>
+        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+        <td>@Html.DisplayFor(modelItem => item.City)</td>
+        <td>@Html.DisplayFor(modelItem => item.Zip)</td>
+        <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+        <td>@Html.DisplayFor(modelItem => item.FederalTaxId)</td>
+        <td>@Html.DisplayFor(modelItem => item.TypeOfCharity)</td>
+        <td>
+            @using (Html.BeginForm("Delete", "AdminCharity"))
+            {
+                @Html.Hidden("CharityId", item.CharityId)
+                <input type="submit" value="Delete" />
+            }
+            <!--Html.ActionLink("Edit", "Edit", new { id=item.CharityId }) |
+            Html.ActionLink("Details", "Details", new { id=item.CharityId }) |
+            Html.ActionLink("Delete", "Delete", new { id=item.CharityId })-->
+        </td>
+    </tr>
+}
+
+</table>
+<p>@Html.ActionLink("Add a new Charity", "Create")</p>

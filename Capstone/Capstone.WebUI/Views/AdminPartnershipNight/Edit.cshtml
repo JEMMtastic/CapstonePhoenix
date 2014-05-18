@@ -1,0 +1,47 @@
+﻿@model Capstone.WebUI.Models.PNightEditViewModel
+@using Capstone.Domain.Entities;
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h1>Edit Event </h1>
+<h2>Date: @Model.Date.ToShortDateString()<br /> </h2>
+<!-- Commenting out but add these back in when I have time to match the list item names to the id: Charity: Model.Charity.Name <br /> Store#: Model.BVLocation.BvStoreNum -->
+
+@using (Html.BeginForm("Edit", "AdminPartnershipNight")) {
+
+    <p>@Html.EditorFor(m => m.Date)</p>
+    <p>@Html.EditorFor(m => m.CheckRequestId)</p>
+    <p>@Html.EditorFor(m => m.Comments)</p>
+    <p>@Html.EditorFor(m => m.CheckRequestFinished)</p>
+    <p>@Html.EditorFor(m => m.BeforeTheEventFinished)</p>
+    <p>@Html.EditorFor(m => m.AfterTheEventFinished)</p>
+
+<table> <!--NOTE: Used in-line css in lieu of global css fixes -->
+    <tr>
+        <th style="text-align:left;">Charity</th>
+    </tr>
+    <tr>
+        <td>
+            @if(Model.Charities != null){ 
+                @Html.DropDownListFor(m => m.CharityId, new SelectList(Model.Charities, "CharityId", "Name"));
+                @Html.HiddenFor(x => x.CharityId)
+            }
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align:left;">BV Location</th>
+    </tr>
+    <tr>
+        <td>
+            @if(Model.Locations != null){
+                @Html.DropDownListFor(m => m.BVLocationId, new SelectList(Model.Locations, "BvLocationId", "BvStoreNum"));
+                @Html.HiddenFor(x => x.BVLocationId) 
+            }
+        </td>
+   </tr>
+</table>
+    <br />
+        <input type="submit" value="Save" />
+@Html.ActionLink("Cancel and return to List", "Index")
+}

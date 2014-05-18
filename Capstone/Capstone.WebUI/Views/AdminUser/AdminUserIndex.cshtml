@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Capstone.Domain.Entities.User>
+
+@{
+    ViewBag.Title = "AdminUserIndex";
+}
+
+<h2>All Users</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Access Level</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Store Number</th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.ActionLink(item.UserFName + " " + item.UserLName, "EditUser", "AdminUser", new { item.UserId }, null)</td>
+        <td>@Html.DisplayFor(modelItem => item.AccessLevel)</td>
+        <td>@Html.DisplayFor(modelItem => item.UserEmail)</td>
+        <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+        <td>@Html.DisplayFor(modelItem => item.BvLocation.BvStoreNum)</td>
+        <td>
+            @using (Html.BeginForm("DeleteUser", "AdminUser", new { item.UserId }))
+            {
+               <input type ="submit" value ="Delete" />
+            }
+        </td>
+    </tr>
+}
+</table>
+<p>@Html.ActionLink("Add a new user", "CreateUser")</p>
+
+
+

@@ -1,0 +1,391 @@
+﻿@{
+    ViewBag.Title = "Calculator";
+}
+
+<h2>Calculator</h2>
+
+<table>
+    <tr>
+        <th></th>
+        <th>Organization Information</th>
+    </tr>
+    <tr>
+        <td>Name to appear on the check:</td>
+        <td>@Html.TextBox("name")</td>
+        <td>Is this a New Partner?</td>
+        <td>Yes:  @Html.CheckBox("yes")</td>
+        <td>No:  @Html.CheckBox("no")</td>
+    </tr>
+    <tr>
+        <td>Purpose of the Partnership:</td>
+        <td>@Html.TextBox("purpose")</td>
+        <td>If yes, remember to submit a W-9 form</td>
+    </tr>
+    <tr>
+        <td>Contact Name:</td>
+        <td>@Html.TextBox("contactName")</td>
+        <td>and add a vendor form!</td>
+    </tr>
+    <tr>
+        <td>Organization Mailing Address:</td>
+        <td>@Html.TextBox("address1")</td>
+    </tr>
+    <tr>
+        <td>City, State:</td>
+        <td>@Html.TextBox("city")</td>
+        <td>Restaurant Hosting Partnership:</td>
+        <td>@Html.TextBox("restaurant")</td>
+    </tr>
+    <tr>
+        <td>Zip:</td>
+        <td>@Html.TextBox("zip")</td>
+    </tr>
+    <tr>
+        <td>Organization Phone Number:</td>
+        <td>@Html.TextBox("phone")</td>
+    </tr>
+    <tr>
+        <td>Federal Tax ID Number:</td>
+        <td>@Html.TextBox("taxId")</td>
+    </tr>
+</table>
+<br />
+<table>
+    <tr>
+        <td>Day of week of Partnership:</td>
+        <td>@Html.TextBox("pnDay")</td>
+        <td>Date of Partnership:</td>
+        <td>@Html.TextBox("pnDate")</td>  
+    </tr>
+</table>
+<br />
+<table>
+    <tr>
+        <td colspan="5">1. Actual Sales Information from Prior Year - 3 Weeks</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>*Forumula here</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td colspan="2">Prior Year</td>
+        <td>@Html.TextBox("priorYr1")</td>
+        <td colspan="2">Prior Year</td>
+        <td>@Html.TextBox("priorYr2")</td>
+        <td colspan="2">Average</td>
+        <td>Last week This Year</td>
+    </tr>
+    <tr>
+        <td>Hours of Partnership</td>
+        <td>Adj Sales</td>
+        <td>G.C.</td>
+        <td>Adj Sales</td>
+        <td>G.C.</td>
+        <td>Adj Sales</td>
+        <td>G.C.</td>
+        <td>Sales</td>
+        <td>G.C.</td>
+        <td>Average Check</td>
+    </tr>
+    <tr>
+        <td>4-5</td>
+        <td>$0</td>
+        <td>@Html.TextBox("gc1A")</td>
+        <td>$0</td>
+        <td>@Html.TextBox("gc2A")</td>
+        <td>$0</td>
+        <td>@Html.TextBox("gc3A")</td>
+        <td>Sales</td>
+        <td>G.C.</td>
+        <td>@Html.TextBox("avgChk1A")</td>
+    </tr>
+    <tr>
+        <td>5-6</td>
+        <td>$0</td>
+        <td>@Html.TextBox("gc1B")</td>
+        <td>$0</td>
+        <td>@Html.TextBox("gc2B")</td>
+        <td>$0</td>
+        <td>@Html.TextBox("gc3B")</td>
+        <td>Sales</td>
+        <td>G.C.</td>
+        <td>@Html.TextBox("avgChk1B")</td>
+    </tr>
+    <tr>
+        <td>6-7</td>
+        <td>$0</td>
+        <td>@Html.TextBox("gc1C")</td>
+        <td>$0</td>
+        <td>@Html.TextBox("gc2C")</td>
+        <td>$0</td>
+        <td>@Html.TextBox("gc3C")</td>
+        <td>Sales</td>
+        <td>G.C.</td>
+        <td>@Html.TextBox("avgChk1C")</td>
+    </tr>
+    <tr>
+        <td>7-8</td>
+        <td>$0</td>
+        <td>@Html.TextBox("gc1D")</td>
+        <td>$0</td>
+        <td>@Html.TextBox("gc2D")</td>
+        <td>$0</td>
+        <td>@Html.TextBox("gc3D")</td>
+        <td>Sales</td>
+        <td>G.C.</td>
+        <td>@Html.TextBox("avgChk1D")</td>
+    </tr>
+    <tr>
+        <td>8-9</td>
+        <td>$0</td>
+        <td>@Html.TextBox("gc1E")</td>
+        <td>$0</td>
+        <td>@Html.TextBox("gc2E")</td>
+        <td>$0</td>
+        <td>@Html.TextBox("gc3E")</td>
+        <td>Sales</td>
+        <td>G.C.</td>
+        <td>@Html.TextBox("avgChk1E")</td>
+    </tr>
+    <tr>
+        <td>Total</td>
+        <td>$0</td>
+        <td>$0</td>
+        <td>$0</td>
+        <td>$0</td>
+        <td>$0</td>
+        <td>$0</td>
+        <td>$0</td>
+        <td>$0</td>
+        <td>Formula Here</td>
+    </tr>
+</table>
+<br />
+<p>2. Scenario Donation Based on Projections</p>
+<table>
+    <tr>
+        <td colspan="2">Scenario 1</td>
+        <td colspan="2">Scenario 2</td>
+    </tr>
+    <tr>
+        <td>Organization intends to invite</td>
+        <td>@Html.TextBox("invite1")</td>
+        <td>Organization intends to invite</td>
+        <td>@Html.TextBox("invite2")</td>
+    </tr>
+    <tr>
+        <td>Estimated Partnership Guests</td>
+        <td>0</td>
+        <td>Estimated Partnership Guests</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>3 Week Average Guest Count</td>
+        <td>0</td>
+         <td>3 Week Average Guest Count</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>Targeted Guest Count</td>
+        <td>0</td>
+         <td>Targeted Guest Count</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>Estimated Donation</td>
+        <td>Formula Here</td>
+        <td>Estimated Donation</td>
+        <td>Formula Here</td>
+    </tr>
+</table>
+<br />
+<p>3. Day of Partnership - Actual Sales & Guest Count REsults Per PosiTouch</p>
+<table>
+    <tr>
+        <td>Hours of Partnership</td>
+        <td colspan="3">@Html.TextBox("date", "Partnership Date")</td>
+        <td></td>
+        <td>Notes of Partnership</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Sales</td>
+        <td>G.C.</td>
+        <td>Avg. Chk</td>
+        <td></td>
+        <td rowspan="10">@Html.TextArea("notes")</td>
+    </tr>
+    <tr>
+        <td>4-5</td>
+        <td>@Html.TextBox("salesA")</td>
+        <td>@Html.TextBox("gcA")</td>
+        <td>@Html.TextBox("avgChkA")</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>5-6</td>
+        <td>@Html.TextBox("salesB")</td>
+        <td>@Html.TextBox("gcB")</td>
+        <td>@Html.TextBox("avgChkB")</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6-7</td>
+        <td>@Html.TextBox("salesC")</td>
+        <td>@Html.TextBox("gcC")</td>
+        <td>@Html.TextBox("avgChkC")</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>7-8</td>
+        <td>@Html.TextBox("salesD")</td>
+        <td>@Html.TextBox("gcD")</td>
+        <td>@Html.TextBox("avgChkD")</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>8-9</td>
+        <td>@Html.TextBox("salesE")</td>
+        <td>@Html.TextBox("gcE")</td>
+        <td>@Html.TextBox("avgChkE")</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Totals</td>
+        <td>calculation here</td>
+        <td>calculation here</td>
+        <td>calculation here</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>10% Donation</td>
+        <td>calculation here</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Posi Donations</td>
+        <td>@Html.TextBox("posiDonation")</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="2">(Donations taken on the Posi Register</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<br />
+<p>4. Sales & Guest Count Contribution Calculation</p>
+<table>
+    <tr>
+        <td colspan="4">Sales Contribution</td>
+        <td colspan="4">Guest Count Contribution</td>
+    </tr>
+    <tr>
+        <td>3 week ave</td>
+        <td>Actual</td>
+        <td>Difference</td>
+        <td>Donation</td>
+        <td>Sales Contribution</td>
+        <td>3 week ave #</td>
+        <td>Actual #</td>
+        <td>GC Contribution</td>
+    </tr>
+    <tr>
+        <td>Calculation</td>
+        <td>Calculation</td>
+        <td>Calculation</td>
+        <td>Calculation</td>
+        <td>Calculation</td>
+        <td>Calculation</td>
+        <td>Calculation</td>
+        <td>Calculation</td>
+    </tr>
+</table>
+<br />
+<p>5. Donation Check Request</p>
+<table>
+    <tr>
+        <td colspan="2">Donation 10% of Sales Code to GL7700</td>
+        <td></td>
+        <td>Calculation</td>
+        <td>GL Code</td>
+        <td>77000</td>
+    </tr>
+    <tr>
+        <td colspan="2">Donations Taken on the Posi REgister Code to GL 2005</td>
+        <td></td>
+        <td>calculation</td>
+        <td>GL Code</td>
+        <td>20050</td>
+    </tr>
+    <tr>
+        <td colspan="2">Mail Partnership Check to the Store Below</td>
+        <td></td>
+        <td>Total Donation For Check Request</td>
+        <td>Calculation</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>(10% of Sales Including Other Donations)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>@Html.TextBox("storeNum", "Store Number Here")</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="2">General Manager Signature/Approval</td>
+        <td></td>
+        <td>Test Manager</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="2">@Html.TextBox("signature", "signature here")</td>
+        <td></td>
+        <td>@Html.TextBox("testMngr", "test Manager here?")</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>

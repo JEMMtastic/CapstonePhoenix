@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7/2.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src ="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+    @RenderSection("scripts", required: false)
+    
+
+    @if (TempData["message"] != null) 
+        {
+            <div class="Message">@TempData["message"]</div>
+        }
+    @*<div class="Message">Temp data will be here</div>*@
+
+
+    <div id="Header">
+        Title of page, e.g. Create New User
+    </div>
+
+    <div id="BreadCrumb">
+       @{
+           //The site map is breaking things - we need to figure out how to re-integrate it 
+         
+         //@Html.MvcSiteMap().SiteMapPath() 
+         
+       }
+    </div>
+
+
+    
+
+    
+
+    <div id="Navigation">
+
+        <div id="NavTitle">
+            Navigation
+            <br />
+            <br />
+        </div>
+
+        @*if user == admin, display AdminNavigation partial view, Integrate after Security is done*@
+        @Html.Partial("UserNavigation")
+        <br />
+        <br />
+        @Html.Partial("AdminNavigation")
+
+        <div id="SiteMapNav">
+            <br />
+            <br />
+            For testing: 
+``@{
+    //The site map is breaking things - we need to figure out how to re-integrate it
+    //        @Html.MvcSiteMap().Menu()
+   }
+        </div>
+
+    </div>
+
+
+
+    
+
+    <div id="Content">
+         @RenderBody()
+    </div>
+
+    <section id="login">
+        @Html.Partial("_LoginPartial")
+    </section>
+
+</body>
+</html>

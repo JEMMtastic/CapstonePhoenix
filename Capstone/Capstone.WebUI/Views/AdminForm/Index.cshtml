@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Capstone.Domain.Entities.Form>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Hour4Sales)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hour5Sales)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hour6Sales)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hour7Sales)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hour8Sales)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hour4GC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hour5GC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hour6GC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hour7GC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hour8GC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PosiDonations)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hour4Sales)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hour5Sales)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hour6Sales)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hour7Sales)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hour8Sales)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hour4GC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hour5GC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hour6GC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hour7GC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hour8GC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PosiDonations)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FormId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FormId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FormId })
+        </td>
+    </tr>
+}
+
+</table>
