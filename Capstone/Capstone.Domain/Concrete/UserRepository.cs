@@ -65,7 +65,11 @@ namespace Capstone.Domain.Concrete
         {
             var db = new CapstoneDbContext();
             if (u.UserId == 0)
+            {
+                db.BvLocations.Find(u.BvLocation.BvLocationId);
+
                 db.Users.Add(u);
+            }
             else
             {
                 User dbEntry = db.Users.Find(u.UserId);
@@ -76,7 +80,7 @@ namespace Capstone.Domain.Concrete
                     dbEntry.UserEmail = u.UserEmail;
                     dbEntry.PhoneNumber = u.PhoneNumber;
                     dbEntry.AccessLevel = u.AccessLevel;
-                    dbEntry.BvLocation = u.BvLocation;
+                    dbEntry.BvLocation = db.BvLocations.Find(u.BvLocation.BvLocationId);
                 }
 
             }
