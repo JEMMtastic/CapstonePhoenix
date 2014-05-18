@@ -42,7 +42,7 @@ namespace Capstone.WebUI.Controllers
             
             //data to get db up and running -- delete when done
             //add a location
-            BvLocation loc1 = new BvLocation { Address = "333 N Main St", City = "BobVille", BvStoreNum = "BV99", Phone = "839-839-8393", Zip = "88898" };
+         /*   BvLocation loc1 = new BvLocation { Address = "333 N Main St", City = "BobVille", BvStoreNum = "BV99", Phone = "839-839-8393", Zip = "88898" };
             lRepo.AddBvLocation(loc1);
             //add a user
             User u1 = new User { Username = "turtles", UserFName = "Bob", UserLName = "Bobberson", AccessLevel = 1, BvLocation = loc1, Password = "bobshere", UserEmail = "bob@bob.com", PhoneNumber = "541-389-8293" };
@@ -57,7 +57,7 @@ namespace Capstone.WebUI.Controllers
             //StatsInfo s1 = new StatsInfo { AmountOfTotalSalesToCharity = 25.88M, CashDonations = 19.83M, GuestCount = 10, TotalSales = 100.00M, partnershipNight = pn1 };
             //sRepo.AddStatsInfo(s1);
             //Form data will be here when it is finished:
-
+        */
             //testing
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
             return View();
