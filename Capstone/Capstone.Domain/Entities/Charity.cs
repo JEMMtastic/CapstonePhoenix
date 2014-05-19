@@ -34,5 +34,7 @@ namespace Capstone.Domain.Entities
         public string FederalTaxId { get; set; }
         
         public string TypeOfCharity { get; set; }
+
+       
     }
 }

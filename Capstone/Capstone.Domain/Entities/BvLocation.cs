@@ -16,7 +16,7 @@ namespace Capstone.Domain.Entities
         public string City { get; set; }
         public string Zip { get; set; }
         public string Phone { get; set; }
-        public virtual List<PartnershipNight> PartnershipNights { get; set; }
+        public List<PartnershipNight> PartnershipNights { get; set; }
 
     }
 }
