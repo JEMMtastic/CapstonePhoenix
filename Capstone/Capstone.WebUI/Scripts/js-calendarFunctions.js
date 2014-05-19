@@ -67,36 +67,4 @@ function writeDayName() {
     document.write("</tr>");
 }
 
-function writeCalDays(calendarDay) {
-    var currentDay = calendarDay.getDate();
-    //determine the starting day of the week
-    var dayCount = 1
-    var totalDays = daysInMonth(calendarDay);
-    calendarDay.setDate(1); //set the date to the first day of the month
-    var weekDay = calendarDay.getDay(); //the day of the week of the first day
-    //write blank cells preceding the starting day
-    document.write("<tr>");
-    for (var i = 0; i < weekDay; i++) {
-        document.write("<td></td>");
-    }
-    //write cells for each day of the month
-    while (dayCount <= totalDays) {
-        //write the table rows and cells
-        if (weekDay == 0) document.write("<tr>");
-        if (dayCount == currentDay) {
-            //highlight the current day
-            document.write("<td class='calendar_dates' id='calendar_today'>" + dayCount + "</td>");
-        }
-        else {
-            //display the day as usual
-            document.write("<td class='calendar_dates'>" + dayCount + "</td>");
-        }
 
-        if (weekDay == 6) document.write("</tr>");
-        //move to the next day
-        dayCount++;
-        calendarDay.setDate(dayCount);
-        weekDay = calendarDay.getDay();
-    }
-    document.write("</tr>");
-}
