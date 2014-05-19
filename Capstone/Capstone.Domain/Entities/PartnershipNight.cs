@@ -15,6 +15,11 @@ namespace Capstone.Domain.Entities
         private bool ckRequest;
         private bool before;
         private bool after;
+        
+        [Required(ErrorMessage="You must enter a start time")]
+        public string StartTime { get; set; }
+        [Required(ErrorMessage="You must enter an end time")]
+        public string EndTime { get; set; }
 
         //Constructor to set flags to default
         public PartnershipNight()

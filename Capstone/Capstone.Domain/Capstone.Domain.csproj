@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201405182231142_InitialCreate.Designer.cs">
       <DependentUpon>201405182231142_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405192220083_AddedStartEndTimes.cs" />
+    <Compile Include="Migrations\201405192220083_AddedStartEndTimes.Designer.cs">
+      <DependentUpon>201405192220083_AddedStartEndTimes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -80,6 +84,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201405182231142_InitialCreate.resx">
       <DependentUpon>201405182231142_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405192220083_AddedStartEndTimes.resx">
+      <DependentUpon>201405192220083_AddedStartEndTimes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
