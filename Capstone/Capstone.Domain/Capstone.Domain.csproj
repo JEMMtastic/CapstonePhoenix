@@ -55,7 +55,6 @@
     <Compile Include="Abstract\FormInterface.cs" />
     <Compile Include="Abstract\PartnershipNightInterface.cs" />
     <Compile Include="Abstract\UserInterface.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Concrete\BvLocationRepository.cs" />
     <Compile Include="Concrete\CapstoneDbContext.cs" />
     <Compile Include="Concrete\CharityRepository.cs" />

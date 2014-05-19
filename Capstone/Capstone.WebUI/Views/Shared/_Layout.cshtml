@@ -17,7 +17,7 @@
         {
             <div class="Message">@TempData["message"]</div>
         }
-    @*<div class="Message">Temp data will be here</div>*@
+            <div class="Message">Temp data will be here</div>
 
 
     <div id="Header">
@@ -31,6 +31,7 @@
          //@Html.MvcSiteMap().SiteMapPath() 
          
        }
+        breadcrumb...breadcrumb...breadcrumb...baked macaroni and cheese....
     </div>
 
 
@@ -55,8 +56,8 @@
         <div id="SiteMapNav">
             <br />
             <br />
-            For testing: 
-``@{
+            @*For testing:*@ 
+  @{
     //The site map is breaking things - we need to figure out how to re-integrate it
     //        @Html.MvcSiteMap().Menu()
    }
@@ -72,9 +73,9 @@
          @RenderBody()
     </div>
 
-    <section id="login">
+  @*  <section id="login">
         @Html.Partial("_LoginPartial")
-    </section>
+    </section>*@
 
 </body>
 </html>

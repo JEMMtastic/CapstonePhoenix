@@ -6,15 +6,16 @@
 
 <h2>All Users</h2>
 <table>
-    <tr>
+    <tr class="tableHeadings">
         <th>Name</th>
         <th>Access Level</th>
         <th>Email</th>
         <th>Phone</th>
         <th>Store Number</th>
     </tr>
+<div class="backgroundTableColorTest">
 @foreach (var item in Model) {
-    <tr>
+    <tr class="tableDataRow">
         <td>@Html.ActionLink(item.UserFName + " " + item.UserLName, "EditUser", "AdminUser", new { item.UserId }, null)</td>
         <td>@Html.DisplayFor(modelItem => item.AccessLevel)</td>
         <td>@Html.DisplayFor(modelItem => item.UserEmail)</td>
@@ -28,6 +29,7 @@
         </td>
     </tr>
 }
+</div>
 </table>
 <p>@Html.ActionLink("Add a new user", "CreateUser")</p>
 

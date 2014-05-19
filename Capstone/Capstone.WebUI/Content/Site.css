@@ -88,9 +88,9 @@ DIV.Message {
     background: #D6E8FF;
     padding: 14px;
     margin-top: 4px;
-    color: red;
+    color: #931;
     font: bold 22px "Arial Narrow", "Franklin Gothic Medium", Arial;
-    border: 2px groove red;
+    //border: 2px groove #931;
 }
 
 
@@ -99,7 +99,8 @@ DIV#Header {
     border-bottom: 2px solid #111;
     border-left: 2px solid #111;
     border-right: 2px solid #111;
-    color: #888;
+    /*color: #888;*/
+    color: floralwhite;
     padding: 14px;
     font: bold 30px "Arial Narrow", "Franklin Gothic Medium", Arial;
     text-align: center;
@@ -126,6 +127,32 @@ DIV#SplashWrapper {
     margin-left: -255px;
 }
 
+
+
+.tableHeadings
+{
+    background-color: #9fc5ff;
+    /*#9fc5ff*/
+}
+
+
+.backgroundTableColorTest
+{
+    background-color:lightblue;
+    /*other two override this one*/
+}
+
+.tableDataRow
+{
+    background-color: #b8d4ff;
+    /*#b8d4ff*/
+}
+
+
+
+
+
+
 /* Tables
 -----------------------------------------------------------*/
 .table th {
@@ -137,3 +164,22 @@ DIV#SplashWrapper {
 .table th:nth-of-type(even) {
     background: #e7ebf7;
 }
+
+.links ul li
+{
+    /*padding: 5px;
+    padding-top: 10px;
+    margin-top: 30px;*/
+    
+}
+
+.links ul
+{
+    margin-left: -20px;
+}
+
+
+
+
+
+
