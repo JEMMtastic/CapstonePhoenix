@@ -88,7 +88,7 @@ namespace Capstone.WebUI.Controllers
         public ViewResult Calendar()
         {
             User u = uRepo.GetUser(3);
-            if (u.BvLocation != null)
+            if (u != null)
             {
                 BvLocation bvLocation = lRepo.GetBvLocation(u.BvLocation.BvLocationId);
                 var db = new CapstoneDbContext();
