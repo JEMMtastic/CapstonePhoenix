@@ -88,13 +88,20 @@ namespace Capstone.WebUI.Controllers
         public ViewResult Calendar()
         {
             User u = uRepo.GetUser(3);
-            BvLocation bvLocation = lRepo.GetBvLocation(u.BvLocation.BvLocationId);
-            var db = new CapstoneDbContext();
-            bvLocation.PartnershipNights = lRepo.GetPartnershipNights(bvLocation);
-            if (bvLocation.PartnershipNights.Count != 0)
-                return View(bvLocation);
+            if (u.BvLocation != null)
+            {
+                BvLocation bvLocation = lRepo.GetBvLocation(u.BvLocation.BvLocationId);
+                var db = new CapstoneDbContext();
+                bvLocation.PartnershipNights = lRepo.GetPartnershipNights(bvLocation);
+                if (bvLocation.PartnershipNights.Count != 0)
+                    return View(bvLocation);
+                else
+                    return View();
+            }
             else
                 return View();
+
+            
         }
 
         public ActionResult Documents()
