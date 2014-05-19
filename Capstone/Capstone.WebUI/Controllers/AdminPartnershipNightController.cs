@@ -33,35 +33,53 @@ namespace Capstone.WebUI.Controllers
 
         public ViewResult Create()
         {
-            return View("Edit", new PNightEditViewModel());
-        }
+            var vmodel = new PNightEditViewModel();
 
-        public ActionResult Edit(int partnershipNightId)
-        {
-            // Get the correct partnership night, and create a view model to store values in
-            PartnershipNight pnight = pnRepo.GetPartnershipNights().FirstOrDefault(pn => pn.PartnershipNightId == partnershipNightId);
-            PNightEditViewModel vmodel = new PNightEditViewModel();
-
-            //Set view model to corresponding partnership night values
-            vmodel.PartnershipNightId = pnight.PartnershipNightId;
-            vmodel.Date = pnight.Date;
-            vmodel.CharityId = pnight.Charity.CharityId;
-            vmodel.BVLocationId = pnight.BVLocation.BvLocationId;
-            vmodel.CheckRequestId = pnight.CheckRequestId;
-            vmodel.Comments = pnight.Comments;
-            vmodel.CheckRequestFinished = pnight.CheckRequestFinished;
-            vmodel.BeforeTheEventFinished = pnight.BeforeTheEventFinished;
-            vmodel.AfterTheEventFinished = pnight.AfterTheEventFinished;
+            vmodel.Date = DateTime.Now;
 
             //Set List variables to contain lists of child objects for selection in the view
             vmodel.Charities = charRepo.GetCharities().ToList<Charity>();
             vmodel.Locations = bvlocRepo.GetBvLocations().ToList<BvLocation>();
+            TempData["Title"] = "Add New Partnership Night";
 
-            //Set session variables to contain lists of child objects for selection in the view
-            //Session["charities"] = charRepo.GetCharities().ToList<Charity>();
-            //Session["bvlocations"] = bvlocRepo.GetBvLocations().ToList<BvLocation>();
+            return View("Edit", vmodel);
+        }
 
-            return View(vmodel);
+        public ActionResult Edit(int? partnershipNightId)
+        {
+            if (partnershipNightId != null)
+            {
+                TempData["Title"] = "Edit";
+
+                // Get the correct partnership night, and create a view model to store values in
+                PartnershipNight pnight = pnRepo.GetPartnershipNights().FirstOrDefault(pn => pn.PartnershipNightId == partnershipNightId);
+                PNightEditViewModel vmodel = new PNightEditViewModel();
+
+                //Set view model to corresponding partnership night values
+                vmodel.PartnershipNightId = pnight.PartnershipNightId;
+                vmodel.Date = pnight.Date;
+                vmodel.CharityId = pnight.Charity.CharityId;
+                vmodel.BVLocationId = pnight.BVLocation.BvLocationId;
+                vmodel.CheckRequestId = pnight.CheckRequestId;
+                vmodel.Comments = pnight.Comments;
+                vmodel.CheckRequestFinished = pnight.CheckRequestFinished;
+                vmodel.BeforeTheEventFinished = pnight.BeforeTheEventFinished;
+                vmodel.AfterTheEventFinished = pnight.AfterTheEventFinished;
+
+                //Set List variables to contain lists of child objects for selection in the view
+                vmodel.Charities = charRepo.GetCharities().ToList<Charity>();
+                vmodel.Locations = bvlocRepo.GetBvLocations().ToList<BvLocation>();
+
+                //Set session variables to contain lists of child objects for selection in the view
+                //Session["charities"] = charRepo.GetCharities().ToList<Charity>();
+                //Session["bvlocations"] = bvlocRepo.GetBvLocations().ToList<BvLocation>();
+
+                return View(vmodel);
+            }
+            else
+            {
+                return View("Index");
+            }
         }
 
         [HttpPost]
