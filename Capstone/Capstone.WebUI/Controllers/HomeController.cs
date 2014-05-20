@@ -93,7 +93,7 @@ namespace Capstone.WebUI.Controllers
                 BvLocation bvLocation = lRepo.GetBvLocation(u.BvLocation.BvLocationId);
                 var db = new CapstoneDbContext();
                 bvLocation.PartnershipNights = lRepo.GetPartnershipNights(bvLocation);
-                if (bvLocation.PartnershipNights != null)
+                if (bvLocation.PartnershipNights.Count != 0)
                     return View(bvLocation);
                 else
                     return View();
