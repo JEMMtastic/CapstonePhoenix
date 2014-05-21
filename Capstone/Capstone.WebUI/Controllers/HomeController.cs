@@ -87,22 +87,43 @@ namespace Capstone.WebUI.Controllers
         //need to pass a user to this method once the login stuff is worked out
         public ViewResult Calendar()
         {
-            User u = uRepo.GetUser(3);
+            User u = uRepo.GetUser(12);
             if (u != null)
             {
                 BvLocation bvLocation = lRepo.GetBvLocation(u.BvLocation.BvLocationId);
-                var db = new CapstoneDbContext();
-                bvLocation.PartnershipNights = lRepo.GetPartnershipNights(bvLocation);
-                if (bvLocation.PartnershipNights.Count != 0)
-                    return View(bvLocation);
-                else
-                    return View();
+                if (bvLocation != null)
+                {
+                    var db = new CapstoneDbContext();
+                    bvLocation.PartnershipNights = lRepo.GetPartnershipNights(bvLocation);
+                    if (bvLocation.PartnershipNights.Count != 0)
+                        return View(bvLocation);
+                    else return View();
+                }
+                else return View();
             }
             else
                 return View();
-
             
         }
+       
+
+        public ActionResult FullCalendar()
+       {
+            IList<PartnershipNight> events = new List<PartnershipNight>();
+            var db = new CapstoneDbContext();
+            events = (from e in db.PartnershipNights select e).ToList();
+            return Json(events, JsonRequestBehavior.AllowGet);
+       }
+
+       private long ToUnixTimespan(DateTime date)
+       {
+           TimeSpan tspan = date.ToUniversalTime().Subtract(
+            new DateTime(1970, 1, 1, 0, 0, 0));
+
+           return (long)Math.Truncate(tspan.TotalSeconds);
+       }
+
+       
 
         public ActionResult Documents()
         {
