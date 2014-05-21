@@ -105,15 +105,14 @@ namespace Capstone.WebUI.Controllers
                 return View();
             
         }
-       
 
         public ActionResult FullCalendar()
-       {
+        {
             IList<PartnershipNight> events = new List<PartnershipNight>();
             var db = new CapstoneDbContext();
             events = (from e in db.PartnershipNights select e).ToList();
             return Json(events, JsonRequestBehavior.AllowGet);
-       }
+        }
 
        private long ToUnixTimespan(DateTime date)
        {
