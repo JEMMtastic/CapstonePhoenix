@@ -17,9 +17,9 @@ namespace Capstone.Domain.Entities
         private bool after;
         
         [Required(ErrorMessage="You must enter a start time")]
-        public string StartTime { get; set; }
+        public string Start { get; set; }
         [Required(ErrorMessage="You must enter an end time")]
-        public string EndTime { get; set; }
+        public string End { get; set; }
 
         //Constructor to set flags to default
         public PartnershipNight()

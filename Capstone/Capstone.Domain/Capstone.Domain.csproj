@@ -74,6 +74,10 @@
     <Compile Include="Migrations\201405192220083_AddedStartEndTimes.Designer.cs">
       <DependentUpon>201405192220083_AddedStartEndTimes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405221925166_propNameChng.cs" />
+    <Compile Include="Migrations\201405221925166_propNameChng.Designer.cs">
+      <DependentUpon>201405221925166_propNameChng.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405192220083_AddedStartEndTimes.resx">
       <DependentUpon>201405192220083_AddedStartEndTimes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405221925166_propNameChng.resx">
+      <DependentUpon>201405221925166_propNameChng.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -118,9 +118,9 @@ namespace Capstone.WebUI.Controllers
 
             //Get the events
             var db = new CapstoneDbContext();
-            var eventList = (from e in db.PartnershipNights.Include("BvLocation").Include("Charity")
+            var events = (from e in db.PartnershipNights.Include("BvLocation").Include("Charity")
                              select e).ToList<PartnershipNight>();
-            var rows = eventList.ToArray();
+            var rows = events.ToArray();
             return Json(rows, JsonRequestBehavior.AllowGet);
         }
 
