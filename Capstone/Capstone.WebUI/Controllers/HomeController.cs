@@ -108,20 +108,27 @@ namespace Capstone.WebUI.Controllers
 
         public ActionResult FullCalendar()
         {
-            //IList<PartnershipNight> events = new List<PartnershipNight>();
-            //var db = new CapstoneDbContext();
-            //events = (from e in db.PartnershipNights select e).ToList();
-            //return Json(events, JsonRequestBehavior.AllowGet);
             return View();
         }
 
-       private long ToUnixTimespan(DateTime date)
-       {
-           TimeSpan tspan = date.ToUniversalTime().Subtract(
-            new DateTime(1970, 1, 1, 0, 0, 0));
+        public ActionResult GetEvents(double start, double end)
+        {
+            var fromDate = ConvertFromUnixTimestamp(start);
+            var toDate = ConvertFromUnixTimestamp(end);
 
-           return (long)Math.Truncate(tspan.TotalSeconds);
-       }
+            //Get the events
+            var db = new CapstoneDbContext();
+            var eventList = (from e in db.PartnershipNights.Include("BvLocation").Include("Charity")
+                             select e).ToList<PartnershipNight>();
+            var rows = eventList.ToArray();
+            return Json(rows, JsonRequestBehavior.AllowGet);
+        }
+
+        private static DateTime ConvertFromUnixTimestamp(double timestamp)
+        {
+            var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            return origin.AddSeconds(timestamp);
+        }
 
        
 
