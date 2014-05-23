@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Capstone.Domain.Entities;
+using Capstone.WebUI.Models;
 
 namespace Capstone.WebUI.Controllers
 {
@@ -118,8 +119,13 @@ namespace Capstone.WebUI.Controllers
 
             //Get the events
             var db = new CapstoneDbContext();
-            var events = (from e in db.PartnershipNights.Include("BvLocation").Include("Charity")
+            var partnershipNights = (from e in db.PartnershipNights.Include("BvLocation").Include("Charity")
                              select e).ToList<PartnershipNight>();
+            var events = new List<Event>();
+            foreach (var p in partnershipNights)
+            {
+                events.Add(new Event { Id = p.BVLocation.BvStoreNum, Title = p.Charity.Name, Start = p.Date });
+            }
             var rows = events.ToArray();
             return Json(rows, JsonRequestBehavior.AllowGet);
         }
