@@ -1,30 +1,47 @@
-﻿@{
+﻿@model IEnumerable<Capstone.Domain.Entities.Form>
+
+@{
     ViewBag.Title = "Calculator";
 }
+<link href="~/Content/calculator.css" rel="stylesheet" />
 
-<h2>Calculator</h2>
+<h2>Partnership Calculator & Check Request</h2>
+<h3>All fields must be filled out completely or your form will be sent back to restaurant.</h3>
 
 <table>
-    <tr>
-        <th></th>
-        <th>Organization Information</th>
+    <tr class="tableHeadings">
+        <th colspan="5">Organization Information</th>
     </tr>
     <tr>
         <td>Name to appear on the check:</td>
-        <td>@Html.TextBox("name")</td>
+        <td>
+            @Html.TextBox("name")  <!--TextBoxFor(ParternshipNight.Charity.Name) -->
+            <img src="~/Images/alert_button.png" width="20" height="20" class="alert" />
+            <div>
+                <b>Do NOT abbreviate Partnership Name</b><br />
+                The name needs to match the name on the Vendor Add/Change Request Form.
+            </div>
+        </td>
         <td>Is this a New Partner?</td>
-        <td>Yes:  @Html.CheckBox("yes")</td>
+        <td>
+            Yes:  @Html.CheckBox("yes")
+            <img src="~/Images/alert_button.png" width="20" height="20" class="alert" />
+            <div>
+                <b>If new partnership</b><br />
+                Remember to submit a W-9 form and add a vendor form!
+            </div>
+        </td>
         <td>No:  @Html.CheckBox("no")</td>
     </tr>
     <tr>
         <td>Purpose of the Partnership:</td>
         <td>@Html.TextBox("purpose")</td>
-        <td>If yes, remember to submit a W-9 form</td>
+        <td colspan="3" rowspan="3"></td>
     </tr>
     <tr>
         <td>Contact Name:</td>
         <td>@Html.TextBox("contactName")</td>
-        <td>and add a vendor form!</td>
+
     </tr>
     <tr>
         <td>Organization Mailing Address:</td>
@@ -50,36 +67,33 @@
     </tr>
 </table>
 <br />
+
 <table>
     <tr>
         <td>Day of week of Partnership:</td>
         <td>@Html.TextBox("pnDay")</td>
         <td>Date of Partnership:</td>
-        <td>@Html.TextBox("pnDate")</td>  
+        <td>@Html.TextBox("pnDate")</td>
     </tr>
 </table>
+
 <br />
-<table>
-    <tr>
-        <td colspan="5">1. Actual Sales Information from Prior Year - 3 Weeks</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+
+<h3>1. Actual Sales Information from Prior Year - 3 Weeks</h3>
+<table border="1">
+    <!--<tr>
         <td>*Forumula here</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td colspan="2">Prior Year</td>
-        <td>@Html.TextBox("priorYr1")</td>
-        <td colspan="2">Prior Year</td>
+    </tr>-->
+    <tr class="tableHeadings">
+        <th></th>
+        <th>Prior Year</th>
+        <td>@Html.TextBoxFor(model => model.Wk1Year)</td>
+        <th>Prior Year</th>
         <td>@Html.TextBox("priorYr2")</td>
-        <td colspan="2">Average</td>
-        <td>Last week This Year</td>
+        <th>Prior Year</th>
+        <td>@Html.TextBox("priorYr3")</td>
+        <th colspan="2">Average</th>
+        <th>Last week This Year</th>
     </tr>
     <tr>
         <td>Hours of Partnership</td>
@@ -167,11 +181,12 @@
     </tr>
 </table>
 <br />
-<p>2. Scenario Donation Based on Projections</p>
+
+<h3>2. Scenario Donation Based on Projections</h3>
 <table>
-    <tr>
-        <td colspan="2">Scenario 1</td>
-        <td colspan="2">Scenario 2</td>
+    <tr class="tableHeadings">
+        <th colspan="2">Scenario 1</th>
+        <th colspan="2">Scenario 2</th>
     </tr>
     <tr>
         <td>Organization intends to invite</td>
@@ -188,13 +203,13 @@
     <tr>
         <td>3 Week Average Guest Count</td>
         <td>0</td>
-         <td>3 Week Average Guest Count</td>
+        <td>3 Week Average Guest Count</td>
         <td>0</td>
     </tr>
     <tr>
         <td>Targeted Guest Count</td>
         <td>0</td>
-         <td>Targeted Guest Count</td>
+        <td>Targeted Guest Count</td>
         <td>0</td>
     </tr>
     <tr>
@@ -205,7 +220,8 @@
     </tr>
 </table>
 <br />
-<p>3. Day of Partnership - Actual Sales & Guest Count REsults Per PosiTouch</p>
+
+<h3>3. Day of Partnership - Actual Sales & Guest Count Results Per PosiTouch</h3>
 <table>
     <tr>
         <td>Hours of Partnership</td>
@@ -295,7 +311,9 @@
     </tr>
 </table>
 <br />
-<p>4. Sales & Guest Count Contribution Calculation</p>
+
+<h3>4. Sales & Guest Count Contribution Calculation</h3>
+
 <table>
     <tr>
         <td colspan="4">Sales Contribution</td>
@@ -323,7 +341,8 @@
     </tr>
 </table>
 <br />
-<p>5. Donation Check Request</p>
+
+<h3>5. Donation Check Request</h3>
 <table>
     <tr>
         <td colspan="2">Donation 10% of Sales Code to GL7700</td>
@@ -389,3 +408,4 @@
         <td></td>
     </tr>
 </table>
+
