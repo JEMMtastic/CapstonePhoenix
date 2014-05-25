@@ -1,0 +1,15 @@
+﻿@model Capstone.Domain.Entities.Charity
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h1>Edit @Model.Name</h1>
+
+@using (Html.BeginForm("Edit", "AdminCharity")) {
+
+    @Html.EditorForModel()
+    <input type="submit" value="Save" />
+
+    @Html.ActionLink("Cancel and return to List", "Index")
+}

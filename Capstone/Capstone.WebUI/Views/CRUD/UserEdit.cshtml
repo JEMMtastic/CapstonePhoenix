@@ -1,0 +1,18 @@
+﻿@model Capstone.Domain.Entities.User
+
+@{
+    ViewBag.Title = "Admin: Edit " + @Model.UserFName + @Model.UserLName;
+}
+
+<h2>Edit @Model.UserFName @Model.UserLName</h2>
+
+@using (Html.BeginForm("EditUser", "AdminUser"))
+{
+    @Html.EditorForModel( )
+    <p>Store Number</p>
+    @Html.EditorFor(x => Model.BvLocation.BvStoreNum)
+   <!-- TODO:  figure out how to get BVLoc and list store num with ability to edit this for the user-->
+   
+    <input type ="submit" value ="Save" />
+    @Html.ActionLink("Cancel and return to List", "AdminUserIndex")
+}
