@@ -10,8 +10,13 @@ namespace Capstone.WebUI.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
+            : base("CapstoneDbContext")
+        {
+        }
+        /*public ApplicationDbContext()
             : base("DefaultConnection")
         {
         }
+         * */
     }
 }
