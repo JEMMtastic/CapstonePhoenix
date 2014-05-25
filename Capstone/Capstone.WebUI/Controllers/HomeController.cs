@@ -38,7 +38,7 @@ namespace Capstone.WebUI.Controllers
             fRepo = iForm;
         }
 
-        public ActionResult Index()
+        public ViewResult Index()
         {
             /*
             //data to get db up and running -- delete when done
@@ -60,7 +60,13 @@ namespace Capstone.WebUI.Controllers
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";*/
             return View();
         }
-
+/*
+        [HttpPost]
+        public ActionResult Index()
+        {
+            return RedirectToAction("Login", "Account");
+        }
+*/
         public ActionResult About()
         {
             //testing
