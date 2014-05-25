@@ -26,7 +26,7 @@
         foreach (var item in Model)
         {
             <tr>
-                <td>@Html.ActionLink(item.Date.ToShortDateString(), "Edit", new { item.PartnershipNightId })</td>
+                <td>@Html.ActionLink(item.Date.ToShortDateString(), "PartnershipNightEdit", new { item.PartnershipNightId })</td>
                 <td>@item.BVLocation.BvStoreNum</td>
                 <td>@item.Charity.Name</td>
                 <td>@item.CheckRequestId <!-- Html.DisplayFor(modelItem => item.CheckRequestId)--></td>
@@ -35,7 +35,7 @@
                 <td>@item.BeforeTheEventFinished <!--Html.DisplayFor(modelItem => item.BeforeTheEventFinished)--></td>
                 <td>@item.AfterTheEventFinished <!--Html.DisplayFor(modelItem => item.AfterTheEventFinished)--></td>
                 <td>
-                    @using (@Html.BeginForm("Delete", "AdminPartnershipNight"))
+                    @using (@Html.BeginForm("PartnershipNightDelete", "CRUD"))
                     {
                         @Html.Hidden("PartnershipNightId", item.PartnershipNightId)
                         <input type="submit" value="Delete" />
@@ -49,4 +49,4 @@
 
     }
 </table>
-<p>@Html.ActionLink("Add a new Partnership Night", "Create")</p>
+<p>@Html.ActionLink("Add a new Partnership Night", "PartnershipNightCreate")</p>

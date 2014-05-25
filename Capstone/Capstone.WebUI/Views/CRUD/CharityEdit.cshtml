@@ -6,10 +6,12 @@
 
 <h1>Edit @Model.Name</h1>
 
-@using (Html.BeginForm("Edit", "AdminCharity")) {
+@using (Html.BeginForm("CharityEdit", "CRUD")) {
 
     @Html.EditorForModel()
     <input type="submit" value="Save" />
 
-    @Html.ActionLink("Cancel and return to List", "Index")
+    @Html.ActionLink("Cancel and return to List", "CharityIndex")
 }
+
+
