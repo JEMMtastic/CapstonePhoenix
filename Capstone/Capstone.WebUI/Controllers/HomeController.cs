@@ -110,8 +110,7 @@ namespace Capstone.WebUI.Controllers
                 else return View();
             }
             else
-                return View();
-            
+                return View();   
         }
 
         public ActionResult FullCalendar()
@@ -143,8 +142,6 @@ namespace Capstone.WebUI.Controllers
             var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
             return origin.AddSeconds(timestamp);
         }
-
-       
 
         public ActionResult Documents()
         {
