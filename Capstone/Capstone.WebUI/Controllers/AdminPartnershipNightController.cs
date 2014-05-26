@@ -1,5 +1,5 @@
-﻿using Capstone.Domain.Concrete;
-using Capstone.Domain.Entities;
+﻿using Capstone.WebUI.Domain.Concrete;
+using Capstone.WebUI.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

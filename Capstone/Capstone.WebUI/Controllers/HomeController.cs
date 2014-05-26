@@ -1,11 +1,11 @@
-﻿using Capstone.Domain.Concrete;
-using Capstone.Domain.Abstract;
+﻿using Capstone.WebUI.Domain.Concrete;
+using Capstone.WebUI.Domain.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Capstone.Domain.Entities;
+using Capstone.WebUI.Domain.Entities;
 using Capstone.WebUI.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -48,7 +48,7 @@ namespace Capstone.WebUI.Controllers
            // BvLocation loc1 = new BvLocation { Address = "333 N Main St", City = "BobVille", BvStoreNum = "BV99", Phone = "839-839-8393", Zip = "88898" };
            // lRepo.AddBvLocation(loc1);
            // //add a user
-           // User u1 = new User { Username = "turtles", UserFName = "Bob", UserLName = "Bobberson", AccessLevel = 1, BvLocation = loc1, Password = "bobshere", UserEmail = "bob@bob.com", PhoneNumber = "541-389-8293" };
+           // User u1 = new User { Username = "turtles", FName = "Bob", LName = "Bobberson", AccessLevel = 1, BvLocation = loc1, Password = "bobshere", UserEmail = "bob@bob.com", PhoneNumber = "541-389-8293" };
            // uRepo.AddUser(u1);
            //// add a charity
            // Charity c1 = new Charity { Address = "8939 S Seventh", City = "CharityVille", FederalTaxId = "893018XS", Name = "HopeForBob", Phone = "893-829-8393", TypeOfCharity = "Helpful", Zip = "83928" };
@@ -103,7 +103,7 @@ namespace Capstone.WebUI.Controllers
                 BvLocation bvLocation = lRepo.GetBvLocation(u.BvLocation.BvLocationId);
                 if (bvLocation != null)
                 {
-                    var db = new CapstoneDbContext();
+                    var db = new OldCapstoneDbContext();
                     bvLocation.PartnershipNights = lRepo.GetPartnershipNights(bvLocation);
                     if (bvLocation.PartnershipNights.Count != 0)
                         return View(bvLocation);
@@ -126,7 +126,7 @@ namespace Capstone.WebUI.Controllers
             var toDate = ConvertFromUnixTimestamp(end);
             
             //Get the events
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             var partnershipNights = (from e in db.PartnershipNights.Include("BvLocation").Include("Charity")
                                          where e.StartDate >= fromDate && e.StartDate <= toDate
                                          select e).ToList<PartnershipNight>();

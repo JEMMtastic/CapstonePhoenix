@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using Capstone.Domain.Entities;
-using Capstone.Domain.Abstract;
+using Capstone.WebUI.Domain.Entities;
+using Capstone.WebUI.Domain.Abstract;
 
-namespace Capstone.Domain.Concrete
+namespace Capstone.WebUI.Domain.Concrete
 {
     public class PartnershipNightRepository : PartnershipNightInterface
     {
         public void AddPartnershipNight(PartnershipNight pn)
         {
             //throw new NotImplementedException();
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             db.PartnershipNights.Add(pn);
             db.SaveChanges();
             //TODO: Add in error handling
@@ -22,7 +22,7 @@ namespace Capstone.Domain.Concrete
 
         public PartnershipNight GetPartnershipNightById(int eventId)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             return (from pnight in db.PartnershipNights.Include("Charity").Include("BVLocation")
                     where pnight.PartnershipNightId == eventId
                     select pnight).FirstOrDefault();
@@ -30,7 +30,7 @@ namespace Capstone.Domain.Concrete
 
         public PartnershipNight GetPartnershipNightByDate(DateTime date, BvLocation loc)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             return (from pnight in db.PartnershipNights.Include("Charity").Include("BVLocation")
                     where pnight.StartDate == date && pnight.BVLocation == loc
                     select pnight).FirstOrDefault();
@@ -38,7 +38,7 @@ namespace Capstone.Domain.Concrete
 
         public IQueryable<PartnershipNight> GetPartnershipNights()  //Doing it this way as per suggestion. Seems highly inefficient to me to grab all partnership nights en masse, would prefer to narrow them via some criteria. Options commented out below for the future, should we decide to implement them.
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             return (from pnight in db.PartnershipNights.Include("Charity").Include("BVLocation")
                     select pnight).AsQueryable<PartnershipNight>();
         }
@@ -65,7 +65,7 @@ namespace Capstone.Domain.Concrete
         */
         public void UpdatePartnershipNight(PartnershipNight pn)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             if (pn.PartnershipNightId == 0)
             {
                 pn.Charity = db.Charities.Find(pn.Charity.CharityId);
@@ -93,7 +93,7 @@ namespace Capstone.Domain.Concrete
         public PartnershipNight DeletePartnershipNight(int id) //should this take a partnership night or id as parameter?
         {
             //throw new NotImplementedException();
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             PartnershipNight dbEntry = db.PartnershipNights.Find(id);
             if (dbEntry != null)
             {

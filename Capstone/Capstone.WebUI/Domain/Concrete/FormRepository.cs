@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Capstone.Domain.Abstract;
-using Capstone.Domain.Entities;
+using Capstone.WebUI.Domain.Abstract;
+using Capstone.WebUI.Domain.Entities;
 
-namespace Capstone.Domain.Concrete
+namespace Capstone.WebUI.Domain.Concrete
 {
     public class FormRepository : FormInterface
     {
 
         public void AddForm(Form form)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
 
             db.Forms.Add(form);
         }
 
         public Form GetFormById(int id)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
 
             return (from form in db.Forms
                     where form.FormId == id
@@ -29,7 +29,7 @@ namespace Capstone.Domain.Concrete
 
         public IQueryable<Entities.Form> GetForms()
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
 
             return (from form in db.Forms
                     select form).AsQueryable<Form>();
@@ -37,7 +37,7 @@ namespace Capstone.Domain.Concrete
 
         public void UpdateForm(Entities.Form form)
         {
-           var db = new CapstoneDbContext();
+           var db = new OldCapstoneDbContext();
 
            if (form.FormId == 0)
            {
@@ -67,7 +67,7 @@ namespace Capstone.Domain.Concrete
 
         public Form DeleteForm(int id)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             var dbEntry = db.Forms.Find(id);
             if (dbEntry != null)
             {

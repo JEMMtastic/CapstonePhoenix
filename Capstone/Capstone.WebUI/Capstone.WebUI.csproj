@@ -49,6 +49,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.0.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -126,9 +130,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.AspNet.Identity.Core">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Owin">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
     </Reference>
@@ -173,17 +174,31 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CRUDController.cs" />
-    <Compile Include="Controllers\OldAccountController.cs" />
     <Compile Include="Controllers\AdminCharityController.cs" />
     <Compile Include="Controllers\AdminFormController.cs" />
     <Compile Include="Controllers\AdminLocController.cs" />
     <Compile Include="Controllers\AdminPartnershipNightController.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Domain\Abstract\BvLocationInterface.cs" />
+    <Compile Include="Domain\Abstract\CharityInterface.cs" />
+    <Compile Include="Domain\Abstract\FormInterface.cs" />
+    <Compile Include="Domain\Abstract\PartnershipNightInterface.cs" />
+    <Compile Include="Domain\Abstract\UserInterface.cs" />
+    <Compile Include="Domain\Concrete\BvLocationRepository.cs" />
+    <Compile Include="Domain\Concrete\OldCapstoneDbContext.cs" />
+    <Compile Include="Domain\Concrete\CharityRepository.cs" />
+    <Compile Include="Domain\Concrete\FormRepository.cs" />
+    <Compile Include="Domain\Concrete\PartnershipNightRepository.cs" />
+    <Compile Include="Domain\Concrete\UserRepository.cs" />
+    <Compile Include="Domain\Entities\BvLocation.cs" />
+    <Compile Include="Domain\Entities\Charity.cs" />
+    <Compile Include="Domain\Entities\Form.cs" />
+    <Compile Include="Domain\Entities\PartnershipNight.cs" />
+    <Compile Include="Domain\Entities\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />

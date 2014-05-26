@@ -1,12 +1,12 @@
-﻿using Capstone.Domain.Abstract;
-using Capstone.Domain.Entities;
+﻿using Capstone.WebUI.Domain.Abstract;
+using Capstone.WebUI.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Capstone.Domain.Concrete
+namespace Capstone.WebUI.Domain.Concrete
 {
     public class UserRepository : UserInterface
     {
@@ -16,7 +16,7 @@ namespace Capstone.Domain.Concrete
         {
           try
           {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             db.Users.Add(u);
 
                 db.SaveChanges();
@@ -42,7 +42,7 @@ namespace Capstone.Domain.Concrete
 
         public Entities.User GetUser(int userId)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             return (from u in db.Users.Include("BvLocation")
                     where u.UserId == userId
                     select u).FirstOrDefault();
@@ -51,7 +51,7 @@ namespace Capstone.Domain.Concrete
         public User DeleteUser(int userId)
         {
 
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             User dbEntry = db.Users.Find(userId);
             if (dbEntry != null)
             {
@@ -63,7 +63,7 @@ namespace Capstone.Domain.Concrete
 
         public void SaveUser(User u)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             if (u.UserId == 0)
             {
                 db.BvLocations.Find(u.BvLocation.BvLocationId);
@@ -75,8 +75,8 @@ namespace Capstone.Domain.Concrete
                 User dbEntry = db.Users.Find(u.UserId);
                 if (dbEntry != null)
                 {
-                    dbEntry.UserFName = u.UserFName;
-                    dbEntry.UserLName = u.UserLName;
+                    dbEntry.FName = u.FName;
+                    dbEntry.LName = u.LName;
                     dbEntry.UserEmail = u.UserEmail;
                     dbEntry.PhoneNumber = u.PhoneNumber;
                     dbEntry.AccessLevel = u.AccessLevel;
