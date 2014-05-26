@@ -136,29 +136,6 @@ namespace Capstone.WebUI.Controllers
             return View();
         }
 
-        //need to pass a user to this method once the login stuff is worked out
-        //TEMPORARILY REMOVED USER BELOW UNTIL WE GET USER CRUD WORKING WITH IDENTITY
-        public ViewResult Calendar()
-        {
-            //User u = uRepo.GetUser(12);
-            User u = null;
-            if (u != null)
-            {
-                BvLocation bvLocation = lRepo.GetBvLocation(u.BvLocation.BvLocationId);
-                if (bvLocation != null)
-                {
-                    var db = new ApplicationDbContext();
-                    bvLocation.PartnershipNights = lRepo.GetPartnershipNights(bvLocation);
-                    if (bvLocation.PartnershipNights.Count != 0)
-                        return View(bvLocation);
-                    else return View();
-                }
-                else return View();
-            }
-            else
-                return View();   
-        }
-
         public ActionResult FullCalendar()
         {
             return View();

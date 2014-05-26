@@ -7,10 +7,9 @@ namespace Capstone.WebUI.Models
 {
     public class Event
     {
-        public int id { get; set; }
-        public int PartnershipNightId { get; set; }
-        public string title { get; set; }
-        public string start { get; set; }
-        public string end { get; set; }
+        public int id { get; set; } //this will be the pNight id from the db
+        public string title { get; set; } //this will be the charity name, bvStoreNum
+        public string start { get; set; }  //start date/time
+        public string end { get; set; }  //end date/time
     }
 }

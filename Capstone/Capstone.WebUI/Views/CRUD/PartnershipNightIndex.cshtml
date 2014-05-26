@@ -26,7 +26,7 @@
         foreach (var item in Model)
         {
             <tr>
-                <td>@Html.ActionLink(item.Date.ToShortDateString(), "PartnershipNightEdit", new { item.PartnershipNightId })</td>
+                <td>@Html.ActionLink(item.StartDate.ToShortDateString(), "PartnershipNightEdit", new { item.PartnershipNightId })</td>
                 <td>@item.BVLocation.BvStoreNum</td>
                 <td>@item.Charity.Name</td>
                 <td>@item.CheckRequestId <!-- Html.DisplayFor(modelItem => item.CheckRequestId)--></td>

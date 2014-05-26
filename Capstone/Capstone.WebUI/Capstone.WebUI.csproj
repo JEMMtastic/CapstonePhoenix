@@ -392,7 +392,6 @@
     <Content Include="Views\Shared\AdminNavigation.cshtml" />
     <Content Include="Views\Shared\UserNavigation.cshtml" />
     <Content Include="Views\Home\Calculator.cshtml" />
-    <Content Include="Views\Home\Calendar.cshtml" />
     <Content Include="Views\Home\Documents.cshtml" />
     <Content Include="Views\Home\Empty.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
