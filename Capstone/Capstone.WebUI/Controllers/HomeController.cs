@@ -133,9 +133,10 @@ namespace Capstone.WebUI.Controllers
             var events = new List<Event>();
             foreach (var p in partnershipNights)
             {
-                string jsonStart = JsonConvert.SerializeObject(p.StartDate, new IsoDateTimeConverter());
-                string jsonEnd = JsonConvert.SerializeObject(p.EndDate, new IsoDateTimeConverter());
-                events.Add(new Event { Id = p.BVLocation.BvStoreNum, Title = p.Charity.Name, Start = jsonStart, End = jsonEnd});
+                var stDt = ToUnixTimespan(p.StartDate);
+                var endDt = ToUnixTimespan(p.EndDate);
+               
+                events.Add(new Event { id = p.PartnershipNightId, title = p.Charity.Name + "," + p.BVLocation.BvStoreNum, start = stDt, end = endDt});
             }
             var rows = events.ToArray();
             return Json(rows, JsonRequestBehavior.AllowGet);
@@ -145,6 +146,14 @@ namespace Capstone.WebUI.Controllers
         {
             var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
             return origin.AddSeconds(timestamp);
+        }
+
+        public static string ToUnixTimespan(DateTime date)
+        {
+            TimeSpan tspan = date.ToUniversalTime().Subtract(
+         new DateTime(1970, 1, 1, 0, 0, 0));
+
+            return Math.Truncate(tspan.TotalSeconds).ToString();
         }
 
         public ActionResult Documents()

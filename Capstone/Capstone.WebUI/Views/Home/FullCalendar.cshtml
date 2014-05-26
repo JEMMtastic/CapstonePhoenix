@@ -15,6 +15,7 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <script src="~/Scripts/fullcalendar.js"></script>
     <link href="~/Content/fullcalendar.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-ui-1.10.4.js"></script>
 </head>
 <body>
     <script type="text/javascript">
@@ -25,13 +26,15 @@
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
-            url: "/home/getevents/",
-            defaultView: 'agendaDay',
+            type: 'GET',
+            defaultView: 'month',
             editable: true,
             allDaySlot: false,
             selectable: true,
             slotMinutes: 30,
-            events: "/home/getevents/",
+            events: "/home/getevents",
+            color: 'yellow',   // an option!
+            textColor: 'black', // an option!
         });
     });
     </script>  
