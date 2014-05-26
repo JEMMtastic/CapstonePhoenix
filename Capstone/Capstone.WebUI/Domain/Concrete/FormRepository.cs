@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Capstone.Domain.Abstract;
-using Capstone.Domain.Entities;
+using Capstone.WebUI.Domain.Abstract;
+using Capstone.WebUI.Domain.Entities;
 
-namespace Capstone.Domain.Concrete
+namespace Capstone.WebUI.Domain.Concrete
 {
     public class FormRepository : FormInterface
     {

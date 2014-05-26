@@ -13,7 +13,7 @@ namespace Capstone.Domain.Migrations
             ContextKey = "Capstone.Domain.Concrete.CapstoneDbContext";
         }
 
-        protected override void Seed(Capstone.Domain.Concrete.CapstoneDbContext context)
+        protected override void Seed(Capstone.WebUI.Models.CapstoneDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

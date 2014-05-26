@@ -1,4 +1,4 @@
-﻿using Capstone.Domain.Entities;
+﻿using Capstone.WebUI.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

@@ -1,23 +1,24 @@
-﻿using Capstone.WebUI.Domain.Entities;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Capstone.WebUI.Models
+namespace Capstone.Domain.Entities
 {
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    //public class ApplicationUser : IdentityUser
-    public class User : IdentityUser    
+    public class CUser
     {
         [HiddenInput(DisplayValue = false)]
-        public int UserId { get; set; }
+        public int CUserId { get; set; }
 
-        [Required(ErrorMessage = "The user must have a store number")]
+        [Required(ErrorMessage="The user must have a store number")]
         public BvLocation BvLocation { get; set; }
 
         [Required(ErrorMessage = "Please enter a Username")]
         public string Username { get; set; }
-
+        
         [Required(ErrorMessage = "Please enter a First Name")]
         public string UserFName { get; set; }
 
@@ -34,18 +35,5 @@ namespace Capstone.WebUI.Models
         public string UserEmail { get; set; }
 
         public string PhoneNumber { get; set; }
-    }
-
-    public class ApplicationDbContext : IdentityDbContext<User>
-    {
-        public ApplicationDbContext()
-            : base("CapstoneDbContext")
-        {
-        }
-        /*public ApplicationDbContext()
-            : base("DefaultConnection")
-        {
-        }
-         * */
     }
 }

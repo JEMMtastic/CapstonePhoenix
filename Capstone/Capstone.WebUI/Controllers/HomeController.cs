@@ -1,11 +1,11 @@
-﻿using Capstone.Domain.Concrete;
-using Capstone.Domain.Abstract;
+﻿using Capstone.WebUI.Domain.Concrete;
+using Capstone.WebUI.Domain.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Capstone.Domain.Entities;
+using Capstone.WebUI.Domain.Entities;
 using Capstone.WebUI.Models;
 
 namespace Capstone.WebUI.Controllers

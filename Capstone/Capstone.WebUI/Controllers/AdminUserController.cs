@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Capstone.Domain.Abstract;
-using Capstone.Domain.Concrete;
-using Capstone.Domain.Entities;
+using Capstone.WebUI.Domain.Abstract;
+using Capstone.WebUI.Domain.Concrete;
+using Capstone.WebUI.Domain.Entities;
 
 namespace Capstone.WebUI.Controllers
 {

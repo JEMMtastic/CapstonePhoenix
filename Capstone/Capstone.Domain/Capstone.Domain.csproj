@@ -50,22 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\BvLocationInterface.cs" />
-    <Compile Include="Abstract\CharityInterface.cs" />
-    <Compile Include="Abstract\FormInterface.cs" />
-    <Compile Include="Abstract\PartnershipNightInterface.cs" />
-    <Compile Include="Abstract\UserInterface.cs" />
-    <Compile Include="Concrete\BvLocationRepository.cs" />
-    <Compile Include="Concrete\CapstoneDbContext.cs" />
-    <Compile Include="Concrete\CharityRepository.cs" />
-    <Compile Include="Concrete\FormRepository.cs" />
-    <Compile Include="Concrete\PartnershipNightRepository.cs" />
-    <Compile Include="Concrete\UserRepository.cs" />
-    <Compile Include="Entities\BvLocation.cs" />
-    <Compile Include="Entities\Charity.cs" />
-    <Compile Include="Entities\Form.cs" />
-    <Compile Include="Entities\PartnershipNight.cs" />
-    <Compile Include="Entities\User.cs" />
     <Compile Include="Migrations\201405182231142_InitialCreate.cs" />
     <Compile Include="Migrations\201405182231142_InitialCreate.Designer.cs">
       <DependentUpon>201405182231142_InitialCreate.cs</DependentUpon>
