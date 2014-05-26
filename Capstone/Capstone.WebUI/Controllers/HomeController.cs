@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using Capstone.Domain.Entities;
 using Capstone.WebUI.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Capstone.WebUI.Controllers
 {
@@ -122,7 +124,7 @@ namespace Capstone.WebUI.Controllers
         {
             var fromDate = ConvertFromUnixTimestamp(start);
             var toDate = ConvertFromUnixTimestamp(end);
-
+            
             //Get the events
             var db = new CapstoneDbContext();
             var partnershipNights = (from e in db.PartnershipNights.Include("BvLocation").Include("Charity")
@@ -131,7 +133,9 @@ namespace Capstone.WebUI.Controllers
             var events = new List<Event>();
             foreach (var p in partnershipNights)
             {
-                events.Add(new Event { Id = p.BVLocation.BvStoreNum, Title = p.Charity.Name, Start = p.StartDate.ToString(), End = p.EndDate.ToString()});
+                string jsonStart = JsonConvert.SerializeObject(p.StartDate, new IsoDateTimeConverter());
+                string jsonEnd = JsonConvert.SerializeObject(p.EndDate, new IsoDateTimeConverter());
+                events.Add(new Event { Id = p.BVLocation.BvStoreNum, Title = p.Charity.Name, Start = jsonStart, End = p.EndDate.ToString()});
             }
             var rows = events.ToArray();
             return Json(rows, JsonRequestBehavior.AllowGet);
