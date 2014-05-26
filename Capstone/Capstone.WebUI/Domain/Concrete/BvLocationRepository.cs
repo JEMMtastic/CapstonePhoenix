@@ -1,5 +1,6 @@
 ﻿using Capstone.WebUI.Domain.Abstract;
 using Capstone.WebUI.Domain.Entities;
+using Capstone.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public Entities.BvLocation GetBvLocation(int bvLocationId)
         {
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             return (from l in db.BvLocations
                     where l.BvLocationId == bvLocationId
                     select l).FirstOrDefault();
@@ -21,14 +22,14 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public IQueryable<BvLocation> GetBvLocations()
         {
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             return (from l in db.BvLocations
                     select l).AsQueryable<BvLocation>();
         }
 
         public BvLocation GetBvLocation(string storeNum)
         {
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             return (from l in db.BvLocations
                     where l.BvStoreNum == storeNum
                     select l).FirstOrDefault();
@@ -36,14 +37,14 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public void AddBvLocation(BvLocation bvLocation)
         {
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             db.BvLocations.Add(bvLocation);
             db.SaveChanges(); ;
         }
 
         public BvLocation DeleteBvLocation(int bvLocationId)
         {
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             BvLocation dbEntry = db.BvLocations.Find(bvLocationId);
             if (dbEntry != null)
             {
@@ -55,7 +56,7 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public void SaveBvLocation(BvLocation l)
         {
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             if (l.BvLocationId == 0)
                 db.BvLocations.Add(l);
             else
@@ -76,7 +77,7 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public List<PartnershipNight> GetPartnershipNights(BvLocation l)
         {
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             List<PartnershipNight> partnershipnights = (from c in db.PartnershipNights.Include("BvLocation").Include("Charity")
                                                         where c.BVLocation.BvLocationId == l.BvLocationId
                                                         select c).ToList<PartnershipNight>();

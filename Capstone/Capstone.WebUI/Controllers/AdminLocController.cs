@@ -10,7 +10,7 @@ using Capstone.WebUI.Domain.Abstract;
 namespace Capstone.WebUI.Controllers
 {
     public class AdminLocController : Controller
-    {
+    {/* NOT IN USE ANYMORE
         BvLocationInterface lRepo;
 
         // The default constructor is called by the framework
@@ -68,6 +68,6 @@ namespace Capstone.WebUI.Controllers
             }
             return RedirectToAction("AdminLocIndex");
         }
-
+        */
     }
 }
