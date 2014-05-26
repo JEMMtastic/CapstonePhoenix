@@ -14,82 +14,134 @@ namespace Capstone.Domain.Entities
         public int FormId { get; set; }
 
         #region Section 0 - Organization Information
-        // "Name on check" - Comes from PartnershipNight.Charity.Name
+        public string NameOnCheck { get; set; } // "Name on check" - Comes from PartnershipNight.Charity.Name
         public string Purpose { get; set; }
-        public string Contact { get; set; } // TODO: Add the contact to the partnership
+        public string ContactName { get; set; } // TODO: Add the contact to the partnership
 
-        // "Organization mailing address" - Comes from PartnershipNight.Charity.Address, City, Zip, State (?)
-        // "Telephone number" - Comes from PartnershipNight.Charity.Phone
-        // "Federal tax I.D. number - PartnershipNight.Charity.FederalTaxId
+        public string OrganizationMailingAddress { get; set; }  // "Organization mailing address" - Comes from PartnershipNight.Charity.Address, City, Zip, State (?)
+        public string OrganizationMailingCity { get; set; }
+        public string OrganizationMailingState { get; set; }
+        public string OrganizationMailingZip { get; set; }
+        public string OrganizationPhone { get; set; } // "Telephone number" - Comes from PartnershipNight.Charity.Phone
+        public string FederalTaxID { get; set; }// "Federal tax I.D. number - PartnershipNight.Charity.FederalTaxId
         public bool NewPartner { get; set; }
-        // "Hosting restaurant" - PartnershipNight.BvLocation.BvStoreNum
-        // "Week day of Partnership" - PartnershipNight.Date
-        // "Date of Partnership" - PartnershipNight.Date 
+        public string HostingRestaurant { get; set; }// "Hosting restaurant" - PartnershipNight.BvLocation.BvStoreNum
+        public string WeekDayOfPartnership { get; set; }// "Week day of Partnership" - PartnershipNight.Date
+        public DateTime DateOfPartnership { get; set; }// "Date of Partnership" - PartnershipNight.Date 
         #endregion
         
         #region Section 1 - Actual Sales Information from Prior Year - 3 Weeks
-        public int Wk1Year { get; set; } // Prior Year Week X
-        public int Wk2Year { get; set; }
-        public int Wk3Year { get; set; }
+        public DateTime Week1Date { get; set; } // Prior Year Week X
+        public DateTime Week2Date { get; set; }
+        public DateTime Week3Date { get; set; }
 
 
-        // Prior Year Adjusted Sales, week 1, Hour 4 thru 8 = Wk1HOURGc * LWkAvgChkHOUR
-        // Prior Year Adjusted Sales Total = Sum of week 1 hours 4 thru 8
+        //Manually entered
+        //**************************************************************************************
+        // Week 1 Hours x-x Guest Count
+        public int Week145GuestCount { get; set; }
+        public int Week156GuestCount { get; set; }
+        public int Week167GuestCount { get; set; }
+        public int Week178GuestCount { get; set; }
+        public int Week189GuestCount { get; set; }
 
-        // Prior Year Adjusted Sales, week 2, Hour 4 thr 8 = Wk1HOURGc * LWkAvgChkHOUR
-        // Prior Year Adjusted Sales Total = Sum of week 2 hours 4 thru 8
+        // Week 2 Hours x-x Guest Count
+        public int Week245GuestCount { get; set; }
+        public int Week256GuestCount { get; set; }
+        public int Week267GuestCount { get; set; }
+        public int Week278GuestCount { get; set; }
+        public int Week289GuestCount { get; set; }
 
-        // Prior Year Adjusted Sales, week 3, Hour 4 thr 8 = Wk1HOURGc * LWkAvgChkHOUR
-        // Prior Year Adjusted Sales Total = Sum of week 3 hours 4 thru 8
+        // Week 3 Hours x-x Guest Count
+        public int Week345GuestCount { get; set; }
+        public int Week356GuestCount { get; set; }
+        public int Week367GuestCount { get; set; }
+        public int Week378GuestCount { get; set; }
+        public int Week389GuestCount { get; set; }
 
-        public int Wk1FourGc { get; set; } // Week 1 Hours x-x Guest Count
-        public int Wk1FiveGc { get; set; }
-        public int Wk1SixGc { get; set; }
-        public int Wk1SevenGc { get; set; }
-        public int Wk1EightGc { get; set; }
-        // "Guest Count week 1 total" - Add Wk1FourGc thru Wk1EightGc
-
-        public int Wk2FourGc { get; set; } // Week 2 Hours x-x Guest Count
-        public int Wk2FiveGc { get; set; }
-        public int Wk2SixGc { get; set; }
-        public int WkSevenGc { get; set; }
-        public int Wk2EightGc { get; set; }
-        // "Guest Count week 2 total" - Add Wk2FourGc thru Wk2EightGc
-
-        public int Wk3FourGc { get; set; } // Week 3 Hours x-x Guest Count
-        public int Wk3FiveGc { get; set; }
-        public int Wk3SixGc { get; set; }
-        public int Wk3SevenGc { get; set; }
-        public int Wk3EightGc { get; set; }
-        // "Guest Count week 3 total" - Add Wk3FourGc thru Wk3EightGc
-        public decimal LWkAvgChkFour { get; set; } // Last week average check for hour X
-        public decimal LWkAvgChkFive { get; set; }
-        public decimal LWkAvgChkSix { get; set; }
-        public decimal LWkAvgChkSeven { get; set; }
-        public decimal LWkAvgChkEight { get; set; }
+        // Last week average check for hour X
+        public decimal LastWeekAverageCheck45 { get; set; }
+        public decimal LastWeekAverageCheck56 { get; set; }
+        public decimal LastWeekAverageCheck67 { get; set; }
+        public decimal LastWeekAverageCheck78 { get; set; }
+        public decimal LastWeekAverageCheck89 { get; set; }
 
 
-        // "Week 1 Adjusted Sales" - Sum of (Prior Year Adjusted Sales, week 1, Hour 4 thru 8 = Wk1HOURGc * LWkAvgChkHOUR) / 3
-        // "Week 2 Adjusted Sales" - Sum of (Prior Year Adjusted Sales, week 2, Hour 4 thru 8 = Wk1HOURGc * LWkAvgChkHOUR) / 3
-        // "Week 3 Adjusted Sales" - Sum of (Prior Year Adjusted Sales, week 3, Hour 4 thru 8 = Wk1HOURGc * LWkAvgChkHOUR) / 3
-        // "Average Sales Total" - Sum of all weeks Adjsuted Sales
+        //Calculated
+        //**************************************************************************************
+        // Week 1 Hours x-x Adjusted Sales
+        public decimal Week145AdjustedSales { get; set; }
+        public decimal Week156AdjustedSales { get; set; }
+        public decimal Week167AdjustedSales { get; set; }
+        public decimal Week178AdjustedSales { get; set; }
+        public decimal Week189AdjustedSales { get; set; }
 
-        // "Week 1 Average GC" - Sum of Wk1HOURGc / 3
-        // "Week 2 Average GC" - Sum of Wk2HOURGc / 3
-        // "Week 3 Average GC" - Sum of Wk3HOURGc / 3
-        // "Average Guest Count Total" - Sum of all weeks Average Guest Count
+        // Week 2 Hours x-x Adjusted Sales
+        public decimal Week245AdjustedSales { get; set; }
+        public decimal Week256AdjustedSales { get; set; }
+        public decimal Week267AdjustedSales { get; set; }
+        public decimal Week278AdjustedSales { get; set; }
+        public decimal Week289AdjustedSales { get; set; }
 
-        // "Overall Average Check" - Average Sales Total / Average Guest Count Total
+        // Week 3 Hours x-x Adjusted Sales 
+        public decimal Week345AdjustedSales { get; set; }
+        public decimal Week356AdjustedSales { get; set; }
+        public decimal Week367AdjustedSales { get; set; }
+        public decimal Week378AdjustedSales { get; set; }
+        public decimal Week389AdjustedSales { get; set; }
+
+        // Average Hours x-x Sales
+        public decimal Average45Sales { get; set; }
+        public decimal Average56Sales { get; set; }
+        public decimal Average67Sales { get; set; }
+        public decimal Average78Sales { get; set; }
+        public decimal Average89Sales { get; set; }
+       
+
+        // Average Hours x-x Guest Count
+        public int Average45GuestCount { get; set; }
+        public int Average56GuestCount { get; set; }
+        public int Average67GuestCount { get; set; }
+        public int Average78GuestCount { get; set; }
+        public int Average89GuestCount { get; set; }
+
+        //totals
+        public decimal Week1AdjustedSalesTotal { get; set; }
+        public decimal Week2AdjustedSalesTotal { get; set; }
+        public decimal Week3AdjustedSalesTotal { get; set; }
+        public decimal AverageAdjustedSalesTotal { get; set; }
+        public int Week1GuestCountTotal { get; set; }
+        public int Week2GuestCountTotal { get; set; }
+        public int Week3GuestCountTotal { get; set; }
+        public int AverageGuestCountTotal { get; set; }
+
+        public decimal LastWeekAverageCheckTotal { get; set; }
+
+
         #endregion
 
         #region Section 2 - Scenario Donation Based on Projections
-        public int Scenario1Gc { get; set; }
-        public int Scenario2Gc { get; set; } 
 
-        // "Estimated Guest Count" - Intended guest count * 25%
-        // "3 Week Average Guest Count" - Same as Average Guest Count Total from Section 1
-        // "Targeted Guest Count" - Estimated Gueset Count + 3 Week Average Guest Count
-        // "Estimated Donation" - (Targeted Guest Count * Overall Average Check) * 10%
+        //Manually entered
+        //**************************************************************************************
+        public int Scenario1GuestCount { get; set; }
+        public int Scenario2GuestCount { get; set; } 
+
+
+        //Calculated
+        //**************************************************************************************
+        public int Scenario1EstimatedGuestCount { get; set; }
+        public int Scenario2EstimatedGuestCount { get; set; }
+
+        public int Scenario1ThreeWeekAverageGuestCount { get; set; }
+        public int Scenario2ThreeWeekAverageGuestCount { get; set; }
+
+        public int Scenario1TargetedGuestCount { get; set; }
+        public int Scenario2TargetedGuestCount { get; set; }
+
+        public decimal Scenario1EstimatedDonation { get; set; }
+        public decimal Scenario2EstimatedDonation { get; set; }
+
         #endregion
 
         // TODO: Move calculations?
@@ -101,12 +153,7 @@ namespace Capstone.Domain.Entities
         public decimal ActualSalesEight { get; set; }
         // "Actual Sales Total" - Sum of Actual Sales for hours 4 thru 8
 
-        public int ActualGcFour { get; set; } // Actual guest count for hours 4 thru 8
-        public int ActualGcFive { get; set; }
-        public int ActualGcSix { get; set; }
-        public int ActualGcSeven { get; set; }
-        public int ActualGcEight { get; set; }
-        // "Actual Gueset Count Total" - Sum of Actual Guest Count for hours 4 thru 8
+     
 
         public decimal PosiDonations { get; set; }
 
