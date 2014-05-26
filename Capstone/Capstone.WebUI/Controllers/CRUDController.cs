@@ -100,7 +100,7 @@ namespace Capstone.WebUI.Controllers
         public ActionResult LocationIndex()
         {
             //need to get a list of all users
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             List<BvLocation> locations = (from l in db.BvLocations
                                 select l).ToList<BvLocation>();
             return View(locations);
@@ -257,14 +257,14 @@ namespace Capstone.WebUI.Controllers
 
 
 
-
+        //TEMPORARILY REMOVING WHILE WE GET IDENTITY TO HANDLE USER CRUD
 
         //User
         //***********************************
-        public ActionResult UserIndex()
+/*        public ActionResult UserIndex()
         {
             //need to get a list of all users
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             List<User> users = (from u in db.Users.Include("BvLocation")
                                 select u).ToList<User>();
 
@@ -317,7 +317,7 @@ namespace Capstone.WebUI.Controllers
             return RedirectToAction("UserIndex");
         }
 
-
+*/
 
 
 

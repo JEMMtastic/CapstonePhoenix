@@ -10,8 +10,8 @@ namespace Capstone.WebUI.Domain.Concrete
 {
     public class UserRepository : UserInterface
     {
-
-
+        //TEMPORARILY REMOVING WHILE WE GET IDENTITY TO HANDLE USER CRUD
+        /*
         public void AddUser(Entities.User u)
         {
           try
@@ -86,5 +86,8 @@ namespace Capstone.WebUI.Domain.Concrete
             }
             db.SaveChanges();
         }
+
+         */
     }
+
 }

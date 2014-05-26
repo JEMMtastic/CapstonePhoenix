@@ -145,7 +145,7 @@ namespace Capstone.WebUI.Controllers
                 BvLocation bvLocation = lRepo.GetBvLocation(u.BvLocation.BvLocationId);
                 if (bvLocation != null)
                 {
-                    var db = new OldCapstoneDbContext();
+                    var db = new ApplicationDbContext();
                     bvLocation.PartnershipNights = lRepo.GetPartnershipNights(bvLocation);
                     if (bvLocation.PartnershipNights.Count != 0)
                         return View(bvLocation);
@@ -168,7 +168,7 @@ namespace Capstone.WebUI.Controllers
             var toDate = ConvertFromUnixTimestamp(end);
             
             //Get the events
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             var partnershipNights = (from e in db.PartnershipNights.Include("BvLocation").Include("Charity")
                                          where e.StartDate >= fromDate && e.StartDate <= toDate
                                          select e).ToList<PartnershipNight>();

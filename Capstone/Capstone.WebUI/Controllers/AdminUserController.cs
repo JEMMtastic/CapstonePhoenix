@@ -10,7 +10,7 @@ using Capstone.WebUI.Domain.Entities;
 namespace Capstone.WebUI.Controllers
 {
     public class AdminUserController : Controller
-    { 
+    { /* NOT IN USE ANYMORE
         UserInterface uRepo;
         BvLocationInterface lRepo;
 
@@ -84,5 +84,5 @@ namespace Capstone.WebUI.Controllers
             return RedirectToAction("AdminUserIndex");
         }
 
-    }
+    */}
 }
