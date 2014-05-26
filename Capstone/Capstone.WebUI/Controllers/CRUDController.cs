@@ -1,6 +1,6 @@
-﻿using Capstone.Domain.Abstract;
-using Capstone.Domain.Concrete;
-using Capstone.Domain.Entities;
+﻿using Capstone.WebUI.Domain.Abstract;
+using Capstone.WebUI.Domain.Concrete;
+using Capstone.WebUI.Domain.Entities;
 using Capstone.WebUI.Models;
 using System;
 using System.Collections.Generic;

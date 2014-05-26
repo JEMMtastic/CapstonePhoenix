@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Capstone.Domain.Entities
+namespace Capstone.WebUI.Domain.Entities
 {
     public class Form
     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
-namespace Capstone.Domain.Entities
+namespace Capstone.WebUI.Domain.Entities
 {
     public class PartnershipNight
     {

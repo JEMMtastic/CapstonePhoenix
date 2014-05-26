@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using Capstone.Domain.Entities;
-using Capstone.Domain.Abstract;
+using Capstone.WebUI.Domain.Entities;
+using Capstone.WebUI.Domain.Abstract;
 
-namespace Capstone.Domain.Concrete
+namespace Capstone.WebUI.Domain.Concrete
 {
     public class PartnershipNightRepository : PartnershipNightInterface
     {
