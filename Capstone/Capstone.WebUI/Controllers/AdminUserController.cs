@@ -31,7 +31,7 @@ namespace Capstone.WebUI.Controllers
         public ActionResult AdminUserIndex()
         {
             //need to get a list of all users
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             List<User> users = (from u in db.Users.Include("BvLocation")
                                 select u).ToList<User>();
 
@@ -55,7 +55,7 @@ namespace Capstone.WebUI.Controllers
                 {
                     u.BvLocation = l;
                     uRepo.SaveUser(u);
-                    TempData["message"] = string.Format("{0} has been saved", u.UserFName + " " + u.UserLName);
+                    TempData["message"] = string.Format("{0} has been saved", u.FName + " " + u.LName);
                 }
                 else
                 {
@@ -79,7 +79,7 @@ namespace Capstone.WebUI.Controllers
             User deletedUser = uRepo.DeleteUser(userId);
             if (deletedUser != null)
             {
-                TempData["message"] = string.Format("{0} was deleted", deletedUser.UserFName + deletedUser.UserLName);
+                TempData["message"] = string.Format("{0} was deleted", deletedUser.FName + deletedUser.LName);
             }
             return RedirectToAction("AdminUserIndex");
         }

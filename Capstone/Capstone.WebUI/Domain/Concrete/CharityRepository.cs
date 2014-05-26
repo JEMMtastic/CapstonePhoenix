@@ -13,7 +13,7 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public void AddCharity(Charity charity)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             db.Charities.Add(charity);
             db.SaveChanges();
         }
@@ -21,7 +21,7 @@ namespace Capstone.WebUI.Domain.Concrete
         public Charity GetCharityByName(string name)
         {
             //throw new NotImplementedException();
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             return (from charity in db.Charities
                     where charity.Name == name
                     select charity).FirstOrDefault();
@@ -30,7 +30,7 @@ namespace Capstone.WebUI.Domain.Concrete
         /*public Charity GetCharityById(int id)
         {
             //throw new NotImplementedException();
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             return (from charity in db.Charities
                     where charity.CharityId == id
                     select charity).FirstOrDefault();
@@ -38,7 +38,7 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public IQueryable<Charity> GetCharities()
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             return (from charity in db.Charities
                     select charity).AsQueryable<Charity>();
         }
@@ -46,7 +46,7 @@ namespace Capstone.WebUI.Domain.Concrete
         //Aka save/update charity
         public void EditCharity(Charity charity)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             if (charity.CharityId == 0)
             {
                 //first add any children
@@ -72,7 +72,7 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public Charity DeleteCharity(int charityId)  //If we decide not to allow deletion we can take this out later
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             Charity dbEntry = db.Charities.Find(charityId);
             if (dbEntry != null)
             {

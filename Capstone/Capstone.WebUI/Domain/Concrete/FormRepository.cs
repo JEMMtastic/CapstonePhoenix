@@ -13,14 +13,14 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public void AddForm(Form sec3)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
 
             db.Forms.Add(sec3);
         }
 
         public Form GetFormById(int id)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
 
             return (from sec3 in db.Forms
                     where sec3.FormId == id
@@ -29,7 +29,7 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public IQueryable<Entities.Form> GetForms()
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
 
             return (from sec3 in db.Forms
                     select sec3).AsQueryable<Form>();
@@ -37,7 +37,7 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public void UpdateForm(Entities.Form sec3)
         {
-           var db = new CapstoneDbContext();
+           var db = new OldCapstoneDbContext();
 
            if (sec3.FormId == 0)
            {
@@ -67,7 +67,7 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public Form DeleteForm(int id)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             var dbEntry = db.Forms.Find(id);
             if (dbEntry != null)
             {

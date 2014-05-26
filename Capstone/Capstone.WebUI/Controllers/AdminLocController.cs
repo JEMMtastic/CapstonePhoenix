@@ -28,7 +28,7 @@ namespace Capstone.WebUI.Controllers
         public ActionResult AdminLocIndex()
         {
             //need to get a list of all users
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             List<BvLocation> locations = (from l in db.BvLocations
                                 select l).ToList<BvLocation>();
             return View(locations);

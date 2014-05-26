@@ -10,13 +10,13 @@ namespace Capstone.WebUI.Domain.Concrete
 {
     public class UserRepository : UserInterface
     {
-
+        //Handling user CRUD should be done with Identity - we will change this in the future.
 
         public void AddUser(Entities.User u)
         {
           try
           {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             db.Users.Add(u);
 
                 db.SaveChanges();
@@ -40,18 +40,18 @@ namespace Capstone.WebUI.Domain.Concrete
           }
         }
 
-        public Entities.User GetUser(int userId)
+        public Entities.User GetUser(int userId) //Identity handles Ids as strings, so we have to convert this
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             return (from u in db.Users.Include("BvLocation")
-                    where u.UserId == userId
+                    where u.Id == userId.ToString() 
                     select u).FirstOrDefault();
         }
 
         public User DeleteUser(int userId)
         {
 
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             User dbEntry = db.Users.Find(userId);
             if (dbEntry != null)
             {
@@ -63,8 +63,8 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public void SaveUser(User u)
         {
-            var db = new CapstoneDbContext();
-            if (u.UserId == 0)
+            var db = new OldCapstoneDbContext();
+            if (u.Id == 0.ToString())
             {
                 db.BvLocations.Find(u.BvLocation.BvLocationId);
 
@@ -72,14 +72,14 @@ namespace Capstone.WebUI.Domain.Concrete
             }
             else
             {
-                User dbEntry = db.Users.Find(u.UserId);
+                User dbEntry = db.Users.Find(u.Id);
                 if (dbEntry != null)
                 {
-                    dbEntry.UserFName = u.UserFName;
-                    dbEntry.UserLName = u.UserLName;
-                    dbEntry.UserEmail = u.UserEmail;
+                    dbEntry.FName = u.FName;
+                    dbEntry.LName = u.LName;
+                    //dbEntry.UserEmail = u.UserEmail;
                     dbEntry.PhoneNumber = u.PhoneNumber;
-                    dbEntry.AccessLevel = u.AccessLevel;
+                    //dbEntry.AccessLevel = u.AccessLevel;
                     dbEntry.BvLocation = db.BvLocations.Find(u.BvLocation.BvLocationId);
                 }
 

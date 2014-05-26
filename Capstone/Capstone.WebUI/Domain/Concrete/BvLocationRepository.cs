@@ -13,7 +13,7 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public Entities.BvLocation GetBvLocation(int bvLocationId)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             return (from l in db.BvLocations
                     where l.BvLocationId == bvLocationId
                     select l).FirstOrDefault();
@@ -21,14 +21,14 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public IQueryable<BvLocation> GetBvLocations()
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             return (from l in db.BvLocations
                     select l).AsQueryable<BvLocation>();
         }
 
         public BvLocation GetBvLocation(string storeNum)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             return (from l in db.BvLocations
                     where l.BvStoreNum == storeNum
                     select l).FirstOrDefault();
@@ -36,14 +36,14 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public void AddBvLocation(BvLocation bvLocation)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             db.BvLocations.Add(bvLocation);
             db.SaveChanges(); ;
         }
 
         public BvLocation DeleteBvLocation(int bvLocationId)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             BvLocation dbEntry = db.BvLocations.Find(bvLocationId);
             if (dbEntry != null)
             {
@@ -55,7 +55,7 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public void SaveBvLocation(BvLocation l)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             if (l.BvLocationId == 0)
                 db.BvLocations.Add(l);
             else
@@ -76,7 +76,7 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public List<PartnershipNight> GetPartnershipNights(BvLocation l)
         {
-            var db = new CapstoneDbContext();
+            var db = new OldCapstoneDbContext();
             List<PartnershipNight> partnershipnights = (from c in db.PartnershipNights.Include("BvLocation").Include("Charity")
                                                         where c.BVLocation.BvLocationId == l.BvLocationId
                                                         select c).ToList<PartnershipNight>();
