@@ -135,7 +135,7 @@ namespace Capstone.WebUI.Controllers
             {
                 string jsonStart = JsonConvert.SerializeObject(p.StartDate, new IsoDateTimeConverter());
                 string jsonEnd = JsonConvert.SerializeObject(p.EndDate, new IsoDateTimeConverter());
-                events.Add(new Event { Id = p.BVLocation.BvStoreNum, Title = p.Charity.Name, Start = jsonStart, End = p.EndDate.ToString()});
+                events.Add(new Event { Id = p.BVLocation.BvStoreNum, Title = p.Charity.Name, Start = jsonStart, End = jsonEnd});
             }
             var rows = events.ToArray();
             return Json(rows, JsonRequestBehavior.AllowGet);
