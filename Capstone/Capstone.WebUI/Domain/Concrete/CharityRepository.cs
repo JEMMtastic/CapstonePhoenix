@@ -1,5 +1,6 @@
 ﻿using Capstone.WebUI.Domain.Abstract;
 using Capstone.WebUI.Domain.Entities;
+using Capstone.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public void AddCharity(Charity charity)
         {
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             db.Charities.Add(charity);
             db.SaveChanges();
         }
@@ -21,7 +22,7 @@ namespace Capstone.WebUI.Domain.Concrete
         public Charity GetCharityByName(string name)
         {
             //throw new NotImplementedException();
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             return (from charity in db.Charities
                     where charity.Name == name
                     select charity).FirstOrDefault();
@@ -30,7 +31,7 @@ namespace Capstone.WebUI.Domain.Concrete
         /*public Charity GetCharityById(int id)
         {
             //throw new NotImplementedException();
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             return (from charity in db.Charities
                     where charity.CharityId == id
                     select charity).FirstOrDefault();
@@ -38,7 +39,7 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public IQueryable<Charity> GetCharities()
         {
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             return (from charity in db.Charities
                     select charity).AsQueryable<Charity>();
         }
@@ -46,7 +47,7 @@ namespace Capstone.WebUI.Domain.Concrete
         //Aka save/update charity
         public void EditCharity(Charity charity)
         {
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             if (charity.CharityId == 0)
             {
                 //first add any children
@@ -72,7 +73,7 @@ namespace Capstone.WebUI.Domain.Concrete
 
         public Charity DeleteCharity(int charityId)  //If we decide not to allow deletion we can take this out later
         {
-            var db = new OldCapstoneDbContext();
+            var db = new ApplicationDbContext();
             Charity dbEntry = db.Charities.Find(charityId);
             if (dbEntry != null)
             {

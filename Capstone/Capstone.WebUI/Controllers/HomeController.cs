@@ -137,9 +137,11 @@ namespace Capstone.WebUI.Controllers
         }
 
         //need to pass a user to this method once the login stuff is worked out
+        //TEMPORARILY REMOVED USER BELOW UNTIL WE GET USER CRUD WORKING WITH IDENTITY
         public ViewResult Calendar()
         {
-            User u = uRepo.GetUser(12);
+            //User u = uRepo.GetUser(12);
+            User u = null;
             if (u != null)
             {
                 BvLocation bvLocation = lRepo.GetBvLocation(u.BvLocation.BvLocationId);

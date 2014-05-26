@@ -420,12 +420,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Capstone.Domain\Capstone.Domain.csproj">
-      <Project>{02723027-58ea-455e-b200-035a2bf2e097}</Project>
-      <Name>Capstone.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201405262059157_Init.resx">
       <DependentUpon>201405262059157_Init.cs</DependentUpon>
     </EmbeddedResource>
