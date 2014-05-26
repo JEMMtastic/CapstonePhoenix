@@ -44,7 +44,7 @@ namespace Capstone.WebUI.Domain.Concrete
         {
             var db = new OldCapstoneDbContext();
             return (from u in db.Users.Include("BvLocation")
-                    where u.UserId == userId
+                    where u.Id == userId.ToString()
                     select u).FirstOrDefault();
         }
 
@@ -64,7 +64,7 @@ namespace Capstone.WebUI.Domain.Concrete
         public void SaveUser(User u)
         {
             var db = new OldCapstoneDbContext();
-            if (u.UserId == 0)
+            if (u.Id == 0.ToString())
             {
                 db.BvLocations.Find(u.BvLocation.BvLocationId);
 
@@ -72,14 +72,14 @@ namespace Capstone.WebUI.Domain.Concrete
             }
             else
             {
-                User dbEntry = db.Users.Find(u.UserId);
+                User dbEntry = db.Users.Find(u.Id);
                 if (dbEntry != null)
                 {
                     dbEntry.FName = u.FName;
                     dbEntry.LName = u.LName;
-                    dbEntry.UserEmail = u.UserEmail;
+                    dbEntry.Email = u.Email;
                     dbEntry.PhoneNumber = u.PhoneNumber;
-                    dbEntry.AccessLevel = u.AccessLevel;
+                    //dbEntry.AccessLevel = u.AccessLevel;
                     dbEntry.BvLocation = db.BvLocations.Find(u.BvLocation.BvLocationId);
                 }
 
