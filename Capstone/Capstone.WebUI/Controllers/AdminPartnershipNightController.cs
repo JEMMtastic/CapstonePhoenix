@@ -57,7 +57,7 @@ namespace Capstone.WebUI.Controllers
 
                 //Set view model to corresponding partnership night values
                 vmodel.PartnershipNightId = pnight.PartnershipNightId;
-                vmodel.Date = pnight.Date;
+                vmodel.Date = pnight.StartDate;
                 vmodel.CharityId = pnight.Charity.CharityId;
                 vmodel.BVLocationId = pnight.BVLocation.BvLocationId;
                 vmodel.CheckRequestId = pnight.CheckRequestId;
@@ -92,7 +92,7 @@ namespace Capstone.WebUI.Controllers
                 // Transfer view model values to a partnership night object
                 PartnershipNight pnight = new PartnershipNight();
                 pnight.PartnershipNightId = vmodel.PartnershipNightId;
-                pnight.Date = vmodel.Date;
+                pnight.StartDate = vmodel.Date;
                 pnight.Comments = vmodel.Comments;
                 pnight.CheckRequestId = vmodel.CheckRequestId;
                 pnight.CheckRequestFinished = vmodel.CheckRequestFinished;
@@ -105,7 +105,7 @@ namespace Capstone.WebUI.Controllers
                 
                 // Save the changes to the partnership night 
                 pnRepo.UpdatePartnershipNight(pnight);
-                TempData["message"] = string.Format("Partnership Night for BV Location {0}, {1} has been saved", pnight.Date.ToShortDateString(), pnight.BVLocation.BvStoreNum);
+                TempData["message"] = string.Format("Partnership Night for BV Location {0}, {1} has been saved", pnight.StartDate.ToShortDateString(), pnight.BVLocation.BvStoreNum);
                 return RedirectToAction("Index");
             }
             else
@@ -122,7 +122,7 @@ namespace Capstone.WebUI.Controllers
             if (deletedPNight != null)
             {
                 TempData["message"] = string.Format("Event on {0} was deleted",
-                deletedPNight.Date.ToShortDateString());
+                deletedPNight.StartDate.ToShortDateString());
             }
             return RedirectToAction("Index");
         }

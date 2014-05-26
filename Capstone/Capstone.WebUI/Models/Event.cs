@@ -8,8 +8,9 @@ namespace Capstone.WebUI.Models
     public class Event
     {
         public string Id { get; set; }
+        public int PartnershipNightId { get; set; }
         public string Title { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
+        public string Start { get; set; }
+        public string End { get; set; }
     }
 }

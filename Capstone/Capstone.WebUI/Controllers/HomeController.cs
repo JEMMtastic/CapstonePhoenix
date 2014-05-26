@@ -119,7 +119,7 @@ namespace Capstone.WebUI.Controllers
             return View();
         }
 
-        public ActionResult GetEvents(double start, double end)
+        public JsonResult GetEvents(double start, double end)
         {
             var fromDate = ConvertFromUnixTimestamp(start);
             var toDate = ConvertFromUnixTimestamp(end);
@@ -127,11 +127,12 @@ namespace Capstone.WebUI.Controllers
             //Get the events
             var db = new CapstoneDbContext();
             var partnershipNights = (from e in db.PartnershipNights.Include("BvLocation").Include("Charity")
-                             select e).ToList<PartnershipNight>();
+                                         where e.StartDate >= fromDate && e.StartDate <= toDate
+                                         select e).ToList<PartnershipNight>();
             var events = new List<Event>();
             foreach (var p in partnershipNights)
             {
-                events.Add(new Event { Id = p.BVLocation.BvStoreNum, Title = p.Charity.Name, Start = p.Date });
+                events.Add(new Event { Id = p.BVLocation.BvStoreNum, Title = p.Charity.Name, Start = p.StartDate.ToString(), End = p.EndDate.ToString()});
             }
             var rows = events.ToArray();
             return Json(rows, JsonRequestBehavior.AllowGet);

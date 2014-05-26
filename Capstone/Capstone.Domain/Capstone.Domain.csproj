@@ -78,6 +78,14 @@
     <Compile Include="Migrations\201405221925166_propNameChng.Designer.cs">
       <DependentUpon>201405221925166_propNameChng.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405252312578_PartnershipNightChanges.cs" />
+    <Compile Include="Migrations\201405252312578_PartnershipNightChanges.Designer.cs">
+      <DependentUpon>201405252312578_PartnershipNightChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405252319421_moreChanges.cs" />
+    <Compile Include="Migrations\201405252319421_moreChanges.Designer.cs">
+      <DependentUpon>201405252319421_moreChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -94,6 +102,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405221925166_propNameChng.resx">
       <DependentUpon>201405221925166_propNameChng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405252312578_PartnershipNightChanges.resx">
+      <DependentUpon>201405252312578_PartnershipNightChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405252319421_moreChanges.resx">
+      <DependentUpon>201405252319421_moreChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

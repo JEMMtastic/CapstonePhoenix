@@ -16,10 +16,9 @@ namespace Capstone.Domain.Entities
         private bool before;
         private bool after;
         
-        [Required(ErrorMessage="You must enter a start time")]
-        public string Start { get; set; }
-        [Required(ErrorMessage="You must enter an end time")]
-        public string End { get; set; }
+        
+        [Required(ErrorMessage="Please enter a lenght of time in minutes for the event.")]
+        public int EventLength { get; set; }
 
         //Constructor to set flags to default
         public PartnershipNight()
@@ -37,7 +36,9 @@ namespace Capstone.Domain.Entities
         [Required(ErrorMessage="Please enter a date for the event.")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime Date { get; set; }
+        public DateTime StartDate { get; set; }
+
+        public DateTime EndDate { get; set; }
         
         [Required(ErrorMessage = "A Charity is required.")]
         public Charity Charity { get; set; } 

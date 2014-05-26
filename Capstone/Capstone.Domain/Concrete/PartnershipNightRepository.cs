@@ -32,7 +32,7 @@ namespace Capstone.Domain.Concrete
         {
             var db = new CapstoneDbContext();
             return (from pnight in db.PartnershipNights.Include("Charity").Include("BVLocation")
-                    where pnight.Date == date && pnight.BVLocation == loc
+                    where pnight.StartDate == date && pnight.BVLocation == loc
                     select pnight).FirstOrDefault();
         }
 
@@ -77,7 +77,7 @@ namespace Capstone.Domain.Concrete
                 var dbEntry = db.PartnershipNights.Find(pn.PartnershipNightId);
                 if (dbEntry != null)
                 {
-                    dbEntry.Date = pn.Date;
+                    dbEntry.StartDate = pn.StartDate;
                     dbEntry.Charity = pn.Charity;
                     dbEntry.BVLocation = pn.BVLocation;
                     dbEntry.CheckRequestId = pn.CheckRequestId;
