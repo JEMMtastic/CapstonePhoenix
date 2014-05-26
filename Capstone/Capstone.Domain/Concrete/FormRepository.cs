@@ -11,55 +11,55 @@ namespace Capstone.Domain.Concrete
     public class FormRepository : FormInterface
     {
 
-        public void AddForm(Form sec3)
+        public void AddForm(Form form)
         {
             var db = new CapstoneDbContext();
 
-            db.Forms.Add(sec3);
+            db.Forms.Add(form);
         }
 
         public Form GetFormById(int id)
         {
             var db = new CapstoneDbContext();
 
-            return (from sec3 in db.Forms
-                    where sec3.FormId == id
-                    select sec3).FirstOrDefault();
+            return (from form in db.Forms
+                    where form.FormId == id
+                    select form).FirstOrDefault();
         }
 
         public IQueryable<Entities.Form> GetForms()
         {
             var db = new CapstoneDbContext();
 
-            return (from sec3 in db.Forms
-                    select sec3).AsQueryable<Form>();
+            return (from form in db.Forms
+                    select form).AsQueryable<Form>();
         }
 
-        public void UpdateForm(Entities.Form sec3)
+        public void UpdateForm(Entities.Form form)
         {
            var db = new CapstoneDbContext();
 
-           if (sec3.FormId == 0)
+           if (form.FormId == 0)
            {
-               db.Forms.Add(sec3);
+               db.Forms.Add(form);
            }
            else
            {
-               var dbEntry = db.Forms.Find(sec3.FormId);
+               var dbEntry = db.Forms.Find(form.FormId);
                if (dbEntry != null)
                {
-                   dbEntry.ActualSalesFour = sec3.ActualSalesFour;
-                   dbEntry.ActualSalesFive = sec3.ActualSalesFive;
-                   dbEntry.ActualSalesSix = sec3.ActualSalesSix;
-                   dbEntry.ActualSalesSeven = sec3.ActualSalesSeven;
-                   dbEntry.ActualSalesEight = sec3.ActualSalesEight;
-                   dbEntry.ActualGcFour = sec3.ActualGcFour;
-                   dbEntry.ActualGcFive = sec3.ActualGcFive;
-                   dbEntry.ActualGcSix = sec3.ActualGcSix;
-                   dbEntry.ActualGcSeven = sec3.ActualGcSeven;
-                   dbEntry.ActualGcEight = sec3.ActualGcEight;
-                   dbEntry.PosiDonations = sec3.PosiDonations;
-                   dbEntry.Notes = sec3.Notes;
+                   //dbEntry.ActualSalesFour = form.ActualSalesFour;
+                   //dbEntry.ActualSalesFive = form.ActualSalesFive;
+                   //dbEntry.ActualSalesSix = form.ActualSalesSix;
+                   //dbEntry.ActualSalesSeven = form.ActualSalesSeven;
+                   //dbEntry.ActualSalesEight = form.ActualSalesEight;
+                   //dbEntry.ActualGcFour = form.ActualGcFour;
+                   //dbEntry.ActualGcFive = form.ActualGcFive;
+                   //dbEntry.ActualGcSix = form.ActualGcSix;
+                   //dbEntry.ActualGcSeven = form.ActualGcSeven;
+                   //dbEntry.ActualGcEight = form.ActualGcEight;
+                   //dbEntry.PosiDonations = form.PosiDonations;
+                   //dbEntry.Notes = form.Notes;
                }
                db.SaveChanges();
            }
