@@ -1,0 +1,4 @@
+ApplicationUser in IdentityModels.cs
+RegisterViewModel in AccountViewModels.cs
+RegisterViewPage (Register.cshtml)
+Account Controller’s Register action (Post Version) in AccountController
