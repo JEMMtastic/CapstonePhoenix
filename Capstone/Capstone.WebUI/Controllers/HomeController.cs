@@ -157,7 +157,7 @@ namespace Capstone.WebUI.Controllers
                 var stDt = ToUnixTimespan(p.StartDate);
                 var endDt = ToUnixTimespan(p.EndDate);
                
-                events.Add(new Event { id = p.PartnershipNightId, title = p.Charity.Name + "," + p.BVLocation.BvStoreNum, start = stDt, end = endDt});
+                events.Add(new Event { id = p.PartnershipNightId, title = p.Charity.Name + "," + p.BVLocation.BvStoreNum, start = stDt, end = endDt, allDay = false});
             }
             var rows = events.ToArray();
             return Json(rows, JsonRequestBehavior.AllowGet);

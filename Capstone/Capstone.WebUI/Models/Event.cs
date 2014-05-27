@@ -11,5 +11,6 @@ namespace Capstone.WebUI.Models
         public string title { get; set; } //this will be the charity name, bvStoreNum
         public string start { get; set; }  //start date/time
         public string end { get; set; }  //end date/time
+        public bool allDay { get; set; }
     }
 }

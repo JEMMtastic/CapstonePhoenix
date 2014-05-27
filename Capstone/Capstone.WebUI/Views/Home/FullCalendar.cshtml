@@ -34,12 +34,9 @@
             allDaySlot: false,
             defaultView: 'month',
             editable: true,
-            allDaySlot: false,
             selectable: true,
             slotMinutes: 30,
             events: "/home/getevents",
-            color: 'yellow',   // an option!
-            textColor: 'black', // an option!
             eventClick: function (calEvent, jsEvent, view) {
                 alert('You clicked on event id: ' + calEvent.id
                     + "\nSpecial ID: " + calEvent.someKey
@@ -65,8 +62,6 @@
                     revertFunc();
                 }
             },
-
-
 
             dayClick: function (date, allDay, jsEvent, view) {
                 $('#eventTitle').val("");
