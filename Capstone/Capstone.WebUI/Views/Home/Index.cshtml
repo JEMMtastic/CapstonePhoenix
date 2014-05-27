@@ -18,6 +18,12 @@
     <title>Partnerships</title>
 </head>
 <body>
+
+ @if (TempData["message"] != null) 
+        {
+            <div class="Message">@TempData["message"]</div>
+        }
+
     <div id="SplashWrapper">
 
         <img src="~/Images/splashGraphic.png" width="510" height="147" /><br />
@@ -59,7 +65,7 @@
                             </div>
                         </div>
                         <p>
-                            @Html.ActionLink("Register", "Register") if you don't have a local account.
+                            @Html.ActionLink("Register", "Register", "Account") if you don't have a local account.
                         </p>
                     }
                 </section>

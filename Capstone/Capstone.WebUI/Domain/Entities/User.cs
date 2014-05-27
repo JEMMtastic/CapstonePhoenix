@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Capstone.WebUI.Domain.Entities
 {
-    public class User : IdentityUser
+    public class User 
     {
         
         [Required(ErrorMessage="The user must have a store number")]

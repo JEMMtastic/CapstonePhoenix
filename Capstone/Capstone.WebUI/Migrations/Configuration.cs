@@ -39,11 +39,11 @@ namespace Capstone.WebUI.Migrations
             //lRepo.AddBvLocation(loc1);
 
             //add a user
-            context.Users.AddOrUpdate(
-                  u => u.UserName,
-                  new ApplicationUser { UserName = "turtles", PasswordHash = "1234567".GetHashCode().ToString(), Email = "me2@you.com", EmailConfirmed = true, BvLocation = context.BvLocations.Find(1), FName = "Moo", LName = "Cow" },
-                  new ApplicationUser { UserName = "User2", PasswordHash = "password123".GetHashCode().ToString(), Email = "me@you.com", EmailConfirmed = true, BvLocation = context.BvLocations.Find(1), FName = "Joe", LName = "Joebert" }
-                );
+            //context.Users.AddOrUpdate(
+            //      u => u.UserName,
+            //      new ApplicationUser { UserName = "turtles", PasswordHash = "1234567".GetHashCode().ToString(), Email = "me2@you.com", EmailConfirmed = true, BvLocation = context.BvLocations.Find(1), FirstName = "Moo", LastName = "Cow" },
+            //      new ApplicationUser { UserName = "User2", PasswordHash = "password123".GetHashCode().ToString(), Email = "me@you.com", EmailConfirmed = true, BvLocation = context.BvLocations.Find(1), FirstName = "Joe", LastName = "Joebert" }
+            //    );
             //CUser u1 = new CUser { Username = "turtles", UserFName = "Bob", UserLName = "Bobberson", AccessLevel = 1, BvLocation = loc1, Password = "bobshere", UserEmail = "bob@bob.com", PhoneNumber = "541-389-8293" };
             //uRepo.AddUser(u1);
 

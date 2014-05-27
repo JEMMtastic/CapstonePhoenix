@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Capstone.WebUI.Domain.Entities;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Capstone.WebUI.Models
 {
@@ -59,5 +61,20 @@ namespace Capstone.WebUI.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        //custom added
+        [Display(Name = "test1")]
+        public string test1 { get; set; }
+
+        [Display(Name = "test2")]
+        public int test2 { get; set; }
+
+        [Display(Name = "test3")]
+        public decimal test3 { get; set; }
+
+        [Display(Name = "test4")]
+        public DateTime test4 { get; set; }
+
+
     }
 }

@@ -78,11 +78,20 @@ namespace Capstone.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser() { 
+                    UserName = model.UserName,
+                    test1 = model.test1,
+                    test2 = model.test2,
+                    test3 = model.test3,
+                    test4 = model.test4,
+
+                    
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
+                    TempData["message"] = string.Format("{0} has been registered. Welcome :3", user.UserName);
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -372,7 +381,7 @@ namespace Capstone.WebUI.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Empty", "Home");
             }
         }
 
