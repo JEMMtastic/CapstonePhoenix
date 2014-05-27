@@ -19,7 +19,11 @@
 </head>
 <body>
     <script type="text/javascript">
-    $(document).ready(function () {
+        $(document).ready(function () {
+            var CalLoading = true;
+            var sourceFullView = { url: '/Home/GetEvents/' };
+            var sourceSummaryView = { url: '/Home/GetEvents/' };
+
         $('#calendar').fullCalendar({
             header: {
                 left: 'prev,next today',
@@ -27,6 +31,7 @@
                 right: 'month,agendaWeek,agendaDay'
             },
             type: 'GET',
+            allDaySlot: false,
             defaultView: 'month',
             editable: true,
             allDaySlot: false,
@@ -35,7 +40,60 @@
             events: "/home/getevents",
             color: 'yellow',   // an option!
             textColor: 'black', // an option!
+            eventClick: function (calEvent, jsEvent, view) {
+                alert('You clicked on event id: ' + calEvent.id
+                    + "\nSpecial ID: " + calEvent.someKey
+                    + "\nAnd the title is: " + calEvent.title);
+
+            },
+
+            eventDrop: function (event, dayDelta, minuteDelta, allDay, revertFunc) {
+                if (confirm("Confirm move?")) {
+                    UpdateEvent(event.id, event.start);
+                }
+                else {
+                    revertFunc();
+                }
+            },
+
+            eventResize: function (event, dayDelta, minuteDelta, revertFunc) {
+
+                if (confirm("Confirm change appointment length?")) {
+                    UpdateEvent(event.id, event.start, event.end);
+                }
+                else {
+                    revertFunc();
+                }
+            },
+
+
+
+            dayClick: function (date, allDay, jsEvent, view) {
+                $('#eventTitle').val("");
+                $('#eventDate').val($.fullCalendar.formatDate(date, 'dd/MM/yyyy'));
+                $('#eventTime').val($.fullCalendar.formatDate(date, 'HH:mm'));
+                ShowEventPopup(date);
+            },
+
+            viewRender: function (view, element) {
+
+                if (!CalLoading) {
+                    if (view.name == 'month') {
+                        $('#calendar').fullCalendar('removeEventSource', sourceFullView);
+                        $('#calendar').fullCalendar('removeEvents');
+                        $('#calendar').fullCalendar('addEventSource', sourceSummaryView);
+                    }
+                    else {
+                        $('#calendar').fullCalendar('removeEventSource', sourceSummaryView);
+                        $('#calendar').fullCalendar('removeEvents');
+                        $('#calendar').fullCalendar('addEventSource', sourceFullView);
+                    }
+                }
+            }
+
         });
+
+        CalLoading = false;
     });
     </script>  
     <div id="calendar"style="width:65%"></div>
