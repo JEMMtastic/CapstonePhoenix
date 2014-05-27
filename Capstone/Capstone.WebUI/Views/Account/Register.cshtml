@@ -39,34 +39,57 @@
 @*Begin custom added*@
 
     <div class="form-group">
-        @Html.LabelFor(m => m.test1, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.EditorFor(m => m.test1, new { @class = "form-control" })
+            @Html.EditorFor(m => m.FirstName, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.test2, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.EditorFor(m => m.test2, new { @class = "form-control" })
+            @Html.EditorFor(m => m.LastName, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.test3, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.AccessLevel, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.EditorFor(m => m.test3, new { @class = "form-control" })
+            @Html.EditorFor(m => m.AccessLevel, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.test4, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.UserEmail, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.EditorFor(m => m.test4, new { @class = "form-control" })
+            @Html.EditorFor(m => m.UserEmail, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.PhoneNumber, new { @class = "form-control" })
         </div>
     </div>
 
 
+   <div class="form-group">
+        @Html.LabelFor(m => m.BvLocations, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @{
+                if (Model.BvLocations != null)
+                {
+                     @Html.DropDownListFor(m => m.BvLocationId, new SelectList(Model.BvLocations, "BvLocationId", "BvStoreNum"));
+                     @Html.HiddenFor(x => x.BvLocationId);
+                }
+                else
+                {
+                     //write out error about no locations
+                }
+            }
+        </div>
+    </div>
 
 
 @*End custom added*@

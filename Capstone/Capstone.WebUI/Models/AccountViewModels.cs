@@ -1,5 +1,6 @@
 ﻿using Capstone.WebUI.Domain.Entities;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Capstone.WebUI.Models
@@ -63,17 +64,27 @@ namespace Capstone.WebUI.Models
         public string ConfirmPassword { get; set; }
 
         //custom added
-        [Display(Name = "test1")]
-        public string test1 { get; set; }
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
 
-        [Display(Name = "test2")]
-        public int test2 { get; set; }
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
 
-        [Display(Name = "test3")]
-        public decimal test3 { get; set; }
+        [Display(Name = "Access Level")]
+        public int AccessLevel { get; set; }
 
-        [Display(Name = "test4")]
-        public DateTime test4 { get; set; }
+        [Display(Name = "Email")]
+        public string UserEmail { get; set; }
+
+        [Display(Name = "Phone number")]
+        public string PhoneNumber { get; set; }
+
+        //Lists to select child object
+        public List<BvLocation> BvLocations { get; set; }
+
+        [Required(ErrorMessage = "A BV Location is required.")]
+        public int BvLocationId { get; set; }
+
 
 
     }

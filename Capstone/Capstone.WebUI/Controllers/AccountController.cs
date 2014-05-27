@@ -9,20 +9,28 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Capstone.WebUI.Models;
+using Capstone.WebUI.Domain.Abstract;
+using Capstone.WebUI.Domain.Concrete;
+using Capstone.WebUI.Domain.Entities;
 
 namespace Capstone.WebUI.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+
+        BvLocationInterface lRepo;
+
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
+            lRepo = new BvLocationRepository();
         }
 
         public AccountController(UserManager<ApplicationUser> userManager)
         {
             UserManager = userManager;
+            lRepo = new BvLocationRepository();
         }
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
@@ -66,7 +74,11 @@ namespace Capstone.WebUI.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            //added to populate drop down list for BvLocation options
+            var vmodel = new RegisterViewModel();
+            vmodel.BvLocations = lRepo.GetBvLocations().ToList<BvLocation>();
+
+            return View(vmodel);
         }
 
         //
@@ -78,20 +90,21 @@ namespace Capstone.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 var user = new ApplicationUser() { 
                     UserName = model.UserName,
-                    test1 = model.test1,
-                    test2 = model.test2,
-                    test3 = model.test3,
-                    test4 = model.test4,
-
-                    
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    AccessLevel = model.AccessLevel,
+                    UserEmail = model.UserEmail,
+                    PhoneNumber = model.PhoneNumber,
+                    BvLocation = lRepo.GetBvLocations().FirstOrDefault(bvl => bvl.BvLocationId == model.BvLocationId)
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
-                    TempData["message"] = string.Format("{0} has been registered. Welcome :3", user.UserName);
+                    TempData["message"] = string.Format("{0} has been registered. Welcome :)", user.UserName);
                     return RedirectToAction("Index", "Home");
                 }
                 else
