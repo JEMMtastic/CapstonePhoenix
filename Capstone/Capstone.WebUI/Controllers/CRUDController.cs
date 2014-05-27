@@ -160,7 +160,7 @@ namespace Capstone.WebUI.Controllers
         {
             var vmodel = new PNightEditViewModel();
 
-            vmodel.Date = DateTime.Now;
+            //vmodel.StartDate = DateTime.Now;
 
             //Set List variables to contain lists of child objects for selection in the view
             vmodel.Charities = charRepo.GetCharities().ToList<Charity>();
@@ -182,7 +182,8 @@ namespace Capstone.WebUI.Controllers
 
                 //Set view model to corresponding partnership night values
                 vmodel.PartnershipNightId = pnight.PartnershipNightId;
-                vmodel.Date = pnight.StartDate;
+                vmodel.StartDate = pnight.StartDate;
+                vmodel.EndDate = pnight.StartDate;
                 vmodel.CharityId = pnight.Charity.CharityId;
                 vmodel.BVLocationId = pnight.BVLocation.BvLocationId;
                 vmodel.CheckRequestId = pnight.CheckRequestId;
@@ -217,7 +218,8 @@ namespace Capstone.WebUI.Controllers
                 // Transfer view model values to a partnership night object
                 PartnershipNight pnight = new PartnershipNight();
                 pnight.PartnershipNightId = vmodel.PartnershipNightId;
-                pnight.StartDate = vmodel.Date;
+                pnight.StartDate = vmodel.StartDate;
+                pnight.EndDate = vmodel.EndDate;
                 pnight.Comments = vmodel.Comments;
                 pnight.CheckRequestId = vmodel.CheckRequestId;
                 pnight.CheckRequestFinished = vmodel.CheckRequestFinished;

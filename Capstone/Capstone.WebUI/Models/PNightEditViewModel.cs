@@ -14,9 +14,10 @@ namespace Capstone.WebUI.Models
         public int PartnershipNightId { get; set; }
 
         [Required(ErrorMessage = "Please enter a date for the event.")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime Date { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime StartDate { get; set; }
+
+        public DateTime EndDate { get; set; }
 
         [Required(ErrorMessage = "A Charity is required.")]
         public int CharityId { get; set; }

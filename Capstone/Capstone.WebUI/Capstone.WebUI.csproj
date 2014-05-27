@@ -196,43 +196,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201405262059157_Init.cs" />
-    <Compile Include="Migrations\201405262059157_Init.Designer.cs">
-      <DependentUpon>201405262059157_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405270028016_testingCustomUserClass.cs" />
-    <Compile Include="Migrations\201405270028016_testingCustomUserClass.Designer.cs">
-      <DependentUpon>201405270028016_testingCustomUserClass.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405270030563_testingCustomUserClass2.cs" />
-    <Compile Include="Migrations\201405270030563_testingCustomUserClass2.Designer.cs">
-      <DependentUpon>201405270030563_testingCustomUserClass2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405270036469_testingCustomUserClass3.cs" />
-    <Compile Include="Migrations\201405270036469_testingCustomUserClass3.Designer.cs">
-      <DependentUpon>201405270036469_testingCustomUserClass3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405270104528_testingCustomUserClass4.cs" />
-    <Compile Include="Migrations\201405270104528_testingCustomUserClass4.Designer.cs">
-      <DependentUpon>201405270104528_testingCustomUserClass4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405270110431_testingCustomUserClass5.cs" />
-    <Compile Include="Migrations\201405270110431_testingCustomUserClass5.Designer.cs">
-      <DependentUpon>201405270110431_testingCustomUserClass5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405270115004_testingCustomUserClass51.cs" />
-    <Compile Include="Migrations\201405270115004_testingCustomUserClass51.Designer.cs">
-      <DependentUpon>201405270115004_testingCustomUserClass51.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405270119124_testingCustomUserClass8.cs" />
-    <Compile Include="Migrations\201405270119124_testingCustomUserClass8.Designer.cs">
-      <DependentUpon>201405270119124_testingCustomUserClass8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405270800582_customUser1.cs" />
-    <Compile Include="Migrations\201405270800582_customUser1.Designer.cs">
-      <DependentUpon>201405270800582_customUser1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -241,6 +204,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Capstone5.mdf" />
+    <Content Include="App_Data\Capstone5_log.ldf">
+      <DependentUpon>Capstone5.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -428,44 +395,13 @@
     <Content Include="Views\CRUD\UserIndex.cshtml" />
     <Content Include="Views\CRUD\UserEdit.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201405262059157_Init.resx">
-      <DependentUpon>201405262059157_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405270028016_testingCustomUserClass.resx">
-      <DependentUpon>201405270028016_testingCustomUserClass.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405270030563_testingCustomUserClass2.resx">
-      <DependentUpon>201405270030563_testingCustomUserClass2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405270036469_testingCustomUserClass3.resx">
-      <DependentUpon>201405270036469_testingCustomUserClass3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405270104528_testingCustomUserClass4.resx">
-      <DependentUpon>201405270104528_testingCustomUserClass4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405270110431_testingCustomUserClass5.resx">
-      <DependentUpon>201405270110431_testingCustomUserClass5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405270115004_testingCustomUserClass51.resx">
-      <DependentUpon>201405270115004_testingCustomUserClass51.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405270119124_testingCustomUserClass8.resx">
-      <DependentUpon>201405270119124_testingCustomUserClass8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405270800582_customUser1.resx">
-      <DependentUpon>201405270800582_customUser1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
