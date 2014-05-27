@@ -9,8 +9,6 @@ namespace Capstone.WebUI.Migrations
         {
             DropForeignKey("dbo.AspNetUsers", "BvLocation_BvLocationId", "dbo.BvLocations");
             DropIndex("dbo.AspNetUsers", new[] { "BvLocation_BvLocationId" });
-            DropColumn("dbo.AspNetUsers", "FName");
-            DropColumn("dbo.AspNetUsers", "LName");
             DropColumn("dbo.AspNetUsers", "BvLocation_BvLocationId");
         }
         
