@@ -21,11 +21,11 @@ namespace Capstone.WebUI.Domain.Concrete
             //TODO: Add in error handling
         }
 
-        public PartnershipNight GetPartnershipNightById(int eventId)
+        public PartnershipNight GetPartnershipNightById(int partnershipNightId)
         {
             var db = new ApplicationDbContext();
             return (from pnight in db.PartnershipNights.Include("Charity").Include("BVLocation")
-                    where pnight.PartnershipNightId == eventId
+                    where pnight.PartnershipNightId == partnershipNightId
                     select pnight).FirstOrDefault();
         }
 
@@ -43,49 +43,22 @@ namespace Capstone.WebUI.Domain.Concrete
             return (from pnight in db.PartnershipNights.Include("Charity").Include("BVLocation")
                     select pnight).AsQueryable<PartnershipNight>();
         }
-        /*
-        public IQueryable<PartnershipNight> GetPartnershipNightsByMonth(DateTime extractMonthAndYear)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<PartnershipNight> GetPartnershipNightsByDate(DateTime date)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<PartnershipNight> GetPartnershipNightsByLoc(BvLocation loc)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<PartnershipNight> GetPartnershipNightsByDateRange(DateTime firstDate, DateTime lastDate, BvLocation loc)
-        {
-            throw new NotImplementedException();
-        }
-        */
+       
         public void UpdatePartnershipNight(PartnershipNight pn)
         {
             var db = new ApplicationDbContext();
             if (pn.PartnershipNightId == 0)
-            {
-                pn.Charity = db.Charities.Find(pn.Charity.CharityId);
-                pn.BVLocation = db.BvLocations.Find(pn.BVLocation.BvLocationId);
                 db.PartnershipNights.Add(pn);
-            }
             else
             {
-                var dbEntry = db.PartnershipNights.Find(pn.PartnershipNightId);
+                PartnershipNight dbEntry = db.PartnershipNights.Find(pn.PartnershipNightId);
                 if (dbEntry != null)
                 {
                     dbEntry.StartDate = pn.StartDate;
-                    dbEntry.Charity = pn.Charity;
-                    dbEntry.BVLocation = pn.BVLocation;
-                    dbEntry.CheckRequestId = pn.CheckRequestId;
+                    dbEntry.EndDate = pn.EndDate;
                     dbEntry.Comments = pn.Comments;
-                    dbEntry.CheckRequestFinished = pn.CheckRequestFinished;
-                    dbEntry.BeforeTheEventFinished = pn.BeforeTheEventFinished;
-                    dbEntry.AfterTheEventFinished = pn.AfterTheEventFinished;
+                    dbEntry.Charity = db.Charities.Find(pn.Charity.CharityId);
+                    dbEntry.BVLocation = db.BvLocations.Find(pn.BVLocation.BvLocationId);
                 }
             }
             db.SaveChanges();

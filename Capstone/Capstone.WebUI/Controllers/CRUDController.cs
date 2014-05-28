@@ -170,65 +170,36 @@ namespace Capstone.WebUI.Controllers
             return View("PartnershipNightEdit", vmodel);
         }
 
-        public ActionResult PartnershipNightEdit(int? partnershipNightId)
+        public ActionResult PartnershipNightEdit(int partnershipNightId)
         {
-            if (partnershipNightId != null)
-            {
                 TempData["Title"] = "Edit";
 
                 // Get the correct partnership night, and create a view model to store values in
-                PartnershipNight pnight = pnRepo.GetPartnershipNights().FirstOrDefault(pn => pn.PartnershipNightId == partnershipNightId);
-                PNightEditViewModel vmodel = new PNightEditViewModel();
+                PartnershipNight pnight = pnRepo.GetPartnershipNightById(partnershipNightId);
+                PNightEditViewModel vModel = new PNightEditViewModel();
 
                 //Set view model to corresponding partnership night values
-                vmodel.PartnershipNightId = pnight.PartnershipNightId;
-                vmodel.StartDate = pnight.StartDate;
-                vmodel.EndDate = pnight.StartDate;
-                vmodel.CharityId = pnight.Charity.CharityId;
-                vmodel.BVLocationId = pnight.BVLocation.BvLocationId;
-                vmodel.CheckRequestId = pnight.CheckRequestId;
-                vmodel.Comments = pnight.Comments;
-                vmodel.CheckRequestFinished = pnight.CheckRequestFinished;
-                vmodel.BeforeTheEventFinished = pnight.BeforeTheEventFinished;
-                vmodel.AfterTheEventFinished = pnight.AfterTheEventFinished;
+                vModel.PartnershipNight = pnight;
 
                 //Set List variables to contain lists of child objects for selection in the view
-                vmodel.Charities = charRepo.GetCharities().ToList<Charity>();
-                vmodel.Locations = lRepo.GetBvLocations().ToList<BvLocation>();
+                vModel.Charities = charRepo.GetCharities().ToList<Charity>();
+                vModel.Locations = lRepo.GetBvLocations().ToList<BvLocation>();
 
-                //Set session variables to contain lists of child objects for selection in the view
-                //Session["charities"] = charRepo.GetCharities().ToList<Charity>();
-                //Session["bvlocations"] = lRepo.GetBvLocations().ToList<BvLocation>();
-
-                return View(vmodel);
-            }
-            else
-            {
-                return View("PartnershipNightIndex");
-            }
+                return View(vModel);
         }
 
         [HttpPost]
         public ActionResult PartnershipNightEdit(PNightEditViewModel vmodel)
         {
             //PartnershipNight pnight = pnRepo.GetPartnershipNights().FirstOrDefault<PartnershipNight>(pn => pn.PartnershipNightId)
-
             if (ModelState.IsValid)
             {
                 // Transfer view model values to a partnership night object
                 PartnershipNight pnight = new PartnershipNight();
-                pnight.PartnershipNightId = vmodel.PartnershipNightId;
-                pnight.StartDate = vmodel.StartDate;
-                pnight.EndDate = vmodel.EndDate;
-                pnight.Comments = vmodel.Comments;
-                pnight.CheckRequestId = vmodel.CheckRequestId;
-                pnight.CheckRequestFinished = vmodel.CheckRequestFinished;
-                pnight.BeforeTheEventFinished = vmodel.BeforeTheEventFinished;
-                pnight.AfterTheEventFinished = vmodel.AfterTheEventFinished;
 
                 // Store the correct child objects 
-                pnight.Charity = charRepo.GetCharities().FirstOrDefault(ch => ch.CharityId == vmodel.CharityId);
-                pnight.BVLocation = lRepo.GetBvLocations().FirstOrDefault(bvl => bvl.BvLocationId == vmodel.BVLocationId);
+                pnight.Charity = charRepo.GetCharityByName(pnight.Charity.Name);
+                pnight.BVLocation = lRepo.GetBvLocation(pnight.BVLocation.BvLocationId);
                 
                 // Save the changes to the partnership night 
                 pnRepo.UpdatePartnershipNight(pnight);
