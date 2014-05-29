@@ -86,7 +86,5 @@ namespace Capstone.WebUI.Domain.Entities
             }
         }
 
-        //This is moved to StatsInfo:
-        //public decimal AmountRaised { get; set; } 
     }
 }

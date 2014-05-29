@@ -7,6 +7,7 @@ using System.Data.Entity;
 using Capstone.WebUI.Domain.Entities;
 using Capstone.WebUI.Domain.Abstract;
 using Capstone.WebUI.Models;
+using System.Globalization;
 
 namespace Capstone.WebUI.Domain.Concrete
 {
@@ -77,5 +78,46 @@ namespace Capstone.WebUI.Domain.Concrete
             return dbEntry;
             //TODO: Add in error handling
         }
+
+
+        public void UpdatePartnershipNight(int id, string NewEventStart, string NewEventEnd)
+        {
+            // EventStart comes ISO 8601 format, eg:  "2000-01-10T10:00:00Z" - need to convert to DateTime
+            using (var db = new ApplicationDbContext())
+            {
+                var rec = db.PartnershipNights.FirstOrDefault(s => s.PartnershipNightId == id);
+                if (rec != null)
+                {
+                    DateTime DateTimeStart = DateTime.Parse(NewEventStart, null, DateTimeStyles.RoundtripKind).ToLocalTime(); // and convert offset to localtime
+                    rec.StartDate = DateTimeStart;
+                    DateTime DateTimeEnd = DateTime.Parse(NewEventEnd, null, DateTimeStyles.RoundtripKind).ToLocalTime();
+                    rec.EndDate = DateTimeEnd;
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        public bool CreateNewEvent(string Title, int id ,string NewStartDate, string NewStartTime, string NewEndDt, string NewEndTime)
+        {
+            try
+            {
+                var db = new ApplicationDbContext();
+                PartnershipNight rec = new PartnershipNight();
+                rec.Charity = db.Charities.Find(Title);
+                rec.BVLocation = db.BvLocations.Find(id);
+                rec.StartDate = DateTime.ParseExact(NewStartDate + " " + NewStartTime, "MM/dd/yyyy HH:mm tt", CultureInfo.InvariantCulture);
+                rec.EndDate = DateTime.ParseExact(NewEndDt + " " + NewEndTime, "MM/dd/yyyy H:mm tt", CultureInfo.InvariantCulture);
+                db.PartnershipNights.Add(rec);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+       
     }
 }
