@@ -23,6 +23,10 @@ namespace Capstone.WebUI.Domain.Entities
         [Required(ErrorMessage="Please enter a zip code.")]
         [DataType(DataType.PostalCode)]
         public string Zip { get; set; }
+
+        public string State { get; set; }
+
+        public string CharityContactNm { get; set; }
         
         [Required(ErrorMessage="Please enter a phone number.")]
         [DataType(DataType.PhoneNumber)]
