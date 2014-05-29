@@ -158,16 +158,16 @@ namespace Capstone.WebUI.Controllers
 
         public ViewResult PartnershipNightCreate()
         {
-            var vmodel = new PNightEditViewModel();
+            var pNt = new PartnershipNight();
 
             //vmodel.StartDate = DateTime.Now;
 
             //Set List variables to contain lists of child objects for selection in the view
-            vmodel.Charities = charRepo.GetCharities().ToList<Charity>();
-            vmodel.Locations = lRepo.GetBvLocations().ToList<BvLocation>();
+            //vmodel.Charities = charRepo.GetCharities().ToList<Charity>();
+            //vmodel.Locations = lRepo.GetBvLocations().ToList<BvLocation>();
             TempData["Title"] = "Add New Partnership Night";
 
-            return View("PartnershipNightEdit", vmodel);
+            return View("PartnershipNightEdit", pNt);
         }
 
         public ActionResult PartnershipNightEdit(int partnershipNightId)
@@ -176,41 +176,73 @@ namespace Capstone.WebUI.Controllers
 
                 // Get the correct partnership night, and create a view model to store values in
                 PartnershipNight pnight = pnRepo.GetPartnershipNightById(partnershipNightId);
-                PNightEditViewModel vModel = new PNightEditViewModel();
+                //PNightEditViewModel vModel = new PNightEditViewModel();
 
-                //Set view model to corresponding partnership night values
-                vModel.PartnershipNight = pnight;
+                ////Set view model to corresponding partnership night values
+                //vModel.PartnershipNight = pnight;
 
                 //Set List variables to contain lists of child objects for selection in the view
-                vModel.Charities = charRepo.GetCharities().ToList<Charity>();
-                vModel.Locations = lRepo.GetBvLocations().ToList<BvLocation>();
+                //vModel.Charities = charRepo.GetCharities().ToList<Charity>();
+                //vModel.Locations = lRepo.GetBvLocations().ToList<BvLocation>();
 
-                return View(vModel);
+                return View(pnight);
         }
 
         [HttpPost]
         public ActionResult PartnershipNightEdit(PartnershipNight partnershipNight)
         {
-            //PartnershipNight pnight = pnRepo.GetPartnershipNights().FirstOrDefault<PartnershipNight>(pn => pn.PartnershipNightId)
+            
             if (ModelState.IsValid)
             {
-                // Transfer view model values to a partnership night object
-                PartnershipNight pnight = new PartnershipNight();
-
-                // Store the correct child objects 
-                pnight.Charity = charRepo.GetCharityById(partnershipNight.Charity.CharityId);
-                pnight.BVLocation = lRepo.GetBvLocation(partnershipNight.BVLocation.BvLocationId);
+                BvLocation l = lRepo.GetBvLocation(partnershipNight.BVLocation.BvStoreNum);
+                if (l != null)
+                {
+                    partnershipNight.BVLocation = l;
+                    Charity c = charRepo.GetCharityByName(partnershipNight.Charity.Name);
+                    if (c != null)
+                    {
+                        partnershipNight.Charity = c;
+                        pnRepo.UpdatePartnershipNight(partnershipNight);
+                        return RedirectToAction("PartnershipNightIndex");
+                    }
+                    else
+                    {
+                        TempData["message"] = string.Format("{0} is not a valid Charity Name", partnershipNight.Charity.Name);
+                        return View();
+                    }
+                }
+                else
+                {
+                    TempData["message"] = string.Format("{0} is not a valid Restaurant", partnershipNight.BVLocation.BvStoreNum); 
+                    return View();
+                }
+               
+            }
+            return View();
                 
-                // Save the changes to the partnership night 
-                pnRepo.UpdatePartnershipNight(pnight);
-                TempData["message"] = string.Format("Partnership Night for BV Location {0}, {1} has been saved", pnight.StartDate.ToShortDateString(), pnight.BVLocation.BvStoreNum);
-                return RedirectToAction("PartnershipNightIndex");
-            }
-            else
-            {
-                // there is something wrong with the data values
-                return View();
-            }
+                
+                
+           
+            //PartnershipNight pnight = pnRepo.GetPartnershipNights().FirstOrDefault<PartnershipNight>(pn => pn.PartnershipNightId)
+            //if (ModelState.IsValid)
+            //{
+            //    // Transfer view model values to a partnership night object
+            //    PartnershipNight pnight = new PartnershipNight();
+
+            //    // Store the correct child objects 
+            //    pnight.Charity = charRepo.GetCharityById(partnershipNight.Charity.CharityId);
+            //    pnight.BVLocation = lRepo.GetBvLocation(partnershipNight.BVLocation.BvLocationId);
+                
+            //    // Save the changes to the partnership night 
+            //    pnRepo.UpdatePartnershipNight(pnight);
+            //    TempData["message"] = string.Format("Partnership Night for BV Location {0}, {1} has been saved", pnight.StartDate.ToShortDateString(), pnight.BVLocation.BvStoreNum);
+            //    return RedirectToAction("PartnershipNightIndex");
+            //}
+            //else
+            //{
+            //    // there is something wrong with the data values
+            //    return View();
+            //}
         }
 
         [HttpPost]

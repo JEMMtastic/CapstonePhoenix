@@ -30,9 +30,13 @@ namespace Capstone.WebUI.Domain.Entities
         //NOTE: Should we add another id to identify each partnership night apart from the database row
 
         [Required(ErrorMessage="Please enter a date for the event.")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy 00:00}", ApplyFormatInEditMode = true)]
         public DateTime StartDate { get; set; }
 
         [Required(ErrorMessage="Please enter an end time for the event")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy 00:00}", ApplyFormatInEditMode = true)]
         public DateTime EndDate { get; set; }
         
         [Required(ErrorMessage = "A Charity is required.")]

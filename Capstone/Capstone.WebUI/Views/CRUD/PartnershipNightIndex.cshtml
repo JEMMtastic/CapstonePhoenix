@@ -6,28 +6,28 @@
 }
 
 <h2>All Partnership Nights</h2>
+<div class="backgroundTableColorTest">
+    <!-- Used inline styles pending global CSS changes-->
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Store #</th>
+            <th>Charity</th>
+            <th>Chk Req Id</th>
+            <th>Comments</th>
+            <th>Chk Req Finished</th>
+            <th>Pre-Event Form</th>
+            <th>Post-Event Form</th>
+        </tr>
 
-<!-- Used inline styles pending global CSS changes-->
-<table>
-    <tr>
-        <th style="text-align:left; width:80px;">Date</th>
-        <th>Start Time</th>
-        <th>End Time</th>
-        <th>Store #</th>
-        <th>Charity</th>
-        <th>Chk Req Id</th>
-        <th>Comments</th>
-        <th>Chk Req Finished</th>
-        <th>Pre-Event Form</th>
-        <th>Post-Event Form</th>
-    </tr>
 
-
-    @if (Model != null)
-    {
-        <div class="backgroundTableColorTest">
+        @if (Model != null)
+        {
             foreach (var item in Model)
             {
+
                 <tr class="tableDataRow">
                     <td>@Html.ActionLink(item.StartDate.ToShortDateString(), "PartnershipNightEdit", new { item.PartnershipNightId })</td>
                     <td>@item.StartDate.ToShortTimeString()</td>
@@ -45,14 +45,16 @@
                             @Html.Hidden("PartnershipNightId", item.PartnershipNightId)
                             <input type="submit" value="Delete" />
                         }
-                    <!--Html.ActionLink("Edit", "Edit", new { id=item.PartnershipNightId }) |
-                    Html.ActionLink("Details", "Details", new { id=item.PartnershipNightId }) |
-                    Html.ActionLink("Delete", "Delete", new { id=item.PartnershipNightId }) -->
-                </td>
-            </tr>
+                        <!--Html.ActionLink("Edit", "Edit", new { id=item.PartnershipNightId }) |
+                        Html.ActionLink("Details", "Details", new { id=item.PartnershipNightId }) |
+                        Html.ActionLink("Delete", "Delete", new { id=item.PartnershipNightId }) -->
+                    </td>
+                </tr>
             }
-        </div>
 
-    }
-</table>
+
+        }
+    </table>
+</div>
+
 <p>@Html.ActionLink("Add a new Partnership Night", "PartnershipNightCreate")</p>
