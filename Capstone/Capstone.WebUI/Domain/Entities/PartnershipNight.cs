@@ -31,12 +31,12 @@ namespace Capstone.WebUI.Domain.Entities
 
         [Required(ErrorMessage="Please enter a date for the event.")]
         [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy 00:00}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy h:m tt}", ApplyFormatInEditMode = true)]
         public DateTime StartDate { get; set; }
 
         [Required(ErrorMessage="Please enter an end time for the event")]
         [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy 00:00}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy h:m tt}", ApplyFormatInEditMode = true)]
         public DateTime EndDate { get; set; }
         
         [Required(ErrorMessage = "A Charity is required.")]

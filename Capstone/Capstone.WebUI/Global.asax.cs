@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capstone.WebUI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,7 +17,7 @@ namespace Capstone.WebUI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            ModelBinders.Binders.Add(typeof(DateTime), new MyDateTimeModelBinder());
         }
     }
 }
