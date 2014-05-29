@@ -49,6 +49,8 @@ namespace Capstone.WebUI.Domain.Concrete
                var dbEntry = db.Forms.Find(form.FormId);
                if (dbEntry != null)
                {
+                   dbEntry = form;
+
                    //dbEntry.ActualSalesFour = form.ActualSalesFour;
                    //dbEntry.ActualSalesFive = form.ActualSalesFive;
                    //dbEntry.ActualSalesSix = form.ActualSalesSix;
@@ -61,9 +63,10 @@ namespace Capstone.WebUI.Domain.Concrete
                    //dbEntry.ActualGcEight = form.ActualGcEight;
                    //dbEntry.PosiDonations = form.PosiDonations;
                    //dbEntry.Notes = form.Notes;
-               }
-               db.SaveChanges();
+               }               
            }
+
+           db.SaveChanges();
         }
 
         public Form DeleteForm(int id)

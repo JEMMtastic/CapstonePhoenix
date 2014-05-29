@@ -32,6 +32,9 @@ namespace Capstone.WebUI.Domain.Entities
         public string HostingRestaurant { get; set; }// "Hosting restaurant" - PartnershipNight.BvLocation.BvStoreNum
 
         public string WeekDayOfPartnership { get; set; }// "Week day of Partnership" - PartnershipNight.Date
+
+        [Required(ErrorMessage = "Date must be from somewhere in the 1800s to over 9000")]
+        [Range(typeof(DateTime), "1/2/1800", "1/1/9001", ErrorMessage = "Value for {0} must be between {1} and {2}")]
         public DateTime DateOfPartnership { get; set; }// "Date of Partnership" - PartnershipNight.Date 
 
         #endregion
@@ -39,8 +42,17 @@ namespace Capstone.WebUI.Domain.Entities
         
         #region Section 1 - Actual Sales Information from Prior Year - 3 Weeks
 
-        public DateTime Week1Date { get; set; } // Prior Year Week X
+        // Prior Year Week X
+        [Required(ErrorMessage = "Date must be from somewhere in the 1800s to over 9000")]
+        [Range(typeof(DateTime), "1/2/1800", "1/1/9001", ErrorMessage = "Value for {0} must be between {1} and {2}")]
+        public DateTime Week1Date { get; set; }
+
+        [Required(ErrorMessage = "Date must be from somewhere in the 1800s to over 9000")]
+        [Range(typeof(DateTime), "1/2/1800", "1/1/9001", ErrorMessage = "Value for {0} must be between {1} and {2}")]
         public DateTime Week2Date { get; set; }
+
+        [Required(ErrorMessage = "Date must be from somewhere in the 1800s to over 9000")]
+        [Range(typeof(DateTime), "1/2/1800", "1/1/9001", ErrorMessage = "Value for {0} must be between {1} and {2}")]
         public DateTime Week3Date { get; set; }
 
 

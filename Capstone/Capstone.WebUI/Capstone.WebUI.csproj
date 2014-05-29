@@ -175,7 +175,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CRUDController.cs" />
-    <Compile Include="Controllers\AdminFormController.cs" />
+    <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Domain\Abstract\BvLocationInterface.cs" />
     <Compile Include="Domain\Abstract\CharityInterface.cs" />
@@ -196,13 +196,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201405290011421_CharityPropsAdded.cs" />
-    <Compile Include="Migrations\201405290011421_CharityPropsAdded.Designer.cs">
-      <DependentUpon>201405290011421_CharityPropsAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405290402449_PNtCleanUp.cs" />
-    <Compile Include="Migrations\201405290402449_PNtCleanUp.Designer.cs">
-      <DependentUpon>201405290402449_PNtCleanUp.cs</DependentUpon>
+    <Compile Include="Migrations\201405292138027_test.cs" />
+    <Compile Include="Migrations\201405292138027_test.Designer.cs">
+      <DependentUpon>201405292138027_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -372,8 +368,8 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\AdminForm\Edit.cshtml" />
-    <Content Include="Views\AdminForm\Index.cshtml" />
+    <Content Include="Views\Form\Edit.cshtml" />
+    <Content Include="Views\Form\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
@@ -402,14 +398,6 @@
     <Content Include="Views\CRUD\UserEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201405290011421_CharityPropsAdded.resx">
-      <DependentUpon>201405290011421_CharityPropsAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405290402449_PNtCleanUp.resx">
-      <DependentUpon>201405290402449_PNtCleanUp.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -418,6 +406,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201405292138027_test.resx">
+      <DependentUpon>201405292138027_test.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -59,6 +59,8 @@ namespace Capstone.WebUI.Domain.Concrete
                 Charity dbEntry = db.Charities.Find(charity.CharityId);
                 if (dbEntry != null)
                 {
+                    //dbEntry = charity;  this works too, no change in the db data as far as I can tell
+
                     dbEntry.Name = charity.Name;
                     dbEntry.Address = charity.Address;
                     dbEntry.City = charity.City;

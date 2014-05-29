@@ -8,12 +8,12 @@ using Capstone.WebUI.Domain.Entities;
 
 namespace Capstone.WebUI.Controllers
 {
-    public class AdminFormController : Controller
+    public class FormController : Controller
     {
 
         FormRepository formRepo;
 
-        public AdminFormController()
+        public FormController()
         {
             formRepo = new FormRepository();
         }
@@ -46,7 +46,7 @@ namespace Capstone.WebUI.Controllers
                 // Save the changes to the partnership night 
                 formRepo.UpdateForm(f);
                 // TODO: Fix this. Partnership Night was removed from Form class
-                //TempData["message"] = string.Format("Form for Partnership Night {0} has been saved", f.pNight.Date);
+                TempData["message"] = string.Format("Form for Partnership Night {0} has been saved", f.DateOfPartnership);
                 return RedirectToAction("Index");
             }
             else

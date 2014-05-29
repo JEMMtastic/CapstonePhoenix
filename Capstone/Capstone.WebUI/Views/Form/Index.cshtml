@@ -26,7 +26,7 @@
             <td>@Html.DisplayFor(modelItem => item.DateOfPartnership)</td>
             <td>@Html.DisplayFor(modelItem => item.HostingRestaurant)</td>
             <td>
-                @using (Html.BeginForm("Delete", "AdminForm"))
+                @using (Html.BeginForm("Delete", "Form"))
                 {
                     @Html.Hidden("FormId", item.FormId)
                     <input type="submit" value="Delete" />
