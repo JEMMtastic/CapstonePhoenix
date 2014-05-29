@@ -17,25 +17,26 @@
         <th>TaxId</th>
         <th>Type</th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>@Html.ActionLink(item.Name, "CharityEdit", new {item.CharityId})</td>
-        <td>@Html.DisplayFor(modelItem => item.Address)</td>
-        <td>@Html.DisplayFor(modelItem => item.City)</td>
-        <td>@Html.DisplayFor(modelItem => item.Zip)</td>
-        <td>@Html.DisplayFor(modelItem => item.Phone)</td>
-        <td>@Html.DisplayFor(modelItem => item.FederalTaxId)</td>
-        <td>@Html.DisplayFor(modelItem => item.TypeOfCharity)</td>
-        <td>
-            @using (Html.BeginForm("CharityDelete", "CRUD"))
-            {
-                @Html.Hidden("CharityId", item.CharityId)
-                <input type="submit" value="Delete" />
-            }
-        </td>
-    </tr>
-}
+<div class="backgroundTableColorTest">
+    @foreach (var item in Model) {
+        <tr class="tableDataRow">
+            <td>@Html.ActionLink(item.Name, "CharityEdit", new {item.CharityId})</td>
+            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+            <td>@Html.DisplayFor(modelItem => item.City)</td>
+            <td>@Html.DisplayFor(modelItem => item.Zip)</td>
+            <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+            <td>@Html.DisplayFor(modelItem => item.FederalTaxId)</td>
+            <td>@Html.DisplayFor(modelItem => item.TypeOfCharity)</td>
+            <td>
+                @using (Html.BeginForm("CharityDelete", "CRUD"))
+                {
+                    @Html.Hidden("CharityId", item.CharityId)
+                    <input type="submit" value="Delete" />
+                }
+            </td>
+        </tr>
+    }
+</div>
 
 </table>
 <p>@Html.ActionLink("Add a new Charity", "CharityCreate")</p>

@@ -25,31 +25,33 @@
 
     @if (Model != null)
     {
-        foreach (var item in Model)
-        {
-            <tr>
-                <td>@Html.ActionLink(item.StartDate.ToShortDateString(), "PartnershipNightEdit", new { item.PartnershipNightId })</td>
-                <td>@item.StartDate.ToShortTimeString()</td>
-                <td>@item.EndDate.ToShortTimeString()</td>
-                <td>@item.BVLocation.BvStoreNum</td>
-                <td>@item.Charity.Name</td>
-                <td>@item.CheckRequestId <!-- Html.DisplayFor(modelItem => item.CheckRequestId)--></td>
-                <td>@item.Comments <!--Html.DisplayFor(modelItem => item.Comments)--></td>
-                <td>@item.CheckRequestFinished <!--Html.DisplayFor(modelItem => item.CheckRequestFinished)--></td>
-                <td>@item.BeforeTheEventFinished <!--Html.DisplayFor(modelItem => item.BeforeTheEventFinished)--></td>
-                <td>@item.AfterTheEventFinished <!--Html.DisplayFor(modelItem => item.AfterTheEventFinished)--></td>
-                <td>
-                    @using (@Html.BeginForm("PartnershipNightDelete", "CRUD"))
-                    {
-                        @Html.Hidden("PartnershipNightId", item.PartnershipNightId)
-                        <input type="submit" value="Delete" />
-                    }
-                <!--Html.ActionLink("Edit", "Edit", new { id=item.PartnershipNightId }) |
-                Html.ActionLink("Details", "Details", new { id=item.PartnershipNightId }) |
-                Html.ActionLink("Delete", "Delete", new { id=item.PartnershipNightId }) -->
-            </td>
-        </tr>
-        }
+        <div class="backgroundTableColorTest">
+            foreach (var item in Model)
+            {
+                <tr class="tableDataRow">
+                    <td>@Html.ActionLink(item.StartDate.ToShortDateString(), "PartnershipNightEdit", new { item.PartnershipNightId })</td>
+                    <td>@item.StartDate.ToShortTimeString()</td>
+                    <td>@item.EndDate.ToShortTimeString()</td>
+                    <td>@item.BVLocation.BvStoreNum</td>
+                    <td>@item.Charity.Name</td>
+                    <td>@item.CheckRequestId <!-- Html.DisplayFor(modelItem => item.CheckRequestId)--></td>
+                    <td>@item.Comments <!--Html.DisplayFor(modelItem => item.Comments)--></td>
+                    <td>@item.CheckRequestFinished <!--Html.DisplayFor(modelItem => item.CheckRequestFinished)--></td>
+                    <td>@item.BeforeTheEventFinished <!--Html.DisplayFor(modelItem => item.BeforeTheEventFinished)--></td>
+                    <td>@item.AfterTheEventFinished <!--Html.DisplayFor(modelItem => item.AfterTheEventFinished)--></td>
+                    <td>
+                        @using (@Html.BeginForm("PartnershipNightDelete", "CRUD"))
+                        {
+                            @Html.Hidden("PartnershipNightId", item.PartnershipNightId)
+                            <input type="submit" value="Delete" />
+                        }
+                    <!--Html.ActionLink("Edit", "Edit", new { id=item.PartnershipNightId }) |
+                    Html.ActionLink("Details", "Details", new { id=item.PartnershipNightId }) |
+                    Html.ActionLink("Delete", "Delete", new { id=item.PartnershipNightId }) -->
+                </td>
+            </tr>
+            }
+        </div>
 
     }
 </table>

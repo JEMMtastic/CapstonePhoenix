@@ -196,10 +196,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201405290001367_k.cs" />
-    <Compile Include="Migrations\201405290001367_k.Designer.cs">
-      <DependentUpon>201405290001367_k.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201405290011421_CharityPropsAdded.cs" />
     <Compile Include="Migrations\201405290011421_CharityPropsAdded.Designer.cs">
       <DependentUpon>201405290011421_CharityPropsAdded.cs</DependentUpon>
@@ -401,9 +397,6 @@
     <Content Include="Views\CRUD\UserEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201405290001367_k.resx">
-      <DependentUpon>201405290001367_k.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405290011421_CharityPropsAdded.resx">
       <DependentUpon>201405290011421_CharityPropsAdded.cs</DependentUpon>
     </EmbeddedResource>

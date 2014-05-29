@@ -19,20 +19,22 @@
         <th>Hosting Location</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>@Html.ActionLink("Edit this form", "Edit", new {item.FormId})</td>
-        <td>@Html.DisplayFor(modelItem => item.DateOfPartnership)</td>
-        <td>@Html.DisplayFor(modelItem => item.HostingRestaurant)</td>
-        <td>
-            @using (Html.BeginForm("Delete", "AdminForm"))
-            {
-                @Html.Hidden("FormId", item.FormId)
-                <input type="submit" value="Delete" />
-            }
-        </td>
-    </tr>
-}
+<div class="backgroundTableColorTest">
+    @foreach (var item in Model) {
+        <tr class="tableDataRow">
+            <td>@Html.ActionLink("Edit this form", "Edit", new {item.FormId})</td>
+            <td>@Html.DisplayFor(modelItem => item.DateOfPartnership)</td>
+            <td>@Html.DisplayFor(modelItem => item.HostingRestaurant)</td>
+            <td>
+                @using (Html.BeginForm("Delete", "AdminForm"))
+                {
+                    @Html.Hidden("FormId", item.FormId)
+                    <input type="submit" value="Delete" />
+                }
+            </td>
+        </tr>
+    }
+</div>
 
 </table>
 
