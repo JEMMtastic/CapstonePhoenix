@@ -15,10 +15,6 @@ namespace Capstone.WebUI.Domain.Entities
         private bool ckRequest;
         private bool before;
         private bool after;
-        
-        
-        [Required(ErrorMessage="Please enter a lenght of time in minutes for the event.")]
-        public int EventLength { get; set; }
 
         //Constructor to set flags to default
         public PartnershipNight()
@@ -36,6 +32,7 @@ namespace Capstone.WebUI.Domain.Entities
         [Required(ErrorMessage="Please enter a date for the event.")]
         public DateTime StartDate { get; set; }
 
+        [Required(ErrorMessage="Please enter an end time for the event")]
         public DateTime EndDate { get; set; }
         
         [Required(ErrorMessage = "A Charity is required.")]

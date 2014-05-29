@@ -28,14 +28,14 @@ namespace Capstone.WebUI.Domain.Concrete
                     select charity).FirstOrDefault();
         }
 
-        /*public Charity GetCharityById(int id)
+        public Charity GetCharityById(int id)
         {
             //throw new NotImplementedException();
             var db = new ApplicationDbContext();
             return (from charity in db.Charities
                     where charity.CharityId == id
                     select charity).FirstOrDefault();
-        }*/
+        }
 
         public IQueryable<Charity> GetCharities()
         {

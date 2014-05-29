@@ -189,7 +189,7 @@ namespace Capstone.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult PartnershipNightEdit(PNightEditViewModel vmodel)
+        public ActionResult PartnershipNightEdit(PartnershipNight partnershipNight)
         {
             //PartnershipNight pnight = pnRepo.GetPartnershipNights().FirstOrDefault<PartnershipNight>(pn => pn.PartnershipNightId)
             if (ModelState.IsValid)
@@ -198,8 +198,8 @@ namespace Capstone.WebUI.Controllers
                 PartnershipNight pnight = new PartnershipNight();
 
                 // Store the correct child objects 
-                pnight.Charity = charRepo.GetCharityByName(pnight.Charity.Name);
-                pnight.BVLocation = lRepo.GetBvLocation(pnight.BVLocation.BvLocationId);
+                pnight.Charity = charRepo.GetCharityById(partnershipNight.Charity.CharityId);
+                pnight.BVLocation = lRepo.GetBvLocation(partnershipNight.BVLocation.BvLocationId);
                 
                 // Save the changes to the partnership night 
                 pnRepo.UpdatePartnershipNight(pnight);
@@ -209,7 +209,7 @@ namespace Capstone.WebUI.Controllers
             else
             {
                 // there is something wrong with the data values
-                return View(vmodel);
+                return View();
             }
         }
 
