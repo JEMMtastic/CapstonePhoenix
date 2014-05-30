@@ -74,8 +74,8 @@ namespace Capstone.WebUI.Domain.Concrete
                     StartDate = pn.StartDate,
                     EndDate = pn.EndDate,
                     Comments = pn.Comments,
-                    Charity = pn.Charity,
-                    BVLocation = pn.BVLocation
+                    Charity = db.Charities.Find(pn.Charity.CharityId),
+                    BVLocation = db.BvLocations.Find(pn.BVLocation.BvLocationId)
                 });
             else
             {
@@ -85,8 +85,8 @@ namespace Capstone.WebUI.Domain.Concrete
                     dbEntry.StartDate = pn.StartDate;
                     dbEntry.EndDate = pn.EndDate;
                     dbEntry.Comments = pn.Comments;
-                    dbEntry.Charity = pn.Charity;
-                    dbEntry.BVLocation = pn.BVLocation;
+                    dbEntry.Charity = db.Charities.Find(pn.Charity.CharityId);
+                    dbEntry.BVLocation = db.BvLocations.Find(pn.BVLocation.BvLocationId);
                     
                 }
             }

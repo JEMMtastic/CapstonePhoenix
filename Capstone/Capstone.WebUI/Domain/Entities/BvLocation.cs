@@ -14,6 +14,7 @@ namespace Capstone.WebUI.Domain.Entities
         public string BvStoreNum {get; set;}
         public string Address { get; set; }
         public string City { get; set; }
+        public string State { get; set; }
         public string Zip { get; set; }
         public string Phone { get; set; }
         public List<PartnershipNight> PartnershipNights { get; set; }
