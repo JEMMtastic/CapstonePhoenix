@@ -107,24 +107,7 @@ namespace Capstone.WebUI.Domain.Concrete
             //TODO: Add in error handling
         }
 
-
-        public void UpdatePartnershipNight(int id, string NewEventStart, string NewEventEnd)
-        {
-            // EventStart comes ISO 8601 format, eg:  "2000-01-10T10:00:00Z" - need to convert to DateTime
-            using (var db = new ApplicationDbContext())
-            {
-                var rec = db.PartnershipNights.FirstOrDefault(s => s.PartnershipNightId == id);
-                if (rec != null)
-                {
-                    DateTime DateTimeStart = DateTime.Parse(NewEventStart, null, DateTimeStyles.RoundtripKind).ToLocalTime(); // and convert offset to localtime
-                    rec.StartDate = DateTimeStart;
-                    DateTime DateTimeEnd = DateTime.Parse(NewEventEnd, null, DateTimeStyles.RoundtripKind).ToLocalTime();
-                    rec.EndDate = DateTimeEnd;
-                    db.SaveChanges();
-                }
-            }
-        }
-
+        //TODO:  need use event props to create pnight props and save that to db
         public bool CreateNewEvent(string Title, int id ,string NewStartDate, string NewStartTime, string NewEndDt, string NewEndTime)
         {
             try
@@ -144,8 +127,5 @@ namespace Capstone.WebUI.Domain.Concrete
             }
             return true;
         }
-
-
-       
     }
 }

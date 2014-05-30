@@ -184,7 +184,11 @@ namespace Capstone.WebUI.Controllers
 
         public void UpdateEvent(int id, string NewEventStart, string NewEventEnd)
         {
-            pnRepo.UpdatePartnershipNight(id, NewEventStart, NewEventEnd);
+            //find the pn with the id
+            PartnershipNight pn = pnRepo.GetPartnershipNightById(id);
+            pn.StartDate = DateTime.Parse(NewEventStart);
+            pn.EndDate = DateTime.Parse(NewEventEnd);
+            pnRepo.UpdatePartnershipNight(pn);
         }
 
 
