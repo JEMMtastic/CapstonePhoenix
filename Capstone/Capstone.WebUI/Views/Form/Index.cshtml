@@ -1,30 +1,31 @@
 ﻿@model IEnumerable<Capstone.WebUI.Domain.Entities.Form>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Calculator Forms";
 }
 
-<h2>Index</h2>
+<h2>Calculator Forms</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<p>@Html.ActionLink("Add a new calculator form", "Create")</p>
+
 
 
 <table>
-    <tr>
-        <th>placeholder</th>
-        <th>@Html.DisplayNameFor(model => model.DateOfPartnership)</th>
-        <th>Charity</th>
+    <tr class ="tableHeadings">
+        <th>Edit</th>
+        <th>Date of Partnership</th>
         <th>Hosting Location</th>
+        <th>Charity</th>
+        
     </tr>
 
-<div class="backgroundTableColorTest">
+
     @foreach (var item in Model) {
         <tr class="tableDataRow">
             <td>@Html.ActionLink("Edit this form", "Edit", new {item.FormId})</td>
             <td>@Html.DisplayFor(modelItem => item.DateOfPartnership)</td>
             <td>@Html.DisplayFor(modelItem => item.HostingRestaurant)</td>
+            <td>@Html.DisplayFor(modelItem => item.NameOnCheck)</td>
             <td>
                 @using (Html.BeginForm("Delete", "Form"))
                 {
@@ -34,7 +35,6 @@
             </td>
         </tr>
     }
-</div>
 
 </table>
 

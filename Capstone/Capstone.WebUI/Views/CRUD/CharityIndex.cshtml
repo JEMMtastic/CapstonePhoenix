@@ -1,14 +1,15 @@
 ﻿@model IEnumerable<Capstone.WebUI.Domain.Entities.Charity>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Charities";
 }
 
-<h2>Index</h2>
+<h2>Charities</h2>
 
+<p>@Html.ActionLink("Add a new Charity", "CharityCreate")</p>
 
 <table>
-    <tr>
+    <tr class ="tableHeadings">
         <th>@Html.DisplayNameFor(model => model.Name)</th>
         <th>@Html.DisplayNameFor(model => model.Address)</th>
         <th>@Html.DisplayNameFor(model => model.City)</th>
@@ -17,7 +18,7 @@
         <th>TaxId</th>
         <th>Type</th>
     </tr>
-<div class="backgroundTableColorTest">
+
     @foreach (var item in Model) {
         <tr class="tableDataRow">
             <td>@Html.ActionLink(item.Name, "CharityEdit", new {item.CharityId})</td>
@@ -36,7 +37,8 @@
             </td>
         </tr>
     }
-</div>
+
 
 </table>
-<p>@Html.ActionLink("Add a new Charity", "CharityCreate")</p>
+
+

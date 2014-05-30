@@ -35,6 +35,7 @@ namespace Capstone.WebUI.Domain.Entities
 
         [Required(ErrorMessage = "Date must be from somewhere in the 1800s to over 9000")]
         [Range(typeof(DateTime), "1/2/1800", "1/1/9001", ErrorMessage = "Value for {0} must be between {1} and {2}")]
+        [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateOfPartnership { get; set; }// "Date of Partnership" - PartnershipNight.Date 
 
         #endregion
@@ -45,14 +46,17 @@ namespace Capstone.WebUI.Domain.Entities
         // Prior Year Week X
         [Required(ErrorMessage = "Date must be from somewhere in the 1800s to over 9000")]
         [Range(typeof(DateTime), "1/2/1800", "1/1/9001", ErrorMessage = "Value for {0} must be between {1} and {2}")]
+        [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Week1Date { get; set; }
 
         [Required(ErrorMessage = "Date must be from somewhere in the 1800s to over 9000")]
         [Range(typeof(DateTime), "1/2/1800", "1/1/9001", ErrorMessage = "Value for {0} must be between {1} and {2}")]
+        [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Week2Date { get; set; }
 
         [Required(ErrorMessage = "Date must be from somewhere in the 1800s to over 9000")]
         [Range(typeof(DateTime), "1/2/1800", "1/1/9001", ErrorMessage = "Value for {0} must be between {1} and {2}")]
+        [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Week3Date { get; set; }
 
 

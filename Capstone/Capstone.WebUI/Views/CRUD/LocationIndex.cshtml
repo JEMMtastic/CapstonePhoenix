@@ -1,13 +1,15 @@
 ﻿@model IEnumerable<Capstone.WebUI.Domain.Entities.BvLocation>
 
 @{
-    ViewBag.Title = "AdminLocIndex";
+    ViewBag.Title = "BV Locations";
 }
 
-<h2>AdminLocIndex</h2>
-<div class="backgroundTableColorTest">
+<h2>BV Locations</h2>
+
+<p>@Html.ActionLink("Add a new restaurant", "LocationCreate")</p>
+
     <table>
-        <tr>
+        <tr class ="tableHeadings">
             <th>Store Number</th>
             <th>Address</th>
             <th>City</th>
@@ -34,7 +36,8 @@
         }
 
     </table>
-</div>
-<p>@Html.ActionLink("Add a new restaurant", "LocationCreate")</p>
+
+
+
 
 

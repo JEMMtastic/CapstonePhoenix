@@ -5,11 +5,12 @@
     ViewBag.Title = "Partnership Nights";
 }
 
-<h2>All Partnership Nights</h2>
-<div class="backgroundTableColorTest">
-    <!-- Used inline styles pending global CSS changes-->
+<h2>Partnership Nights</h2>
+
+<p>@Html.ActionLink("Add a new Partnership Night", "PartnershipNightCreate")</p>
+
     <table>
-        <tr>
+        <tr class ="tableHeadings">
             <th>Date</th>
             <th>Start Time</th>
             <th>End Time</th>
@@ -55,6 +56,6 @@
 
         }
     </table>
-</div>
 
-<p>@Html.ActionLink("Add a new Partnership Night", "PartnershipNightCreate")</p>
+
+
