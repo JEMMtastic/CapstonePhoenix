@@ -191,7 +191,6 @@ namespace Capstone.WebUI.Controllers
             pnRepo.UpdatePartnershipNight(pn);
         }
 
-
         public bool SaveEvent(string Title, int id, string NewStartDt, string NewStartTime, string NewEndDt, string NewEndTime)
         {
             return pnRepo.CreateNewEvent(Title, id, NewStartDt, NewStartTime, NewEndDt, NewEndTime);
