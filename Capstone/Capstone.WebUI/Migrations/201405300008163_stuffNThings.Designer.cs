@@ -7,13 +7,13 @@ namespace Capstone.WebUI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class test : IMigrationMetadata
+    public sealed partial class stuffNThings : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(test));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(stuffNThings));
         
         string IMigrationMetadata.Id
         {
-            get { return "201405292138027_test"; }
+            get { return "201405300008163_stuffNThings"; }
         }
         
         string IMigrationMetadata.Source
