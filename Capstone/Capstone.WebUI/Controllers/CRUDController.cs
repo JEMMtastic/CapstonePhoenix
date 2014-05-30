@@ -158,7 +158,7 @@ namespace Capstone.WebUI.Controllers
 
         public ViewResult PartnershipNightCreate()
         {
-            var pNt = new PartnershipNight();
+            var pNt = new PartnershipNightVM();
 
             //vmodel.StartDate = DateTime.Now;
 
@@ -166,6 +166,9 @@ namespace Capstone.WebUI.Controllers
             //vmodel.Charities = charRepo.GetCharities().ToList<Charity>();
             //vmodel.Locations = lRepo.GetBvLocations().ToList<BvLocation>();
             TempData["Title"] = "Add New Partnership Night";
+
+            pNt.BvLocations = lRepo.GetBvLocations().ToList<BvLocation>();
+            pNt.Charities = charRepo.GetCharities().ToList<Charity>();
 
             return View("PartnershipNightEdit", pNt);
         }
@@ -176,6 +179,22 @@ namespace Capstone.WebUI.Controllers
 
                 // Get the correct partnership night, and create a view model to store values in
                 PartnershipNight pnight = pnRepo.GetPartnershipNightById(partnershipNightId);
+                PartnershipNightVM temp = new PartnershipNightVM() {
+                    AfterTheEventFinished = pnight.AfterTheEventFinished,
+                    BeforeTheEventFinished = pnight.BeforeTheEventFinished,
+                    CheckRequestFinished = pnight.CheckRequestFinished,
+                    BVLocation = pnight.BVLocation,
+                    Charity = pnight.Charity,
+                    StartDate = pnight.StartDate,
+                    EndDate = pnight.EndDate,
+                    Comments = pnight.Comments,
+                    CheckRequestId = pnight.CheckRequestId,
+                    PartnershipNightId = pnight.PartnershipNightId
+                };
+
+                temp.BvLocations = lRepo.GetBvLocations().ToList<BvLocation>();
+                temp.Charities = charRepo.GetCharities().ToList<Charity>();
+
                 //PNightEditViewModel vModel = new PNightEditViewModel();
 
                 ////Set view model to corresponding partnership night values
@@ -185,39 +204,25 @@ namespace Capstone.WebUI.Controllers
                 //vModel.Charities = charRepo.GetCharities().ToList<Charity>();
                 //vModel.Locations = lRepo.GetBvLocations().ToList<BvLocation>();
 
-                return View(pnight);
+                return View(temp);
         }
 
         [HttpPost]
-        public ActionResult PartnershipNightEdit(PartnershipNight partnershipNight)
+        public ActionResult PartnershipNightEdit(PartnershipNightVM partnershipNightVM)
         {
-            
+            partnershipNightVM.BVLocation = lRepo.GetBvLocations().FirstOrDefault(bvl => bvl.BvLocationId == partnershipNightVM.BvLocationId);
+            partnershipNightVM.Charity = charRepo.GetCharities().FirstOrDefault(char1 => char1.CharityId == partnershipNightVM.CharityId);
+
             if (ModelState.IsValid)
             {
-                BvLocation l = lRepo.GetBvLocation(partnershipNight.BVLocation.BvStoreNum);
-                if (l != null)
-                {
-                    partnershipNight.BVLocation = l;
-                    Charity c = charRepo.GetCharityByName(partnershipNight.Charity.Name);
-                    if (c != null)
-                    {
-                        partnershipNight.Charity = c;
-                        pnRepo.UpdatePartnershipNight(partnershipNight);
-                        return RedirectToAction("PartnershipNightIndex");
-                    }
-                    else
-                    {
-                        TempData["message"] = string.Format("{0} is not a valid Charity Name", partnershipNight.Charity.Name);
-                        return View();
-                    }
-                }
-                else
-                {
-                    TempData["message"] = string.Format("{0} is not a valid Restaurant", partnershipNight.BVLocation.BvStoreNum); 
-                    return View();
-                }
-               
+                
+
+                pnRepo.UpdatePartnershipNight(partnershipNightVM);
+
+                return RedirectToAction("PartnershipNightIndex");
             }
+               
+            
             return View();
                 
                 

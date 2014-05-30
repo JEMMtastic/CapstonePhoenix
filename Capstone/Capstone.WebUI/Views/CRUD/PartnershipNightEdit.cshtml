@@ -1,4 +1,4 @@
-﻿@model Capstone.WebUI.Domain.Entities.PartnershipNight
+﻿@model Capstone.WebUI.Models.PartnershipNightVM
 @{
     if(TempData["Title"] == null)
     { 
@@ -18,9 +18,77 @@
 
 @using (Html.BeginForm("PartnershipNightEdit", "CRUD"))
 {
-    @Html.EditorForModel()
-    @Html.EditorFor(model => model.Charity.Name)
-    @Html.EditorFor(model => model.BVLocation.BvStoreNum)
+    <div class="form-group">
+        @Html.Label("CheckRequestFinished")
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.CheckRequestFinished)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("BeforeTheEventFinished")
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.BeforeTheEventFinished)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("AfterTheEventFinished")
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.AfterTheEventFinished)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("StartDate")
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.StartDate)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("EndDate")
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.EndDate)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("CheckRequestId")
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.CheckRequestId)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Comments")
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.Comments)
+        </div>
+    </div>
+           
+                if (Model.BvLocations != null)
+                {
+                     @Html.DropDownListFor(m => m.BvLocationId, new SelectList(Model.BvLocations, "BvLocationId", "BvStoreNum"));
+                     @Html.HiddenFor(x => x.BvLocationId);
+                }
+                else
+                {
+                    @Html.Label("None")
+                }
+            
+
+            
+                if (Model.Charities != null)
+                {
+                     @Html.DropDownListFor(m => m.CharityId, new SelectList(Model.Charities, "CharityId", "Name")); 
+                     @Html.HiddenFor(x => x.CharityId);
+                }
+                else
+                {
+                    @Html.Label("None")
+                }
+            
     <input type="submit" value="Save" />
     @Html.ActionLink("Cancel and return to List", "LocationIndex")
 }
