@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capstone.Tests", "Capstone.Tests\Capstone.Tests.csproj", "{5AE80B34-E4CA-4F7E-99F3-65F77427AA74}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8AD2CB73-8730-432D-935E-7971472F3808} = {8AD2CB73-8730-432D-935E-7971472F3808}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capstone.WebUI", "Capstone.WebUI\Capstone.WebUI.csproj", "{8AD2CB73-8730-432D-935E-7971472F3808}"
 EndProject
