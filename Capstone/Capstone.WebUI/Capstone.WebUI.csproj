@@ -183,7 +183,6 @@
     <Compile Include="Domain\Abstract\PartnershipNightInterface.cs" />
     <Compile Include="Domain\Abstract\UserInterface.cs" />
     <Compile Include="Domain\Concrete\BvLocationRepository.cs" />
-    <Compile Include="Domain\Concrete\OldCapstoneDbContext.cs" />
     <Compile Include="Domain\Concrete\CharityRepository.cs" />
     <Compile Include="Domain\Concrete\FormRepository.cs" />
     <Compile Include="Domain\Concrete\PartnershipNightRepository.cs" />
@@ -327,6 +326,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\PublishProfiles\BVPartnership %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\BVPartnership %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\BVPartnership.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fullcalendar.js" />
