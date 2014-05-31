@@ -235,9 +235,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201405311855543_Init.cs" />
-    <Compile Include="Migrations\201405311855543_Init.Designer.cs">
-      <DependentUpon>201405311855543_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201405300008163_stuffNThings.cs" />
+    <Compile Include="Migrations\201405300008163_stuffNThings.Designer.cs">
+      <DependentUpon>201405300008163_stuffNThings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405300037147_AddBvLocSt.cs" />
+    <Compile Include="Migrations\201405300037147_AddBvLocSt.Designer.cs">
+      <DependentUpon>201405300037147_AddBvLocSt.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -452,8 +456,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201405311855543_Init.resx">
-      <DependentUpon>201405311855543_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201405300008163_stuffNThings.resx">
+      <DependentUpon>201405300008163_stuffNThings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405300037147_AddBvLocSt.resx">
+      <DependentUpon>201405300037147_AddBvLocSt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

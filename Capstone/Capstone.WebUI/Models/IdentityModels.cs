@@ -12,8 +12,8 @@ namespace Capstone.WebUI.Models
         //UserId, Username, and Password are done via Identity
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int AccessLevel { get; set; } //move to identities version for security? YES please.
-        public string UserEmail { get; set; } //move to identities version for security? YES please.
+        public int AccessLevel { get; set; } //move to identities version for security?
+        public string UserEmail { get; set; } //move to identities version for security?
         public BvLocation BvLocation { get; set; }  //could put User in BvLocation, avoiding Identity complications  //Update: not that difficult ^_^
     }
 
