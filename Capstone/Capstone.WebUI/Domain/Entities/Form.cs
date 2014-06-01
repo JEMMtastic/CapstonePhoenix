@@ -243,7 +243,8 @@ namespace Capstone.WebUI.Domain.Entities
         #endregion
 
 
-
+        //not part of the official form
+        public bool IsComplete { get; set; }
 
         //Calc methods
 
