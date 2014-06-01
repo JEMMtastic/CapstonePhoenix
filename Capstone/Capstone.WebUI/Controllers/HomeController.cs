@@ -42,32 +42,18 @@ namespace Capstone.WebUI.Controllers
 
         public ViewResult Index()
         {
+            //ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            /*
+             * PLEASE DO NOT DELETE
+             * 
+             * NEW VERSION OF SEEDING DB: GOES IN CONFIGURATION.CS IN MIGRATIONS FOLDER. 
+             * JUST PUTTING IT HERE FOR SAFE-KEEPING BECAUSE WE OFTEN DELETE THE MIGRATIONS FOLDER
             
-           // //data to get db up and running -- delete when done
-           // //add a location
-           // BvLocation loc1 = new BvLocation { Address = "333 N Main St", City = "BobVille", BvStoreNum = "BV99", Phone = "839-839-8393", Zip = "88898" };
-           // lRepo.AddBvLocation(loc1);
-           // //add a user
-           // User u1 = new User { Username = "turtles", FName = "Bob", LName = "Bobberson", AccessLevel = 1, BvLocation = loc1, Password = "bobshere", UserEmail = "bob@bob.com", PhoneNumber = "541-389-8293" };
-           // uRepo.AddUser(u1);
-           //// add a charity
-           // Charity c1 = new Charity { Address = "8939 S Seventh", City = "CharityVille", FederalTaxId = "893018XS", Name = "HopeForBob", Phone = "893-829-8393", TypeOfCharity = "Helpful", Zip = "83928" };
-           // cRepo.AddCharity(c1);
-           // //add a partnership night
-           // PartnershipNight pn1 = new PartnershipNight { AfterTheEventFinished = false, BeforeTheEventFinished = true, BVLocation = loc1, Charity = c1, CheckRequestFinished = false, Comments = "blah blah", Date = DateTime.Parse("05/30/2014") };
-           // pnRepo.AddPartnershipNight(pn1);
-           // //Form data will be here when it is finished:
-       
-            /*
-            //testing
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";*/
-            /*
-             * NEW VERSION OF SEEDING DB: GOES IN CONFIGURATION.CS IN MIGRATIONS FOLDER. JUST PUTTING IT HERE FOR SAFE-KEEPING BECAUSE WE OFTEN DELETE THE MIGRATIONS FOLDER
-            //data to get db up and running -- delete when done
+             //data to get db up and running
             //add a location
             context.BvLocations.AddOrUpdate(
                 l => l.BvLocationId,
-                    new BvLocation { BvLocationId = 1, Address = "333 N Main St", City = "Bobville", BvStoreNum = "BV99", Phone = "839-839-8393", Zip = "88898" }
+                    new BvLocation { BvLocationId = 1, Address = "333 N Main St", City = "Bobville", BvStoreNum = "BV99", Phone = "839-839-8393", Zip = "88898", State = "CA" }
                 );
             //BvLocation loc1 = new BvLocation { Address = "333 N Main St", City = "BobVille", BvStoreNum = "BV99", Phone = "839-839-8393", Zip = "88898" };
             //lRepo.AddBvLocation(loc1);
@@ -75,8 +61,8 @@ namespace Capstone.WebUI.Controllers
             //add a user
             context.Users.AddOrUpdate(
                   u => u.UserName,
-                  new ApplicationUser { UserName = "turtles", PasswordHash = "1234567".GetHashCode().ToString(), Email = "me2@you.com", EmailConfirmed = true, BvLocation = context.BvLocations.Find(1), FName = "Moo", LName = "Cow" },
-                  new ApplicationUser { UserName = "User2", PasswordHash = "password123".GetHashCode().ToString(), Email = "me@you.com", EmailConfirmed = true, BvLocation = context.BvLocations.Find(1), FName = "Joe", LName = "Joebert" }
+                  new ApplicationUser { UserName = "turtles", PasswordHash = "1234567".GetHashCode().ToString(), Email = "me2@you.com", EmailConfirmed = true, BvLocation = context.BvLocations.Find(1), FirstName = "Moo", LastName = "Cow" },
+                  new ApplicationUser { UserName = "User2", PasswordHash = "password123".GetHashCode().ToString(), Email = "me@you.com", EmailConfirmed = true, BvLocation = context.BvLocations.Find(1), FirstName = "Joe", LastName = "Joebert" }
                 );
             //CUser u1 = new CUser { Username = "turtles", UserFName = "Bob", UserLName = "Bobberson", AccessLevel = 1, BvLocation = loc1, Password = "bobshere", UserEmail = "bob@bob.com", PhoneNumber = "541-389-8293" };
             //uRepo.AddUser(u1);
@@ -84,7 +70,7 @@ namespace Capstone.WebUI.Controllers
             // add a charity
             context.Charities.AddOrUpdate(
                 c => c.CharityId,
-                new Charity { CharityId = 1, Address = "8939 S Seventh", City = "CharityVille", FederalTaxId = "893018X", Name = "HopeForBob", Phone = "893-829-8393", TypeOfCharity = "Helpful", Zip = "83928" }
+                new Charity { CharityId = 1, Address = "8939 S Seventh", City = "CharityVille", FederalTaxId = "893018X", Name = "HopeForBob", Phone = "893-829-8393", TypeOfCharity = "Helpful", Zip = "83928", CharityContactNm = "Bob", State = "TX" }
                 );
             //Charity c1 = new Charity { Address = "8939 S Seventh", City = "CharityVille", FederalTaxId = "893018XS", Name = "HopeForBob", Phone = "893-829-8393", TypeOfCharity = "Helpful", Zip = "83928" };
             //cRepo.AddCharity(c1);
@@ -92,7 +78,7 @@ namespace Capstone.WebUI.Controllers
             //add a partnership night
             context.PartnershipNights.AddOrUpdate(
                     pn => pn.PartnershipNightId,
-                    new PartnershipNight { PartnershipNightId = 1, AfterTheEventFinished = false, BeforeTheEventFinished = true, BVLocation = context.BvLocations.Find(1), Charity = context.Charities.Find(1), CheckRequestFinished = false, Comments = "blah blah", StartDate = DateTime.Parse("05/30/2014"), EndDate = DateTime.Parse("05/30/2014"), CheckRequestId = 1, EventLength = 25 }
+                    new PartnershipNight { PartnershipNightId = 1, AfterTheEventFinished = false, BeforeTheEventFinished = true, BVLocation = context.BvLocations.Find(1), Charity = context.Charities.Find(1), CheckRequestFinished = false, Comments = "blah blah", StartDate = DateTime.Parse("05/30/2014"), EndDate = DateTime.Parse("05/30/2014"), CheckRequestId = 1 }
                 );
             //PartnershipNight pn1 = new PartnershipNight { AfterTheEventFinished = false, BeforeTheEventFinished = true, BVLocation = loc1, Charity = c1, CheckRequestFinished = false, Comments = "blah blah", Date = DateTime.Parse("05/30/2014") };
             //pnRepo.AddPartnershipNight(pn1);
