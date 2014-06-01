@@ -217,6 +217,7 @@
     <Compile Include="Controllers\CRUDController.cs" />
     <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeaderBoardController.cs" />
     <Compile Include="Domain\Abstract\BvLocationInterface.cs" />
     <Compile Include="Domain\Abstract\CharityInterface.cs" />
     <Compile Include="Domain\Abstract\FormInterface.cs" />
@@ -445,6 +446,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="Views\LeaderBoard\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
