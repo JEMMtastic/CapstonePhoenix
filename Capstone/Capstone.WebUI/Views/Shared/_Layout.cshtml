@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.7/2.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src ="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
@@ -26,14 +30,21 @@
     </div>
 
     <div id="BreadCrumb">
-       @{
-           //The site map is breaking things - we need to figure out how to re-integrate it 
-         
-         //@Html.MvcSiteMap().SiteMapPath() 
-         
-       }
-        @*breadcrumb...breadcrumb...breadcrumb...baked macaroni and cheese....*@
-          breadcrumb placeholder e.g.  home > Partnership Nights > create new Partnership Night
+        <ol class="breadcrumb">
+            @if (ViewContext.RouteData.Values["controller"].ToString() != "Home")
+            {
+                @Html.ActionLink("Home", "Index", "Home")
+                <li class="active">
+                    / @ViewBag.Title
+                </li>
+            }
+            else
+            {
+                <li class="active">
+                    Home
+                </li>
+            }
+        </ol>
     </div>
 
     <div id="Navigation">
