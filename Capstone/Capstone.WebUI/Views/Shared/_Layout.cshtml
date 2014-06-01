@@ -11,7 +11,8 @@
 </head>
 <body>
     @RenderSection("scripts", required: false)
-    
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/scripts")
 
     @if (TempData["message"] != null) 
         {
@@ -34,11 +35,6 @@
         @*breadcrumb...breadcrumb...breadcrumb...baked macaroni and cheese....*@
           breadcrumb placeholder e.g.  home > Partnership Nights > create new Partnership Night
     </div>
-
-
-    
-
-    
 
     <div id="Navigation">
 

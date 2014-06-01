@@ -19,42 +19,41 @@
 @using (Html.BeginForm("PartnershipNightEdit", "CRUD"))
 {
     <div class="form-group">
-        @Html.Label("CheckRequestFinished")
+       
         <div class="col-md-10">
-            @Html.EditorFor(x => x.CheckRequestFinished)
+            @Html.EditorFor(x => x.CheckRequestFinished)  Calculator Form Complete
         </div>
     </div>
 
     <div class="form-group">
-        @Html.Label("BeforeTheEventFinished")
         <div class="col-md-10">
-            @Html.EditorFor(x => x.BeforeTheEventFinished)
+            @Html.EditorFor(x => x.BeforeTheEventFinished)  Before the Event PaperWork Complete
         </div>
     </div>
 
     <div class="form-group">
-        @Html.Label("AfterTheEventFinished")
+       
         <div class="col-md-10">
-            @Html.EditorFor(x => x.AfterTheEventFinished)
+            @Html.EditorFor(x => x.AfterTheEventFinished)  After the Event PaperWork Complete
         </div>
     </div>
 
     <div class="form-group">
-        @Html.Label("StartDate")
+        Start Date Time:
         <div class="col-md-10">
             @Html.EditorFor(x => x.StartDate)
         </div>
     </div>
 
     <div class="form-group">
-        @Html.Label("EndDate")
+       End Date Time:
         <div class="col-md-10">
             @Html.EditorFor(x => x.EndDate)
         </div>
     </div>
 
     <div class="form-group">
-        @Html.Label("CheckRequestId")
+        Check Request Number:
         <div class="col-md-10">
             @Html.EditorFor(x => x.CheckRequestId)
         </div>
@@ -65,22 +64,25 @@
         <div class="col-md-10">
             @Html.EditorFor(x => x.Comments)
         </div>
+        <br />
     </div>
            
                 if (Model.BvLocations != null)
                 {
-                     @Html.DropDownListFor(m => m.BvLocationId, new SelectList(Model.BvLocations, "BvLocationId", "BvStoreNum"));
-                     @Html.HiddenFor(x => x.BvLocationId);
+                    @:BV Store Number:
+                    @Html.DropDownListFor(m => m.BvLocationId, new SelectList(Model.BvLocations, "BvLocationId", "BvStoreNum"));
+                    @Html.HiddenFor(x => x.BvLocationId);
                 }
                 else
                 {
                     @Html.Label("None")
                 }
             
-
+                <br /><br />
             
                 if (Model.Charities != null)
                 {
+                    @:Charity Name:
                      @Html.DropDownListFor(m => m.CharityId, new SelectList(Model.Charities, "CharityId", "Name")); 
                      @Html.HiddenFor(x => x.CharityId);
                 }
@@ -88,7 +90,7 @@
                 {
                     @Html.Label("None")
                 }
+                <br /><br />
             
-    <input type="submit" value="Save" />
-    @Html.ActionLink("Cancel and return to List", "PartnershipNightIndex")
+    <input type="submit" value="Save" />    @Html.ActionLink("Cancel and return to List", "PartnershipNightIndex")
 }

@@ -3,21 +3,14 @@
 }
 
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
-   
+
+
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/scripts")
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <script src="~/Scripts/fullcalendar.js"></script>
     <link href="~/Content/fullcalendar.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-ui-1.10.4.js"></script>
-</head>
-<body>
     <script type="text/javascript">
         $(document).ready(function () {
             var CalLoading = true;
@@ -178,9 +171,6 @@
             <button type="button" id="btnPopupSave" data-dismiss="modal" class="btn btn-primary">Save event</button>
         </div>
     </div>
-</body>
-
-</html>
 
 
 
