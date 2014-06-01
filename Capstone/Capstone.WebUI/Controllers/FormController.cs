@@ -68,5 +68,10 @@ namespace Capstone.WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Print(Form form)
+        {
+            return View(form);
+        }
+
     }
 }

@@ -441,6 +441,7 @@
     <Content Include="Views\CRUD\PartnershipNightEdit.cshtml" />
     <Content Include="Views\CRUD\UserIndex.cshtml" />
     <Content Include="Views\CRUD\UserEdit.cshtml" />
+    <Content Include="Views\Form\Print.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

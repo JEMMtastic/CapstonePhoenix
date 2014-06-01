@@ -1,0 +1,978 @@
+﻿@model Capstone.WebUI.Domain.Entities.Form
+
+@{
+    ViewBag.Title = "Partnership Calculator & Check Request";
+    Layout = null;
+}
+
+
+<h2>Partnership Calculator & Check Request</h2>
+
+<style>
+
+    .print h3{
+    }
+
+    .print_table table{
+    }
+
+    .print_table.display_form th{
+        font-size: 1em;
+        font-weight: bold;
+        color: black;
+        padding-top: 8px;
+        padding-right: 20px;
+        text-align: left;
+        /*float: left;*/
+    }
+
+    .print_table.display_form td {
+        font-size: .9em;
+        font-weight:normal;
+    }
+
+    .print_table.display_form.section0 th {
+        padding-right: 80px;
+    }
+
+    .print_table.display_form.section2 {
+        border: 1px solid grey;
+    }
+
+    .print_table.display_form.section2 tr:first-of-type{
+        border-bottom: 1px solid grey;
+    }
+
+        .print_table.display_form.section2 tr:first-of-type th:first-child {
+            font-size: 1.5em;
+            text-align: center;
+            border-bottom: 1px solid grey;
+        }
+
+   /* .print_table.display_form th :nth-of-type(5n+0){
+        clear:both;
+        display:block;
+        
+    } */
+
+
+</style>
+
+<div class="print">
+    <br />
+    <h3 class="print">Organization Information</h3>
+    <hr />
+    <table class="print_table display_form section0">
+        <tr>
+            <th>
+                <!--Html.DisplayNameFor(model => model.NameOnCheck) -->
+                Name On Check
+            </th>
+
+            <th>
+                <!--Html.DisplayNameFor(model => model.Purpose)-->
+                Purpose of Partnership
+            </th>
+
+            <th>
+                <!--Html.DisplayNameFor(model => model.ContactName)-->
+                Contact Name
+            </th>
+
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.NameOnCheck)
+
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Purpose)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.ContactName)
+            </td>
+        </tr>
+
+
+        <tr>
+            <th>
+                <!--Html.DisplayNameFor(model => model.OrganizationMailingAddress)-->
+                Mailing Address
+            </th>
+
+            <th>
+                <!--Html.DisplayNameFor(model => model.OrganizationMailingCity)-->
+                City
+            </th>
+
+            <th>
+                <!--Html.DisplayNameFor(model => model.OrganizationMailingState)-->
+                State
+            </th>
+
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.OrganizationMailingAddress)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.OrganizationMailingCity)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.OrganizationMailingState)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <!--Html.DisplayNameFor(model => model.OrganizationMailingZip)-->
+                Zip Code
+            </th>
+
+            <th>
+                <!--Html.DisplayNameFor(model => model.OrganizationPhone)-->
+                Phone Number
+            </th>
+
+            <th>
+                <!--Html.DisplayNameFor(model => model.FederalTaxID)-->
+                Federal Tax ID
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.OrganizationMailingZip)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.OrganizationPhone)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.FederalTaxID)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <!--Html.DisplayNameFor(model => model.NewPartner)-->
+                New Partner
+            </th>
+
+            <th></th>
+
+            <th>
+                <!--Html.DisplayNameFor(model => model.HostingRestaurant)-->
+                Host Restaurant
+            </th>
+
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.NewPartner)
+            </td>
+
+            <td></td>
+
+            <td>
+                @Html.DisplayFor(model => model.HostingRestaurant)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <!--Html.DisplayNameFor(model => model.WeekDayOfPartnership)-->
+                Day of Week of Partnership
+            </th>
+
+            <th></th>
+
+            <th>
+                <!--Html.DisplayNameFor(model => model.DateOfPartnership)-->
+                Date of Partnership
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.WeekDayOfPartnership)
+            </td>
+
+            <td></td>
+
+            <td>
+                @Html.DisplayFor(model => model.DateOfPartnership)
+            </td>
+        </tr>
+    </table>
+
+</div>
+<div class="print">
+    <h3 class="print">Actual Sales Information From Prior Year: 3 weeks</h3>
+    <hr />
+    <table class="print_table display_form">
+        <tr>
+            <th colspan="5">
+                <!-- MAKE SURE THE MEANING OF THIS FIELD IS CORRECT-->
+                Total Sales from Last Week This Year:
+            </th>
+            <td colspan="5">
+                <!-- CHECK THIS IS THE RIGHT FIELD -->
+                @Html.DisplayFor(model => model.LastWeekAverageCheckTotal)
+            </td>
+        </tr>
+
+        <tr>
+            <th></th>
+
+            <th>
+                <!--Html.DisplayNameFor(model => model.Week1Date)-->
+                Week 1 Date
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Week1Date)
+            </td>
+
+            <th>
+                <!--Html.DisplayNameFor(model => model.Week2Date)-->
+                Week 2 Date
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Week2Date)
+            </td>
+
+            <th>
+                <!--Html.DisplayNameFor(model => model.Week3Date)-->
+                Week 3 Date
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Week3Date)
+            </td>
+
+            <th colspan="2">
+                Average
+            </th>
+
+            <th>
+
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                Hours
+            </th>
+            <th>
+                Adj. Sales
+            </th>
+            <th>
+                Guest Count
+            </th>
+            <th>
+                Adj. Sales
+            </th>
+            <th>
+                Guest Count
+            </th>
+            <th>
+                Adj. Sales
+            </th>
+            <th>
+                Guest Count
+            </th>
+            <th>
+                Sales
+            </th>
+            <th>
+                Guest Count
+            </th>
+            <th>
+                Average Check
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                4:00-5:00
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week1_45_AdjustedSales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week1_45_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week2_45_AdjustedSales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week2_45_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week3_45_AdjustedSales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week3_45_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Average_45_Sales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Average_45_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.LastWeekAverageCheck_45)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                5:00-6:00
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week1_56_AdjustedSales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week1_56_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week2_56_AdjustedSales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week2_56_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week3_56_AdjustedSales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week3_56_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Average_56_Sales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Average_56_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.LastWeekAverageCheck_56)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                6:00-7:00
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week1_67_AdjustedSales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week1_67_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week2_67_AdjustedSales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week2_67_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week3_67_AdjustedSales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week3_67_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Average_67_Sales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Average_67_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.LastWeekAverageCheck_67)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                7:00-8:00
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week1_78_AdjustedSales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week1_78_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week2_78_AdjustedSales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week2_78_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week3_78_AdjustedSales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week3_78_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Average_78_Sales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Average_78_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.LastWeekAverageCheck_78)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                8:00-9:00
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week1_89_AdjustedSales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week1_89_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week2_89_AdjustedSales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week2_89_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week3_89_AdjustedSales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week3_89_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Average_89_Sales)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Average_89_GuestCount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.LastWeekAverageCheck_89)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Total
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Week1_AdjustedSalesTotal)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week1_GuestCountTotal)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week2_AdjustedSalesTotal)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week2_GuestCountTotal)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week3_AdjustedSalesTotal)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Week3_GuestCountTotal)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Average_AdjustedSalesTotal)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Average_GuestCountTotal)
+            </td>
+
+            <td></td>
+        </tr>
+
+    </table>
+
+</div>
+<div class="print">
+
+    <h3 class="print">2. Scenario Donation Based on Projections</h3>
+    <hr />
+    <table class="print_table display_form section2">
+
+        <tr>
+            <th colspan="2">Scenario 1</th>
+        </tr>
+        <tr>
+            <th>
+                <!--Html.DisplayNameFor(model => model.Scenario1_GuestCount)-->
+                Invited Guests
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Scenario1_GuestCount)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Estimated Partnership Guests
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Scenario1_EstimatedGuestCount)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Three Week Average Guest Count
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Scenario1_ThreeWeekAverageGuestCount)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Targeted Guest Count
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Scenario1_TargetedGuestCount)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Estimated Donation
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Scenario1_EstimatedDonation)
+            </td>
+        </tr>
+
+    </table>
+    <table class="print_table display_form section2">
+        <tr>
+            <th colspan="2">Scenario 2</th>
+        </tr>
+        <tr>
+            <th>
+                <!--Html.DisplayNameFor(model => model.Scenario2_GuestCount)-->
+                Invited Guests
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Scenario2_GuestCount)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Estimated Partnership Guests
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Scenario2_EstimatedGuestCount)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Three Week Average Guest Count
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Scenario2_ThreeWeekAverageGuestCount)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Targeted Guest Count
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Scenario2_TargetedGuestCount)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Estimated Donation
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Scenario2_EstimatedDonation)
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="print">
+    <h3 class="print">3. Day of Partnership: Actual Sales & Guest Count Results Per PosiTouch</h3>
+    <table>
+        <tr>
+            <th>Hours</th>
+            <th colspan="3">@Html.DisplayFor(model => model.DateOfPartnership) </th>
+            <th>Notes from Partnership</th>
+        </tr>
+
+        <tr>
+            <td></td>
+            <th>Sales</th>
+            <th>Guest Count</th>
+            <th>Avg. Check</th>
+            <td rowspan="5">@Html.DisplayFor(model => model.Notes) </td>
+        </tr>
+        <tr>
+            <td>
+                4:00-5:00
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ActualSales_45)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ActualGuestCount_45)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ActualAverageCheck_45)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                5:00-6:00
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ActualSales_56)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ActualGuestCount_56)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ActualAverageCheck_56)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                6:00-7:00
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ActualSales_67)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ActualGuestCount_67)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ActualAverageCheck_67)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                7:00-8:00
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ActualSales_78)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ActualGuestCount_78)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ActualAverageCheck_78)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                8:00-9:00
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ActualSales_89)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ActualGuestCount_89)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ActualAverageCheck_89)
+            </td>
+        </tr>
+
+        <tr>
+            <th>Totals</th>
+            <td>@Html.DisplayFor(model => model.ActualSalesTotal)</td>
+            <td>@Html.DisplayFor(model => model.ActualGuestCountTotal)</td>
+            <td>@Html.DisplayFor(model => model.ActualAverageCheckTotal)</td>
+        </tr>
+        <tr>
+            <td>
+                10% Donation
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.TenPercentDonation)
+            </td>
+            <td colspan="2"></td>
+        </tr>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PosiDonations)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.PosiDonations)
+            </td>
+        </tr>
+        
+        <tr>
+            <td>(Donations Taken on the Posi Register)</td>
+            <td colspan="3"></td>
+        </tr>
+    </table>
+</div>
+<div class="print">
+    <h3>4. Sales & Guest Count Contribution Calculation</h3>
+    <table>
+        <tr>
+            <th colspan="5">Sales Contribution</th>
+            <th colspan="3">Guest Count Contribution</th>
+        </tr>
+
+        <tr>
+            <th>3 Week Avg.</th>
+            <th>Actual</th>
+            <th>Difference</th>
+            <th>Donation</th>
+            <th>Sales Contribution</th>
+            <th>3 Week Avg. #</th>
+            <th>Actual #</th>
+            <th>G.C. Contribution</th>
+        </tr>
+
+        <tr>
+            <td>
+                $@Html.DisplayFor(model => model.SalesContribution_3WeekAverage)
+            </td>
+            <td>
+                $@Html.DisplayFor(model => model.SalesContribution_Actual)
+            </td>
+            <td>
+                $@Html.DisplayFor(model => model.SalesContribution_Difference)
+            </td>
+            <td>
+                $@Html.DisplayFor(model => model.SalesContribution_Donation)
+            </td>
+            <td>
+                $@Html.DisplayFor(model => model.SalesContribution_SalesContribution)
+            </td>
+            <td>
+                $@Html.DisplayFor(model => model.GuestCountContribution_3WeekAverage)
+            </td>
+            <td>
+                $@Html.DisplayFor(model => model.GuestCountContribution_ActualNumber)
+            </td>
+            <td>
+                $@Html.DisplayFor(model => model.GuestCountContribution_GCCountribution)
+            </td>
+        </tr>
+
+        <!--LEFT OFF HERE. FINISH TOMORROW-->
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.SalesContribution_3WeekAverage)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SalesContribution_Actual)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.SalesContribution_Difference)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.SalesContribution_Donation)
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.SalesContribution_Actual)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.SalesContribution_Difference)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.SalesContribution_Donation)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SalesContribution_SalesContribution)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.GuestCountContribution_3WeekAverage)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.GuestCountContribution_ActualNumber)
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.SalesContribution_SalesContribution)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.GuestCountContribution_3WeekAverage)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.GuestCountContribution_ActualNumber)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GuestCountContribution_GCCountribution)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.MailPartnershipCheckToBV)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Donations10PercentOfSalesToGL7700)
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.GuestCountContribution_GCCountribution)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.MailPartnershipCheckToBV)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Donations10PercentOfSalesToGL7700)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GLCode7700)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.DonationsTakenOnThePosiRegisterCodeToGL2005)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.GLCode2005)
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.GLCode7700)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.DonationsTakenOnThePosiRegisterCodeToGL2005)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.GLCode2005)
+            </td>
+        </tr>
+
+        <tr>
+            <th colspan="3">
+                @Html.DisplayNameFor(model => model.TotalDonation)
+            </th>
+        </tr>
+
+        <tr>
+            <td colspan="3">
+                @Html.DisplayFor(model => model.TotalDonation)
+            </td>
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FormId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
