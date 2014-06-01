@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
-    Layout = null;
 }
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +71,6 @@
             },
 
             viewRender: function (view, element) {
-
                 if (!CalLoading) {
                     if (view.name == 'month') {
                         $('#calendar').fullCalendar('removeEventSource', sourceFullView);
@@ -85,7 +84,6 @@
                     }
                 }
             }
-
         });
 
         CalLoading = false;
@@ -155,7 +153,7 @@
             });
         }
     </script>  
-   
+    
     <H1>@Html.ActionLink("Add a new event", "PartnershipNightIndex", "CRUD")</H1>
    
     <div id="calendar" style="width:65%" ></div>
