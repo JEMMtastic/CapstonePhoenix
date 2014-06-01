@@ -172,3 +172,6 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+# Migrations Folder: trying to cut down on DB adjustments
+Migrations/
