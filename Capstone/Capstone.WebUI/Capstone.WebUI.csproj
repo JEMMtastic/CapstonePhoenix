@@ -239,6 +239,13 @@
     <Compile Include="Migrations\201406020251132_InitialCreate.cs" />
     <Compile Include="Migrations\201406020251132_InitialCreate.Designer.cs">
       <DependentUpon>201406020251132_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201406010534046_FormIsComplete.cs" />
+    <Compile Include="Migrations\201406010534046_FormIsComplete.Designer.cs">
+      <DependentUpon>201406010534046_FormIsComplete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406020459506_form1.cs" />
+    <Compile Include="Migrations\201406020459506_form1.Designer.cs">
+      <DependentUpon>201406020459506_form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -457,6 +464,14 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201406020251132_InitialCreate.resx">
       <DependentUpon>201406020251132_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201406010534046_FormIsComplete.resx">
+      <DependentUpon>201406010534046_FormIsComplete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406020459506_form1.resx">
+      <DependentUpon>201406020459506_form1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

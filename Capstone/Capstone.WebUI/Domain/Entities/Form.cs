@@ -43,6 +43,9 @@ namespace Capstone.WebUI.Domain.Entities
         
         #region Section 1 - Actual Sales Information from Prior Year - 3 Weeks
 
+        //Manually entered
+        //**************************************************************************************
+
         // Prior Year Week X
         [Required(ErrorMessage = "Date must be from somewhere in the 1800s to over 9000")]
         [Range(typeof(DateTime), "1/2/1800", "1/1/9001", ErrorMessage = "Value for {0} must be between {1} and {2}")]
@@ -59,9 +62,6 @@ namespace Capstone.WebUI.Domain.Entities
         [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Week3Date { get; set; }
 
-
-        //Manually entered
-        //**************************************************************************************
         // Week 1 Hours x-x Guest Count
         public int Week1_45_GuestCount { get; set; }
         public int Week1_56_GuestCount { get; set; }
@@ -123,21 +123,21 @@ namespace Capstone.WebUI.Domain.Entities
        
 
         // Average Hours x-x Guest Count
-        public int Average_45_GuestCount { get; set; }
-        public int Average_56_GuestCount { get; set; }
-        public int Average_67_GuestCount { get; set; }
-        public int Average_78_GuestCount { get; set; }
-        public int Average_89_GuestCount { get; set; }
+        public decimal Average_45_GuestCount { get; set; }
+        public decimal Average_56_GuestCount { get; set; }
+        public decimal Average_67_GuestCount { get; set; }
+        public decimal Average_78_GuestCount { get; set; }
+        public decimal Average_89_GuestCount { get; set; }
 
         //totals
         public decimal Week1_AdjustedSalesTotal { get; set; }
         public decimal Week2_AdjustedSalesTotal { get; set; }
         public decimal Week3_AdjustedSalesTotal { get; set; }
-        public decimal Average_AdjustedSalesTotal { get; set; }
+        public decimal Average_SalesTotal { get; set; }
         public int Week1_GuestCountTotal { get; set; }
         public int Week2_GuestCountTotal { get; set; }
         public int Week3_GuestCountTotal { get; set; }
-        public int Average_GuestCountTotal { get; set; }
+        public decimal Average_GuestCountTotal { get; set; }
 
         public decimal LastWeekAverageCheckTotal { get; set; }
 
@@ -250,7 +250,47 @@ namespace Capstone.WebUI.Domain.Entities
 
         public void CalculateSection1() 
         { 
+            Week1_45_AdjustedSales = Week1_45_GuestCount * LastWeekAverageCheck_45;
+            Week1_56_AdjustedSales = Week1_56_GuestCount * LastWeekAverageCheck_56;
+            Week1_67_AdjustedSales = Week1_67_GuestCount * LastWeekAverageCheck_67;
+            Week1_78_AdjustedSales = Week1_78_GuestCount * LastWeekAverageCheck_78;
+            Week1_89_AdjustedSales = Week1_89_GuestCount * LastWeekAverageCheck_89;
 
+            Week2_45_AdjustedSales = Week2_45_GuestCount * LastWeekAverageCheck_45;
+            Week2_56_AdjustedSales = Week2_56_GuestCount * LastWeekAverageCheck_56;
+            Week2_67_AdjustedSales = Week2_67_GuestCount * LastWeekAverageCheck_67;
+            Week2_78_AdjustedSales = Week2_78_GuestCount * LastWeekAverageCheck_78;
+            Week2_89_AdjustedSales = Week2_89_GuestCount * LastWeekAverageCheck_89;
+
+            Week3_45_AdjustedSales = Week3_45_GuestCount * LastWeekAverageCheck_45;
+            Week3_56_AdjustedSales = Week3_56_GuestCount * LastWeekAverageCheck_56;
+            Week3_67_AdjustedSales = Week3_67_GuestCount * LastWeekAverageCheck_67;
+            Week3_78_AdjustedSales = Week3_78_GuestCount * LastWeekAverageCheck_78;
+            Week3_89_AdjustedSales = Week3_89_GuestCount * LastWeekAverageCheck_89;
+
+            Average_45_Sales = (Week1_45_AdjustedSales + Week2_45_AdjustedSales + Week3_45_AdjustedSales)/3;
+            Average_56_Sales = (Week1_56_AdjustedSales + Week2_56_AdjustedSales + Week3_56_AdjustedSales)/3; 
+            Average_67_Sales = (Week1_67_AdjustedSales + Week2_67_AdjustedSales + Week3_67_AdjustedSales)/3; 
+            Average_78_Sales = (Week1_78_AdjustedSales + Week2_78_AdjustedSales + Week3_78_AdjustedSales)/3; 
+            Average_89_Sales = (Week1_89_AdjustedSales + Week2_89_AdjustedSales + Week3_89_AdjustedSales)/3; 
+
+            Average_45_GuestCount = (Week1_45_GuestCount + Week2_45_GuestCount + Week3_45_GuestCount)/3;
+            Average_56_GuestCount = (Week1_56_GuestCount + Week2_56_GuestCount + Week3_56_GuestCount)/3;
+            Average_67_GuestCount = (Week1_67_GuestCount + Week2_67_GuestCount + Week3_67_GuestCount)/3;
+            Average_78_GuestCount = (Week1_78_GuestCount + Week2_78_GuestCount + Week3_78_GuestCount)/3;
+            Average_89_GuestCount = (Week1_89_GuestCount + Week2_89_GuestCount + Week3_89_GuestCount)/3;
+
+            Week1_AdjustedSalesTotal = Week1_45_AdjustedSales + Week1_56_AdjustedSales + Week1_67_AdjustedSales + Week1_78_AdjustedSales + Week1_89_AdjustedSales;
+            Week2_AdjustedSalesTotal = Week2_45_AdjustedSales + Week2_56_AdjustedSales + Week2_67_AdjustedSales + Week2_78_AdjustedSales + Week2_89_AdjustedSales; 
+            Week3_AdjustedSalesTotal = Week3_45_AdjustedSales + Week3_56_AdjustedSales + Week3_67_AdjustedSales + Week3_78_AdjustedSales + Week3_89_AdjustedSales; 
+            Average_SalesTotal = Average_45_Sales + Average_56_Sales + Average_67_Sales + Average_78_Sales + Average_89_Sales;
+
+            Week1_GuestCountTotal = Week1_45_GuestCount + Week1_56_GuestCount + Week1_67_GuestCount + Week1_78_GuestCount + Week1_89_GuestCount;
+            Week2_GuestCountTotal = Week2_45_GuestCount + Week2_56_GuestCount + Week2_67_GuestCount + Week2_78_GuestCount + Week2_89_GuestCount;
+            Week3_GuestCountTotal = Week3_45_GuestCount + Week3_56_GuestCount + Week3_67_GuestCount + Week3_78_GuestCount + Week3_89_GuestCount;
+            Average_GuestCountTotal = Average_45_GuestCount + Average_56_GuestCount + Average_67_GuestCount + Average_78_GuestCount + Average_89_GuestCount;
+
+            LastWeekAverageCheckTotal = Average_SalesTotal / Average_GuestCountTotal;
         }
 
         public void CalculateSection2()
