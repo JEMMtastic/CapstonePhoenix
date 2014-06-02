@@ -310,7 +310,17 @@ namespace Capstone.WebUI.Domain.Entities
 
         public void CalculateSection3()
         {
+            ActualAverageCheck_45 = ActualSales_45/ActualGuestCount_45;
+            ActualAverageCheck_56 = ActualSales_56/ActualGuestCount_56;
+            ActualAverageCheck_67 = ActualSales_67/ActualGuestCount_67;
+            ActualAverageCheck_78 = ActualSales_78/ActualGuestCount_78;
+            ActualAverageCheck_89 = ActualSales_89/ActualGuestCount_89;
 
+            ActualSalesTotal = ActualSales_45 + ActualSales_56 + ActualSales_67 + ActualSales_78 + ActualSales_89;
+            ActualGuestCountTotal = ActualGuestCount_45 + ActualGuestCount_56 + ActualGuestCount_67 + ActualGuestCount_78 + ActualGuestCount_89;
+            ActualAverageCheckTotal = ActualSalesTotal / ActualGuestCountTotal;
+
+            TenPercentDonation = ActualSalesTotal * 0.1;
         }
 
         public void CalculateSection4()
