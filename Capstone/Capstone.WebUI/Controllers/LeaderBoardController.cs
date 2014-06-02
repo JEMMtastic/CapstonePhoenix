@@ -22,6 +22,7 @@ namespace Capstone.WebUI.Controllers
 
         public ActionResult Index()
         {
+            // TODO: Add a condtion so that if there are no complete forms, it just displays a nice message
             GetCompleteLeaders();
             return View();
         }
