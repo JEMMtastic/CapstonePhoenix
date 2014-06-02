@@ -22,15 +22,33 @@ namespace Capstone.WebUI.Controllers
 
         public ActionResult Index()
         {
+            GetCompleteLeaders();
             return View();
         }
 
-        /* public Form GetComplete()
+        public string GetCompleteLeaders()
         {
             var db = new ApplicationDbContext();
+            
+            // Get a list of complete partnership night forms, in order by the actual total sales
             var leaderForms = (from f in db.Forms
-                                where f.complete = true
+                                where f.IsComplete == true
+                                orderby f.ActualSalesTotal
                                 select f).ToList<Form>();
-        }*/
+
+            var forms = new List<Form>();
+
+            // Add the forms to the list
+            foreach (var f in leaderForms)
+            {
+                forms.Add(new Form { 
+                    HostingRestaurant = f.HostingRestaurant, NameOnCheck = f.NameOnCheck, Purpose = f.Purpose, 
+                    DateOfPartnership = f.DateOfPartnership, ActualSalesTotal = f.ActualSalesTotal, 
+                    ActualGuestCountTotal = f.ActualGuestCountTotal, PosiDonations = f.PosiDonations });
+            }
+
+            // Display list
+            return leaderForms.ToString();
+        }
     }
 }
