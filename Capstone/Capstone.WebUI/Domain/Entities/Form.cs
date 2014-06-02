@@ -84,62 +84,62 @@ namespace Capstone.WebUI.Domain.Entities
         public int Week3_89_GuestCount { get; set; }
 
         // Last week average check for hour X
-        public decimal LastWeekAverageCheck_45 { get; set; }
-        public decimal LastWeekAverageCheck_56 { get; set; }
-        public decimal LastWeekAverageCheck_67 { get; set; }
-        public decimal LastWeekAverageCheck_78 { get; set; }
-        public decimal LastWeekAverageCheck_89 { get; set; }
+        public double LastWeekAverageCheck_45 { get; set; }
+        public double LastWeekAverageCheck_56 { get; set; }
+        public double LastWeekAverageCheck_67 { get; set; }
+        public double LastWeekAverageCheck_78 { get; set; }
+        public double LastWeekAverageCheck_89 { get; set; }
 
 
         //Calculated
         //**************************************************************************************
         // Week 1 Hours x-x Adjusted Sales
-        public decimal Week1_45_AdjustedSales { get; set; }
-        public decimal Week1_56_AdjustedSales { get; set; }
-        public decimal Week1_67_AdjustedSales { get; set; }
-        public decimal Week1_78_AdjustedSales { get; set; }
-        public decimal Week1_89_AdjustedSales { get; set; }
+        public double Week1_45_AdjustedSales { get; set; }
+        public double Week1_56_AdjustedSales { get; set; }
+        public double Week1_67_AdjustedSales { get; set; }
+        public double Week1_78_AdjustedSales { get; set; }
+        public double Week1_89_AdjustedSales { get; set; }
 
         // Week 2 Hours x-x Adjusted Sales
-        public decimal Week2_45_AdjustedSales { get; set; }
-        public decimal Week2_56_AdjustedSales { get; set; }
-        public decimal Week2_67_AdjustedSales { get; set; }
-        public decimal Week2_78_AdjustedSales { get; set; }
-        public decimal Week2_89_AdjustedSales { get; set; }
+        public double Week2_45_AdjustedSales { get; set; }
+        public double Week2_56_AdjustedSales { get; set; }
+        public double Week2_67_AdjustedSales { get; set; }
+        public double Week2_78_AdjustedSales { get; set; }
+        public double Week2_89_AdjustedSales { get; set; }
 
         // Week 3 Hours x-x Adjusted Sales 
-        public decimal Week3_45_AdjustedSales { get; set; }
-        public decimal Week3_56_AdjustedSales { get; set; }
-        public decimal Week3_67_AdjustedSales { get; set; }
-        public decimal Week3_78_AdjustedSales { get; set; }
-        public decimal Week3_89_AdjustedSales { get; set; }
+        public double Week3_45_AdjustedSales { get; set; }
+        public double Week3_56_AdjustedSales { get; set; }
+        public double Week3_67_AdjustedSales { get; set; }
+        public double Week3_78_AdjustedSales { get; set; }
+        public double Week3_89_AdjustedSales { get; set; }
 
         // Average Hours x-x Sales
-        public decimal Average_45_Sales { get; set; }
-        public decimal Average_56_Sales { get; set; }
-        public decimal Average_67_Sales { get; set; }
-        public decimal Average_78_Sales { get; set; }
-        public decimal Average_89_Sales { get; set; }
+        public double Average_45_Sales { get; set; }
+        public double Average_56_Sales { get; set; }
+        public double Average_67_Sales { get; set; }
+        public double Average_78_Sales { get; set; }
+        public double Average_89_Sales { get; set; }
        
 
         // Average Hours x-x Guest Count
-        public decimal Average_45_GuestCount { get; set; }
-        public decimal Average_56_GuestCount { get; set; }
-        public decimal Average_67_GuestCount { get; set; }
-        public decimal Average_78_GuestCount { get; set; }
-        public decimal Average_89_GuestCount { get; set; }
+        public double Average_45_GuestCount { get; set; }
+        public double Average_56_GuestCount { get; set; }
+        public double Average_67_GuestCount { get; set; }
+        public double Average_78_GuestCount { get; set; }
+        public double Average_89_GuestCount { get; set; }
 
         //totals
-        public decimal Week1_AdjustedSalesTotal { get; set; }
-        public decimal Week2_AdjustedSalesTotal { get; set; }
-        public decimal Week3_AdjustedSalesTotal { get; set; }
-        public decimal Average_SalesTotal { get; set; }
+        public double Week1_AdjustedSalesTotal { get; set; }
+        public double Week2_AdjustedSalesTotal { get; set; }
+        public double Week3_AdjustedSalesTotal { get; set; }
+        public double Average_SalesTotal { get; set; }
         public int Week1_GuestCountTotal { get; set; }
         public int Week2_GuestCountTotal { get; set; }
         public int Week3_GuestCountTotal { get; set; }
-        public decimal Average_GuestCountTotal { get; set; }
+        public double Average_GuestCountTotal { get; set; }
 
-        public decimal LastWeekAverageCheckTotal { get; set; }
+        public double LastWeekAverageCheckTotal { get; set; }
 
 
         #endregion
@@ -155,17 +155,17 @@ namespace Capstone.WebUI.Domain.Entities
 
         //Calculated
         //**************************************************************************************
-        public int Scenario1_EstimatedGuestCount { get; set; }
-        public int Scenario2_EstimatedGuestCount { get; set; }
+        public double Scenario1_EstimatedGuestCount { get; set; }
+        public double Scenario2_EstimatedGuestCount { get; set; }
 
-        public int Scenario1_ThreeWeekAverageGuestCount { get; set; }
-        public int Scenario2_ThreeWeekAverageGuestCount { get; set; }
+        public double Scenario1_ThreeWeekAverageGuestCount { get; set; }
+        public double Scenario2_ThreeWeekAverageGuestCount { get; set; }
 
-        public int Scenario1_TargetedGuestCount { get; set; }
-        public int Scenario2_TargetedGuestCount { get; set; }
+        public double Scenario1_TargetedGuestCount { get; set; }
+        public double Scenario2_TargetedGuestCount { get; set; }
 
-        public decimal Scenario1_EstimatedDonation { get; set; }
-        public decimal Scenario2_EstimatedDonation { get; set; }
+        public double Scenario1_EstimatedDonation { get; set; }
+        public double Scenario2_EstimatedDonation { get; set; }
 
         #endregion
 
@@ -174,11 +174,11 @@ namespace Capstone.WebUI.Domain.Entities
 
         //Manually entered
         //**************************************************************************************
-        public decimal ActualSales_45 { get; set; }
-        public decimal ActualSales_56 { get; set; }
-        public decimal ActualSales_67 { get; set; }
-        public decimal ActualSales_78 { get; set; }
-        public decimal ActualSales_89 { get; set; }
+        public double ActualSales_45 { get; set; }
+        public double ActualSales_56 { get; set; }
+        public double ActualSales_67 { get; set; }
+        public double ActualSales_78 { get; set; }
+        public double ActualSales_89 { get; set; }
 
         public int ActualGuestCount_45 { get; set; }
         public int ActualGuestCount_56 { get; set; }
@@ -186,24 +186,24 @@ namespace Capstone.WebUI.Domain.Entities
         public int ActualGuestCount_78 { get; set; }
         public int ActualGuestCount_89 { get; set; }
    
-        public decimal PosiDonations { get; set; }
+        public double PosiDonations { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string Notes { get; set; }
 
         //Calculated
         //**************************************************************************************
-        public decimal ActualAverageCheck_45 { get; set; }
-        public decimal ActualAverageCheck_56 { get; set; }
-        public decimal ActualAverageCheck_67 { get; set; }
-        public decimal ActualAverageCheck_78 { get; set; }
-        public decimal ActualAverageCheck_89 { get; set; }
+        public double ActualAverageCheck_45 { get; set; }
+        public double ActualAverageCheck_56 { get; set; }
+        public double ActualAverageCheck_67 { get; set; }
+        public double ActualAverageCheck_78 { get; set; }
+        public double ActualAverageCheck_89 { get; set; }
 
-        public decimal ActualSalesTotal { get; set; }
+        public double ActualSalesTotal { get; set; }
         public int ActualGuestCountTotal { get; set; }
-        public decimal ActualAverageCheckTotal { get; set; }
+        public double ActualAverageCheckTotal { get; set; }
 
-        public decimal TenPercentDonation { get; set; }
+        public double TenPercentDonation { get; set; }
 
 
         #endregion
@@ -213,11 +213,11 @@ namespace Capstone.WebUI.Domain.Entities
 
         //All Calculated
         //**************************************************************************************
-        public decimal SalesContribution_3WeekAverage { get; set; }
-        public decimal SalesContribution_Actual { get; set; }
-        public decimal SalesContribution_Difference { get; set; }
-        public decimal SalesContribution_Donation { get; set; }
-        public decimal SalesContribution_SalesContribution { get; set; }
+        public double SalesContribution_3WeekAverage { get; set; }
+        public double SalesContribution_Actual { get; set; }
+        public double SalesContribution_Difference { get; set; }
+        public double SalesContribution_Donation { get; set; }
+        public double SalesContribution_SalesContribution { get; set; }
 
         public int GuestCountContribution_3WeekAverage { get; set; }
         public int GuestCountContribution_ActualNumber { get; set; }
@@ -234,11 +234,11 @@ namespace Capstone.WebUI.Domain.Entities
 
         //Calculated
         //**************************************************************************************
-        public decimal Donations10PercentOfSalesToGL7700 { get; set; }
+        public double Donations10PercentOfSalesToGL7700 { get; set; }
         public string GLCode7700 { get; set; }
-        public decimal DonationsTakenOnThePosiRegisterCodeToGL2005{ get; set; }
+        public double DonationsTakenOnThePosiRegisterCodeToGL2005{ get; set; }
         public string GLCode2005 { get; set; }
-        public decimal TotalDonation { get; set; }
+        public double TotalDonation { get; set; }
 
         #endregion
 
@@ -295,7 +295,17 @@ namespace Capstone.WebUI.Domain.Entities
 
         public void CalculateSection2()
         {
+            Scenario1_EstimatedGuestCount = Scenario1_GuestCount * 0.25;
+            Scenario2_EstimatedGuestCount = Scenario2_GuestCount * 0.25;
 
+            Scenario1_ThreeWeekAverageGuestCount = Average_GuestCountTotal;
+            Scenario2_ThreeWeekAverageGuestCount = Average_GuestCountTotal;
+
+            Scenario1_TargetedGuestCount = Scenario1_EstimatedGuestCount + Scenario1_ThreeWeekAverageGuestCount;
+            Scenario2_TargetedGuestCount = Scenario2_EstimatedGuestCount + Scenario2_ThreeWeekAverageGuestCount;
+
+            Scenario1_EstimatedDonation = (Scenario1_TargetedGuestCount * LastWeekAverageCheckTotal) * 0.1;
+            Scenario2_EstimatedDonation = (Scenario2_TargetedGuestCount * LastWeekAverageCheckTotal) * 0.1;
         }
 
         public void CalculateSection3()
