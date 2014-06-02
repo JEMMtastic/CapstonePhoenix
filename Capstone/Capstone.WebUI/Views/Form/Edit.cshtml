@@ -1,15 +1,40 @@
 ﻿@model Capstone.WebUI.Domain.Entities.Form
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Calculator Form";
 }
 
 
-<h1>Edit Form, @Model.DateOfPartnership</h1>
+<div>Edit Form, @Model.DateOfPartnership</div>
 
 @using (Html.BeginForm("Edit", "Form")) {
 
-    @Html.EditorForModel()
+    @*we just want the manually entered fields*@
+    @*@Html.EditorForModel()*@
+
+
+<div class="form-group">
+	@Html.LabelFor(x => x.NameOnCheck)
+	<div class="col-md-10">
+		@Html.EditorFor(x => x.NameOnCheck)
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <input type="submit" value="Save" />
 
     @Html.ActionLink("Cancel and return to List", "Index")

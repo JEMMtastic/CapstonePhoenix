@@ -31,7 +31,6 @@ namespace Capstone.WebUI.Controllers
 
         public ActionResult Edit(int formId)
         {
-            // Get the correct charity
             Form f = formRepo.GetForms().FirstOrDefault(s => s.FormId == formId);
 
             return View(f);
@@ -42,9 +41,8 @@ namespace Capstone.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Save the changes to the partnership night 
+                // Save the changes to the Form 
                 formRepo.UpdateForm(f);
-                // TODO: Fix this. Partnership Night was removed from Form class
                 TempData["message"] = string.Format("Form for Partnership Night {0} has been saved", f.DateOfPartnership);
                 return RedirectToAction("Index");
             }
