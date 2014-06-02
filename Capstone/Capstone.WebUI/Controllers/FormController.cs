@@ -21,7 +21,6 @@ namespace Capstone.WebUI.Controllers
         public ActionResult Index()
         {
             List<Form> forms = formRepo.GetForms().ToList<Form>();
-
             return View(forms);
         }
 
