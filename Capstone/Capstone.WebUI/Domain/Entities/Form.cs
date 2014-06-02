@@ -244,7 +244,7 @@ namespace Capstone.WebUI.Domain.Entities
 
 
         //not part of the official form
-        //public bool IsComplete { get; set; }
+        public bool IsComplete { get; set; }
 
         //Calc methods
 
