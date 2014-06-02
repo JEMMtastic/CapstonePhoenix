@@ -13,6 +13,9 @@ namespace Capstone.WebUI.Domain.Entities
         [HiddenInput(DisplayValue = false)]
         public int FormId { get; set; }
 
+
+        //Properties
+
         #region Section 0 - Organization Information
 
         //All manually entered
@@ -29,7 +32,7 @@ namespace Capstone.WebUI.Domain.Entities
 
         public bool NewPartner { get; set; }
 
-        public string HostingRestaurant { get; set; }// "Hosting restaurant" - PartnershipNight.BvLocation.BvStoreNum
+        public int HostingRestaurant { get; set; }// "Hosting restaurant" - PartnershipNight.BvLocation.BvStoreNum
 
         public string WeekDayOfPartnership { get; set; }// "Week day of Partnership" - PartnershipNight.Date
 
@@ -219,9 +222,9 @@ namespace Capstone.WebUI.Domain.Entities
         public double SalesContribution_Donation { get; set; }
         public double SalesContribution_SalesContribution { get; set; }
 
-        public int GuestCountContribution_3WeekAverage { get; set; }
-        public int GuestCountContribution_ActualNumber { get; set; }
-        public int GuestCountContribution_GCCountribution { get; set; }
+        public double GuestCountContribution_3WeekAverage { get; set; }
+        public double GuestCountContribution_ActualNumber { get; set; }
+        public double GuestCountContribution_GCCountribution { get; set; }
 
         #endregion
 
@@ -235,18 +238,18 @@ namespace Capstone.WebUI.Domain.Entities
         //Calculated
         //**************************************************************************************
         public double Donations10PercentOfSalesToGL7700 { get; set; }
-        public string GLCode7700 { get; set; }
+        public int GLCode7700 { get; set; }
         public double DonationsTakenOnThePosiRegisterCodeToGL2005{ get; set; }
-        public string GLCode2005 { get; set; }
+        public int GLCode2005 { get; set; }
         public double TotalDonation { get; set; }
 
         #endregion
 
 
-        //not part of the official form
-        public bool IsComplete { get; set; }
 
         //Calc methods
+
+        #region Calculate Section 1
 
         public void CalculateSection1() 
         { 
@@ -293,6 +296,12 @@ namespace Capstone.WebUI.Domain.Entities
             LastWeekAverageCheckTotal = Average_SalesTotal / Average_GuestCountTotal;
         }
 
+
+        #endregion
+
+
+        #region Calculate Section 2
+
         public void CalculateSection2()
         {
             Scenario1_EstimatedGuestCount = Scenario1_GuestCount * 0.25;
@@ -307,6 +316,11 @@ namespace Capstone.WebUI.Domain.Entities
             Scenario1_EstimatedDonation = (Scenario1_TargetedGuestCount * LastWeekAverageCheckTotal) * 0.1;
             Scenario2_EstimatedDonation = (Scenario2_TargetedGuestCount * LastWeekAverageCheckTotal) * 0.1;
         }
+
+        #endregion
+
+
+        #region Calculate Section 3
 
         public void CalculateSection3()
         {
@@ -323,15 +337,44 @@ namespace Capstone.WebUI.Domain.Entities
             TenPercentDonation = ActualSalesTotal * 0.1;
         }
 
+        #endregion
+
+
+        #region Calculate Section 4
+
         public void CalculateSection4()
         {
+            SalesContribution_3WeekAverage = Average_SalesTotal;
+            SalesContribution_Actual = ActualSalesTotal;
+            SalesContribution_Difference = SalesContribution_Actual - SalesContribution_3WeekAverage;
+            SalesContribution_Donation = TotalDonation;
+            SalesContribution_SalesContribution = SalesContribution_Difference + SalesContribution_Donation;
 
+            GuestCountContribution_3WeekAverage = Average_GuestCountTotal;
+            GuestCountContribution_ActualNumber = ActualGuestCountTotal;
+            GuestCountContribution_GCCountribution = GuestCountContribution_ActualNumber - GuestCountContribution_3WeekAverage;
         }
+
+        #endregion
+
+
+        #region Calculate Section 5
 
         public void CalculateSection5()
         {
-
+            Donations10PercentOfSalesToGL7700 = TenPercentDonation;
+            GLCode7700 = 7700 - HostingRestaurant;
+            DonationsTakenOnThePosiRegisterCodeToGL2005 = PosiDonations;
+            GLCode2005 = 2005 - HostingRestaurant;
+            TotalDonation = (ActualSalesTotal * 1.10) + PosiDonations;
         }
-        
+
+        #endregion
+
+
+
+        //not part of the official form
+        public bool IsComplete { get; set; }
+
     }
 }
