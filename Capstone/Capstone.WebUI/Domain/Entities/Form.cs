@@ -152,8 +152,8 @@ namespace Capstone.WebUI.Domain.Entities
 
         //Manually entered
         //**************************************************************************************
-        public int Scenario1_GuestCount { get; set; }
-        public int Scenario2_GuestCount { get; set; } 
+        public int Scenario1_GuestCountInvited { get; set; }
+        public int Scenario2_GuestCountInvited { get; set; } 
 
 
         //Calculated
@@ -304,8 +304,8 @@ namespace Capstone.WebUI.Domain.Entities
 
         public void CalculateSection2()
         {
-            Scenario1_EstimatedGuestCount = Scenario1_GuestCount * 0.25;
-            Scenario2_EstimatedGuestCount = Scenario2_GuestCount * 0.25;
+            Scenario1_EstimatedGuestCount = Scenario1_GuestCountInvited * 0.25;
+            Scenario2_EstimatedGuestCount = Scenario2_GuestCountInvited * 0.25;
 
             Scenario1_ThreeWeekAverageGuestCount = Average_GuestCountTotal;
             Scenario2_ThreeWeekAverageGuestCount = Average_GuestCountTotal;
