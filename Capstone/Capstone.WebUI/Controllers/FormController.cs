@@ -26,7 +26,7 @@ namespace Capstone.WebUI.Controllers
 
         public ActionResult Create()
         {
-            Form newform = new Form()
+            Form newForm = new Form()
                 {
                 DateOfPartnership = DateTime.Now,  
                 Week1Date = DateTime.Now,
@@ -35,9 +35,9 @@ namespace Capstone.WebUI.Controllers
                 };
 
             //from example word document, fill with temp data
-            newform = FillFormWithTempData(newform);
+            newForm = FillFormWithTempData(newForm);
 
-            return View("Edit", newform);
+            return View("Edit", newForm);
         }
 
         public ActionResult Edit(int formId)
