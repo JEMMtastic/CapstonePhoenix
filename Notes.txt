@@ -1,0 +1,3 @@
+I got the magic string, I know if I can replace once, I can replace twice
+
+<div class = "lady">\r\l\t@Html.LabelFor\(x => x.$&\)\r\l\t<div class="tramp">\r\l\t\t@Html.EditorFor\(x => x.$&\)\r\l\t</div>\r\l</div>\r\l\r\l
