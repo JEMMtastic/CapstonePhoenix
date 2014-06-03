@@ -283,10 +283,46 @@ namespace Capstone.WebUI.Domain.Entities
             Average_78_GuestCount = (Week1_78_GuestCount + Week2_78_GuestCount + Week3_78_GuestCount)/3;
             Average_89_GuestCount = (Week1_89_GuestCount + Week2_89_GuestCount + Week3_89_GuestCount)/3;
 
+            Week1_45_AdjustedSales = Math.Round(Week1_45_AdjustedSales, 2);
+            Week1_56_AdjustedSales = Math.Round(Week1_56_AdjustedSales, 2);
+            Week1_67_AdjustedSales = Math.Round(Week1_67_AdjustedSales, 2);
+            Week1_78_AdjustedSales = Math.Round(Week1_78_AdjustedSales, 2);
+            Week1_89_AdjustedSales = Math.Round(Week1_89_AdjustedSales, 2);
+
+            Week2_45_AdjustedSales = Math.Round(Week2_45_AdjustedSales, 2);
+            Week2_56_AdjustedSales = Math.Round(Week2_56_AdjustedSales, 2);
+            Week2_67_AdjustedSales = Math.Round(Week2_67_AdjustedSales, 2);
+            Week2_78_AdjustedSales = Math.Round(Week2_78_AdjustedSales, 2);
+            Week2_89_AdjustedSales = Math.Round(Week2_89_AdjustedSales, 2);
+
+            Week3_45_AdjustedSales = Math.Round(Week3_45_AdjustedSales, 2);
+            Week3_56_AdjustedSales = Math.Round(Week3_56_AdjustedSales, 2);
+            Week3_67_AdjustedSales = Math.Round(Week3_67_AdjustedSales, 2);
+            Week3_78_AdjustedSales = Math.Round(Week3_78_AdjustedSales, 2);
+            Week3_89_AdjustedSales = Math.Round(Week3_89_AdjustedSales, 2);
+
+            Average_45_Sales = Math.Round(Average_45_Sales, 2);
+            Average_56_Sales = Math.Round(Average_56_Sales, 2);
+            Average_67_Sales = Math.Round(Average_67_Sales, 2);
+            Average_78_Sales = Math.Round(Average_78_Sales, 2);
+            Average_89_Sales = Math.Round(Average_89_Sales, 2);
+
+            Average_45_GuestCount = Math.Round(Average_45_GuestCount, 2);
+            Average_56_GuestCount = Math.Round(Average_56_GuestCount, 2);
+            Average_67_GuestCount = Math.Round(Average_67_GuestCount, 2);
+            Average_78_GuestCount = Math.Round(Average_78_GuestCount, 2);
+            Average_89_GuestCount = Math.Round(Average_89_GuestCount, 2);
+
+
             Week1_AdjustedSalesTotal = Week1_45_AdjustedSales + Week1_56_AdjustedSales + Week1_67_AdjustedSales + Week1_78_AdjustedSales + Week1_89_AdjustedSales;
             Week2_AdjustedSalesTotal = Week2_45_AdjustedSales + Week2_56_AdjustedSales + Week2_67_AdjustedSales + Week2_78_AdjustedSales + Week2_89_AdjustedSales; 
             Week3_AdjustedSalesTotal = Week3_45_AdjustedSales + Week3_56_AdjustedSales + Week3_67_AdjustedSales + Week3_78_AdjustedSales + Week3_89_AdjustedSales; 
             Average_SalesTotal = Average_45_Sales + Average_56_Sales + Average_67_Sales + Average_78_Sales + Average_89_Sales;
+
+            Week1_AdjustedSalesTotal = Math.Round(Week1_AdjustedSalesTotal, 2);
+            Week2_AdjustedSalesTotal = Math.Round(Week2_AdjustedSalesTotal, 2);
+            Week3_AdjustedSalesTotal = Math.Round(Week3_AdjustedSalesTotal, 2);
+            Average_SalesTotal = Math.Round(Average_SalesTotal, 2);
 
             Week1_GuestCountTotal = Week1_45_GuestCount + Week1_56_GuestCount + Week1_67_GuestCount + Week1_78_GuestCount + Week1_89_GuestCount;
             Week2_GuestCountTotal = Week2_45_GuestCount + Week2_56_GuestCount + Week2_67_GuestCount + Week2_78_GuestCount + Week2_89_GuestCount;
@@ -295,6 +331,7 @@ namespace Capstone.WebUI.Domain.Entities
 
             if (!Double.IsNaN(Average_SalesTotal / Average_GuestCountTotal))
                 LastWeekAverageCheckTotal = Average_SalesTotal / Average_GuestCountTotal;
+            LastWeekAverageCheckTotal = Math.Round(LastWeekAverageCheckTotal, 2);
         }
 
 
@@ -308,6 +345,9 @@ namespace Capstone.WebUI.Domain.Entities
             Scenario1_EstimatedGuestCount = Scenario1_GuestCountInvited * 0.25;
             Scenario2_EstimatedGuestCount = Scenario2_GuestCountInvited * 0.25;
 
+            Scenario1_EstimatedGuestCount = Math.Round(Scenario1_EstimatedGuestCount, 0);
+            Scenario2_EstimatedGuestCount = Math.Round(Scenario2_EstimatedGuestCount, 0);
+
             Scenario1_ThreeWeekAverageGuestCount = Average_GuestCountTotal;
             Scenario2_ThreeWeekAverageGuestCount = Average_GuestCountTotal;
 
@@ -316,6 +356,9 @@ namespace Capstone.WebUI.Domain.Entities
 
             Scenario1_EstimatedDonation = (Scenario1_TargetedGuestCount * LastWeekAverageCheckTotal) * 0.1;
             Scenario2_EstimatedDonation = (Scenario2_TargetedGuestCount * LastWeekAverageCheckTotal) * 0.1;
+
+            Scenario1_EstimatedDonation = Math.Round(Scenario1_EstimatedDonation, 2);
+            Scenario2_EstimatedDonation = Math.Round(Scenario2_EstimatedDonation, 2);
         }
 
         #endregion
@@ -327,22 +370,33 @@ namespace Capstone.WebUI.Domain.Entities
         {
             if (!Double.IsNaN(ActualSales_45 / ActualGuestCount_45) ) 
                 ActualAverageCheck_45 = ActualSales_45 / ActualGuestCount_45;
+            ActualAverageCheck_45 = Math.Round(ActualAverageCheck_45, 2);
+
             if (!Double.IsNaN(ActualSales_56 / ActualGuestCount_56))
                 ActualAverageCheck_56 = ActualSales_56/ActualGuestCount_56;
+            ActualAverageCheck_56 = Math.Round(ActualAverageCheck_56, 2);
+
             if (!Double.IsNaN(ActualSales_67 / ActualGuestCount_67))
                 ActualAverageCheck_67 = ActualSales_67/ActualGuestCount_67;
+            ActualAverageCheck_67 = Math.Round(ActualAverageCheck_67, 2);
+
             if (!Double.IsNaN(ActualSales_78 / ActualGuestCount_78))
                 ActualAverageCheck_78 = ActualSales_78/ActualGuestCount_78;
+            ActualAverageCheck_78 = Math.Round(ActualAverageCheck_78, 2);
+
             if (!Double.IsNaN(ActualSales_89 / ActualGuestCount_89))
                 ActualAverageCheck_89 = ActualSales_89/ActualGuestCount_89;
+            ActualAverageCheck_89 = Math.Round(ActualAverageCheck_89, 2);
 
             ActualSalesTotal = ActualSales_45 + ActualSales_56 + ActualSales_67 + ActualSales_78 + ActualSales_89;
             ActualGuestCountTotal = ActualGuestCount_45 + ActualGuestCount_56 + ActualGuestCount_67 + ActualGuestCount_78 + ActualGuestCount_89;
 
             if (!Double.IsNaN(ActualSalesTotal / ActualGuestCountTotal))
                 ActualAverageCheckTotal = ActualSalesTotal / ActualGuestCountTotal;
+            ActualAverageCheckTotal = Math.Round(ActualAverageCheckTotal, 2);
 
             TenPercentDonation = ActualSalesTotal * 0.1;
+            TenPercentDonation = Math.Round(TenPercentDonation, 2);
         }
 
         #endregion
@@ -375,6 +429,7 @@ namespace Capstone.WebUI.Domain.Entities
             DonationsTakenOnThePosiRegisterCodeToGL2005 = PosiDonations;
             GLCode2005 = 2005 - HostingRestaurant;
             TotalDonation = (ActualSalesTotal * 1.10) + PosiDonations;
+            TotalDonation = Math.Round(TotalDonation, 2);
         }
 
         #endregion
