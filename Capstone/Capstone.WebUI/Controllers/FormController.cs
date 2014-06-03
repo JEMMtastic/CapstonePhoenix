@@ -48,6 +48,11 @@ namespace Capstone.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 // Save the changes to the Form 
+                f.CalculateSection1();
+                f.CalculateSection2();
+                f.CalculateSection3();
+                f.CalculateSection4();
+                f.CalculateSection5();
                 formRepo.UpdateForm(f);
                 TempData["message"] = string.Format("Form for Partnership Night {0} has been saved", f.DateOfPartnership);
                 return RedirectToAction("Index");
