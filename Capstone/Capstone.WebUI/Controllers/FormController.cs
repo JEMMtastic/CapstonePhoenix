@@ -26,7 +26,13 @@ namespace Capstone.WebUI.Controllers
 
         public ActionResult Create()
         {
-            return View("Edit", new Form());
+            return View("Edit", new Form()
+                {
+                DateOfPartnership = DateTime.Now,  
+                Week1Date = DateTime.Now,
+                Week2Date = DateTime.Now,
+                Week3Date = DateTime.Now
+                });
         }
 
         public ActionResult Edit(int formId)
