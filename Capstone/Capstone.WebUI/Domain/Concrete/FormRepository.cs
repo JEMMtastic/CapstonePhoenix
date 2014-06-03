@@ -50,19 +50,6 @@ namespace Capstone.WebUI.Domain.Concrete
                if (dbEntry != null)
                {
                    dbEntry = form;
-
-                   //dbEntry.ActualSalesFour = form.ActualSalesFour;
-                   //dbEntry.ActualSalesFive = form.ActualSalesFive;
-                   //dbEntry.ActualSalesSix = form.ActualSalesSix;
-                   //dbEntry.ActualSalesSeven = form.ActualSalesSeven;
-                   //dbEntry.ActualSalesEight = form.ActualSalesEight;
-                   //dbEntry.ActualGcFour = form.ActualGcFour;
-                   //dbEntry.ActualGcFive = form.ActualGcFive;
-                   //dbEntry.ActualGcSix = form.ActualGcSix;
-                   //dbEntry.ActualGcSeven = form.ActualGcSeven;
-                   //dbEntry.ActualGcEight = form.ActualGcEight;
-                   //dbEntry.PosiDonations = form.PosiDonations;
-                   //dbEntry.Notes = form.Notes;
                }               
            }
 
