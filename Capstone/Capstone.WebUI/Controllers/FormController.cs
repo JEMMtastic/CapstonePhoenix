@@ -145,8 +145,6 @@ namespace Capstone.WebUI.Controllers
 
             form.MailPartnershipCheckToBV = true;
 
-
-
             return form;
         }
 
