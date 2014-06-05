@@ -39,7 +39,7 @@
 
             eventDrop: function (event, dayDelta, minuteDelta, allDay, revertFunc) {
                 if (confirm("Confirm move?")) {
-                    UpdateEvent(event.id, event.start);
+                    UpdateEvent(event.id, event.start, event.end);
                 }
                 else {
                     revertFunc();
