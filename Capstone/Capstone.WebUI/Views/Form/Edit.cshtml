@@ -66,6 +66,6 @@
 <div class = "lady">	@Html.LabelFor(x => x.MailPartnershipCheckToBV)	<div class="tramp">		@Html.EditorFor(x => x.MailPartnershipCheckToBV)	</div></div>
 
     <input type="submit" value="Save" />
-    <input type="button" value="Print" onclick="location.href='@Url.Action("Print")'" />
+    <input type="button" value="Print" onclick="location.href='@Url.Action("Print", "Form", new {formId = Model.FormId })'" />
            @Html.ActionLink("Cancel and return to List", "Index")
            }
