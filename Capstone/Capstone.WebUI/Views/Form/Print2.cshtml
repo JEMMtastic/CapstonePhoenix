@@ -2,8 +2,10 @@
 @using Capstone.WebUI.Domain.Entities;
 
 @{
-    ViewBag.Title = "Calculator";
+    ViewBag.Title = "Print";
 }
+
+<h2>Print</h2>
 <link href="~/Content/calculator.css" rel="stylesheet" />
 
 <h2>Partnership Calculator & Check Request</h2>
@@ -17,7 +19,7 @@
         <tr>
             <td>Name to appear on the check:</td>
             <td>
-                @Html.TextBox("name")  <!--TextBoxFor(PartnershipNight.Charity.Name) -->
+                @Html.DisplayFor(model => model.NameOnCheck)  <!--TextBoxFor(PartnershipNight.Charity.Name) -->
                 <img src="~/Images/alert_button.png" width="20" height="20" class="alert" />
                 <div>
                     <b>Do NOT abbreviate Partnership Name</b><br />
@@ -26,46 +28,51 @@
             </td>
             <td>Is this a New Partner?</td>
             <td>
-                Yes:  @Html.CheckBox("yes")
+                @Html.DisplayFor(model => model.NewPartner)
+            </td>
+                <!--
+                Yes:  Html.CheckBox("yes")
                 <img src="~/Images/alert_button.png" width="20" height="20" class="alert" />
                 <div>
                     <b>If new partnership</b><br />
                     Remember to submit a W-9 form and add a vendor form!
                 </div>
             </td>
-            <td>No:  @Html.CheckBox("no")</td>
+            <td>No:  Html.CheckBox("no")</td>
+            -->
+            <td></td>
         </tr>
         <tr>
             <td>Purpose of the Partnership:</td>
-            <td>@Html.TextBox("purpose")</td>
+            <td>@Html.DisplayFor(model => model.Purpose)</td>
             <td colspan="3" rowspan="3"></td>
         </tr>
         <tr>
             <td>Contact Name:</td>
-            <td>@Html.TextBox("contactName")</td>
+            <td>@Html.DisplayFor(model => model.ContactName)</td>
 
         </tr>
         <tr>
             <td>Organization Mailing Address:</td>
-            <td>@Html.TextBox("address1")</td>
+            <td>@Html.DisplayFor(model => model.OrganizationMailingAddress)</td>
         </tr>
         <tr>
             <td>City, State:</td>
-            <td>@Html.TextBox("city")</td>
+            <td>@Html.DisplayFor(model => model.OrganizationMailingCity), @Html.DisplayFor(model => model.OrganizationMailingState)</td>
             <td>Restaurant Hosting Partnership:</td>
-            <td>@Html.TextBox("restaurant")</td>
+            <td>@Html.DisplayFor(model => model.HostingRestaurant)</td>
         </tr>
         <tr>
             <td>Zip:</td>
-            <td>@Html.TextBox("zip")</td>
+            <td>@Html.DisplayFor(model => model.OrganizationMailingZip)</td>
         </tr>
         <tr>
             <td>Organization Phone Number:</td>
-            <td>@Html.TextBox("phone")</td>
+            <td>@Html.DisplayFor(model => model.OrganizationPhone)</td>
         </tr>
         <tr>
             <td>Federal Tax ID Number:</td>
-            <td>@Html.TextBox("taxId")</td>
+            <td>@Html.DisplayFor(model => model.FederalTaxID)</td>
         </tr>
     </table>
     <br />
@@ -73,9 +80,9 @@
     <table>
         <tr>
             <td>Day of week of Partnership:</td>
-            <td>@Html.TextBox("pnDay")</td>
+            <td>@Html.DisplayFor(model => model.WeekDayOfPartnership)</td>
             <td>Date of Partnership:</td>
-            <td>@Html.TextBox("pnDate")</td>
+            <td>@Html.DisplayFor(model => model.DateOfPartnership)</td>
         </tr>
     </table>
     <br />
@@ -86,11 +93,11 @@
             <th>
             </th>
             <th>Prior Year</th>
-            <td>@Html.TextBoxFor(model => model.Wk1Year)</td>
+            <td>@Html.DisplayFor(model => model.Week1Date)</td>
             <th>Prior Year</th>
-            <td>@Html.TextBoxFor(model => model.Wk2Year)</td>
+            <td>@Html.DisplayFor(model => model.Week2Date)</td>
             <th>Prior Year</th>
-            <td>@Html.TextBoxFor(model => model.Wk3Year)</td>
+            <td>@Html.DisplayFor(model => model.Week3Date)</td>
             <th colspan="2">Average</th>
             <th>Last week This Year</th>
         </tr>
@@ -122,75 +129,75 @@
         </tr>
         <tr>
             <td>4-5</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.Wk1FourGc)</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.Wk2FourGc)</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.Wk3FourGc)</td>
-            <td>calc</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.LWkAvgChkFour)</td>
+            <td>@Html.DisplayFor(model => model.Week1_45_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week1_45_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week2_45_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week2_45_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week3_45_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week3_45_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Average_45_Sales)</td>
+            <td>@Html.DisplayFor(model => model.Average_45_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.LastWeekAverageCheck_45)</td>
         </tr>
         <tr>
             <td>5-6</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.Wk1FiveGc)</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.Wk2FiveGc)</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.Wk3FiveGc)</td>
-            <td>calc</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.LWkAvgChkFive)</td>
+            <td>@Html.DisplayFor(model => model.Week1_56_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week1_56_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week2_56_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week2_56_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week3_56_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week3_56_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Average_56_Sales)</td>
+            <td>@Html.DisplayFor(model => model.Average_56_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.LastWeekAverageCheck_56)</td>
         </tr>
         <tr>
             <td>6-7</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.Wk1SixGc)</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.Wk2SixGc)</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.Wk3SixGc)</td>
-            <td>calc</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.LWkAvgChkSix)</td>
+            <td>@Html.DisplayFor(model => model.Week1_67_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week1_67_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week2_67_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week2_67_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week3_67_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week3_67_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Average_67_Sales)</td>
+            <td>@Html.DisplayFor(model => model.Average_67_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.LastWeekAverageCheck_67)</td>
         </tr>
         <tr>
             <td>7-8</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.Wk1SevenGc)</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.WkSevenGc)</td> <!-- This needs to be changed to Wk2SevenGc when the form is fixed. -->
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.Wk3SevenGc)</td>
-            <td>calc</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.LWkAvgChkSeven)</td>
+            <td>@Html.DisplayFor(model => model.Week1_78_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week1_78_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week2_78_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week2_78_GuestCount)</td> <!-- This needs to be changed to Wk2SevenGc when the form is fixed. -->
+            <td>@Html.DisplayFor(model => model.Week3_78_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week3_78_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Average_78_Sales)</td>
+            <td>@Html.DisplayFor(model => model.Average_78_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.LastWeekAverageCheck_78)</td>
         </tr>
         <tr>
             <td>8-9</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.Wk1EightGc)</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.Wk2EightGc)</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.Wk3EightGc)</td>
-            <td>calc</td>
-            <td>calc</td>
-            <td>@Html.TextBoxFor(model => model.LWkAvgChkEight)</td>
+            <td>@Html.DisplayFor(model => model.Week1_89_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week1_89_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week2_89_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week2_89_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week3_89_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week3_89_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Average_89_Sales)</td>
+            <td>@Html.DisplayFor(model => model.Average_89_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.LastWeekAverageCheck_89)</td>
         </tr>
         <tr>
             <td>Total</td>
-            <td>calc</td>
-            <td>calc</td>
-            <td>calc</td>
-            <td>calc</td>
-            <td>calc</td>
-            <td>calc</td>
-            <td>calc</td>
-            <td>calc</td>
-            <td>calc</td>
+            <td>@Html.DisplayFor(model => model.Week1_AdjustedSalesTotal)</td>
+            <td>@Html.DisplayFor(model => model.Week1_GuestCountTotal)</td>
+            <td>@Html.DisplayFor(model => model.Week2_AdjustedSalesTotal)</td>
+            <td>@Html.DisplayFor(model => model.Week2_GuestCountTotal)</td>
+            <td>@Html.DisplayFor(model => model.Week3_AdjustedSalesTotal)</td>
+            <td>@Html.DisplayFor(model => model.Week3_GuestCountTotal)</td>
+            <td>@Html.DisplayFor(model => model.Average_SalesTotal)</td>
+            <td>@Html.DisplayFor(model => model.Average_GuestCountTotal)</td>
+            <td>@Html.DisplayFor(model => model.LastWeekAverageCheckTotal)</td>
         </tr>
     </table>
     <br />
@@ -203,33 +210,33 @@
         </tr>
         <tr>
             <td>Organization intends to invite</td>
-            <td>@Html.TextBoxFor(model => model.Scenario1Gc)</td>
+            <td>@Html.DisplayFor(model => model.Scenario1_GuestCountInvited)</td>
             <td>Organization intends to invite</td>
-            <td>@Html.TextBoxFor(model => model.Scenario1Gc)</td>
+            <td>@Html.DisplayFor(model => model.Scenario2_GuestCountInvited)</td>
         </tr>
         <tr>
             <td>Estimated Partnership Guests</td>
-            <td>calc</td>
+            <td>@Html.DisplayFor(model => model.Scenario1_EstimatedGuestCount)</td>
             <td>Estimated Partnership Guests</td>
-            <td>calc</td>
+            <td>@Html.DisplayFor(model => model.Scenario2_EstimatedGuestCount)</td>
         </tr>
         <tr>
             <td>3 Week Average Guest Count</td>
-            <td>calc</td>
+            <td>@Html.DisplayFor(model => model.Scenario1_ThreeWeekAverageGuestCount)</td>
             <td>3 Week Average Guest Count</td>
-            <td>calc</td>
+            <td>@Html.DisplayFor(model => model.Scenario2_ThreeWeekAverageGuestCount)</td>
         </tr>
         <tr>
             <td>Targeted Guest Count</td>
-            <td>calc</td>
+            <td>@Html.DisplayFor(model => model.Scenario1_TargetedGuestCount)</td>
             <td>Targeted Guest Count</td>
-            <td>calc</td>
+            <td>@Html.DisplayFor(model => model.Scenario2_TargetedGuestCount)</td>
         </tr>
         <tr>
             <td>Estimated Donation</td>
-            <td>calc</td>
+            <td>@Html.DisplayFor(model => model.Scenario1_EstimatedDonation)</td>
             <td>Estimated Donation</td>
-            <td>calc</td>
+            <td>@Html.DisplayFor(model => model.Scenario2_EstimatedDonation)</td>
         </tr>
     </table>
     <br />
@@ -238,7 +245,7 @@
     <table>
         <tr class="tableHeadings">
             <th></th>
-            <th colspan="3"><center>Partnership Date @Html.TextBox("date")</center></th>
+            <th colspan="3"><center>Partnership Date @Html.DisplayFor(model => model.DateOfPartnership)</center></th>
             <th></th>
         </tr>
         <tr>
@@ -261,37 +268,36 @@
             </td>
             <td>Avg. Chk</td>
             <td>Notes from Partnership</td>
-
         </tr>
         <tr>
             <td>4-5</td>
-            <td>@Html.TextBoxFor(model => model.ActualSalesFour)</td>
-            <td>@Html.TextBoxFor(model => model.ActualGcFour)</td>
+            <td>@Html.DisplayFor(model => model.ActualSales_45)</td>
+            <td>@Html.DisplayFor(model => model.ActualGuestCount_45)</td>
             <td>calc</td>
-            <td rowspan="8">@Html.TextAreaFor(model => model.Notes)</td>
+            <td rowspan="8">@Html.DisplayFor(model => model.Notes)</td>
         </tr>
         <tr>
             <td>5-6</td>
-            <td>@Html.TextBoxFor(model => model.ActualSalesFive)</td>
-            <td>@Html.TextBoxFor(model => model.ActualGcFive)</td>
+            <td>@Html.DisplayFor(model => model.ActualSales_56)</td>
+            <td>@Html.DisplayFor(model => model.ActualGuestCount_56)</td>
             <td>calc</td>
         </tr>
         <tr>
             <td>6-7</td>
-            <td>@Html.TextBoxFor(model => model.ActualSalesSix)</td>
-            <td>@Html.TextBoxFor(model => model.ActualGcSix)</td>
+            <td>@Html.DisplayFor(model => model.ActualSales_67)</td>
+            <td>@Html.DisplayFor(model => model.ActualGuestCount_67)</td>
             <td>calc</td>
         </tr>
         <tr>
             <td>7-8</td>
-            <td>@Html.TextBoxFor(model => model.ActualSalesSeven)</td>
-            <td>@Html.TextBoxFor(model => model.ActualGcSeven)</td>
+            <td>@Html.DisplayFor(model => model.ActualSales_78)</td>
+            <td>@Html.DisplayFor(model => model.ActualGuestCount_67)</td>
             <td>calc</td>
         </tr>
         <tr>
             <td>8-9</td>
-            <td>@Html.TextBoxFor(model => model.ActualSalesEight)</td>
-            <td>@Html.TextBoxFor(model => model.ActualGcEight)</td>
+            <td>@Html.DisplayFor(model => model.ActualSales_89)</td>
+            <td>@Html.DisplayFor(model => model.ActualGuestCount_89)</td>
             <td>calc</td>
         </tr>
         <tr>
@@ -402,9 +408,9 @@
             <td></td>
         </tr>
     </table>
-
-    <p>
-        <input type="submit" value="Save" /> &nbsp; &nbsp; &nbsp; <!-- Don't do it! It doesn't work! -->
-    </p>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FormId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
 }
 

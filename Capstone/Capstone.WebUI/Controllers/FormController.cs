@@ -83,9 +83,14 @@ namespace Capstone.WebUI.Controllers
 
         public ActionResult Print(Form form)
         {
+            form = formRepo.GetFormById(form.FormId);
             return View(form);
         }
 
+        public ActionResult Print2(Form form)
+        {
+            return View(form);
+        }
 
         protected Form FillFormWithTempData(Form form)
         {
