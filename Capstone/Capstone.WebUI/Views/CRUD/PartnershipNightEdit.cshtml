@@ -14,8 +14,6 @@
 
 <!-- Commenting out but add these back in when I have time to match the list item names to the id: Charity: Model.Charity.Name <br /> Store#: Model.BVLocation.BvStoreNum -->
 
-
-
 @using (Html.BeginForm("PartnershipNightEdit", "CRUD"))
 {
     <div class="form-group">
@@ -24,73 +22,84 @@
             @Html.EditorFor(x => x.CheckRequestFinished)  Calculator Form Complete
         </div>
     </div>
-
+    <br /><br />
     <div class="form-group">
         <div class="col-md-10">
             @Html.EditorFor(x => x.BeforeTheEventFinished)  Before the Event PaperWork Complete
         </div>
     </div>
-
+    <br />
     <div class="form-group">
        
         <div class="col-md-10">
             @Html.EditorFor(x => x.AfterTheEventFinished)  After the Event PaperWork Complete
         </div>
     </div>
-
-    <div class="form-group">
-        Start Date Time:
+    <br />
+    <div class="form-group">  
         <div class="col-md-10">
+            Start Date Time:
             @Html.EditorFor(x => x.StartDate)
         </div>
     </div>
-
+    <br />
     <div class="form-group">
-       End Date Time:
         <div class="col-md-10">
+            End Date Time:
             @Html.EditorFor(x => x.EndDate)
         </div>
     </div>
-
+    <br />
     <div class="form-group">
-        Check Request Number:
         <div class="col-md-10">
+            Check Request Number:
             @Html.EditorFor(x => x.CheckRequestId)
         </div>
     </div>
-
+    <br />
     <div class="form-group">
-        @Html.Label("Comments")
         <div class="col-md-10">
+            @Html.Label("Comments")
             @Html.EditorFor(x => x.Comments)
         </div>
-        <br />
+        <br /><br />
     </div>
-           
-                if (Model.BvLocations != null)
-                {
-                    @:BV Store Number:
-                    @Html.DropDownListFor(m => m.BvLocationId, new SelectList(Model.BvLocations, "BvLocationId", "BvStoreNum"));
-                    @Html.HiddenFor(x => x.BvLocationId);
-                }
-                else
-                {
-                    @Html.Label("None")
-                }
-            
-                <br /><br />
-            
-                if (Model.Charities != null)
-                {
-                    @:Charity Name:
-                     @Html.DropDownListFor(m => m.CharityId, new SelectList(Model.Charities, "CharityId", "Name")); 
-                     @Html.HiddenFor(x => x.CharityId);
-                }
-                else
-                {
-                    @Html.Label("None")
-                }
-                <br /><br />
-            
-    <input type="submit" value="Save" />    @Html.ActionLink("Cancel and return to List", "PartnershipNightIndex")
+    <br />
+    <div class="form-group">
+        <div class="col-md-10">
+            BV Store Number:
+            @if (Model.BvLocations != null)
+            {
+                @Html.DropDownListFor(m => m.BvLocationId, new SelectList(Model.BvLocations, "BvLocationId", "BvStoreNum"));
+                @Html.HiddenFor(x => x.BvLocationId);
+            }
+            else
+            {
+                @Html.Label("None")
+            }
+        </div>
+    </div>                   
+    <br /><br />
+    <div class="form-group">
+        <div class="col-md-10">
+            Charity Name:
+            @if (Model.Charities != null)
+            {
+                @Html.DropDownListFor(m => m.CharityId, new SelectList(Model.Charities, "CharityId", "Name"));
+                @Html.HiddenFor(x => x.CharityId);
+            }
+            else
+            {
+                @Html.Label("None")
+            }
+        </div>
+    </div>
+                
+    <br /><br />
+     <div class="form-group">
+        <div class="col-md-10">        
+            <input type="submit" value="Save" />   &nbsp;&nbsp; @Html.ActionLink("Cancel and return to List", "PartnershipNightIndex")
+        </div>
+    </div>
+    <br /><br />
 }

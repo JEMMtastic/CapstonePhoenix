@@ -93,9 +93,8 @@
 
             var dataRow = {
                 'Title': $('#eventTitle').val(),
-                'NewEventDate': $('#eventDate').val(),
-                'NewEventTime': $('#eventTime').val(),
-                'NewEventDuration': $('#eventDuration').val()
+                'NewEventDate': $('#startDate').val(),
+                'NewEventTime': $('#endDate').val(),
             }
 
             ClearPopupFormValues();
@@ -159,11 +158,9 @@
                 <label>Event title</label>
                 <input type="text" id="eventTitle" placeholder="Title here"><br />
                 <label>Scheduled date</label>
-                <input type="text" id="eventDate"><br />
+                <input type="text" id="startDate"><br />
                 <label>Scheduled time</label>
-                <input type="text" id="eventTime"><br />
-                <label>Appointment length (minutes)</label>
-                <input type="text" id="eventDuration" placeholder="15"><br />
+                <input type="text" id="endDate"><br />
             </form>
         </div>
         <div class="modal-footer">
