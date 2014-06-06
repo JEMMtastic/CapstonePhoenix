@@ -87,14 +87,6 @@ namespace Capstone.WebUI.Controllers
             return RedirectToAction("CharityIndex");
         }
 
-
-
-
-
-
-
-
-
         //Location
         //***********************************
         public ActionResult LocationIndex()
@@ -108,6 +100,7 @@ namespace Capstone.WebUI.Controllers
 
         public ActionResult LocationEdit(int bvLocationId)
         {
+            TempData["Title"] = "Edit BV Location";
             BvLocation l = lRepo.GetBvLocation(bvLocationId);
             return View(l);
         }
@@ -127,6 +120,7 @@ namespace Capstone.WebUI.Controllers
         }
         public ViewResult LocationCreate()
         {
+            TempData["Title"] = "Add a new BV Location"; 
             return View("LocationEdit", new BvLocation());
         }
 

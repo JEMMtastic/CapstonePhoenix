@@ -29,6 +29,8 @@
             editable: true,
             selectable: true,
             slotMinutes: 30,
+            minTime: 6,
+            maxTime: 23,
             events: "/home/getevents",
             eventClick: function (calEvent, jsEvent, view) {
                 alert('You clicked on event id: ' + calEvent.id
