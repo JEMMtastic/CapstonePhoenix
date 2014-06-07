@@ -30,7 +30,7 @@
             {
 
                 <tr class="tableDataRow">
-                    <td>@Html.ActionLink(item.StartDate.ToShortDateString(), "PartnershipNightEdit", new { item.PartnershipNightId })</td>
+                    <td>@Html.ActionLink(item.StartDate.ToShortDateString(), "PartnershipNightEdit", "CRUD", new { item.PartnershipNightId }, null)</td>
                     <td>@item.StartDate.ToShortTimeString()</td>
                     <td>@item.EndDate.ToShortTimeString()</td>
                     <td>@item.BVLocation.BvStoreNum</td>

@@ -65,33 +65,34 @@ namespace Capstone.WebUI.Domain.Concrete
             db.SaveChanges();
         }
 
-        public void UpdatePartnershipNight(PartnershipNightVM pn)
-        {
-            var db = new ApplicationDbContext();
-            if (pn.PartnershipNightId == 0)
+        //public void UpdatePartnershipNight(PartnershipNightVM pn)
+        //{
+        //    var db = new ApplicationDbContext();
+        //    PartnershipNight dbEntry = db.PartnershipNights.Find(pn.PartnershipNightId);          
+        //    if (pn.PartnershipNightId == 0)
 
-                db.PartnershipNights.Add(new PartnershipNight(){
-                    StartDate = pn.StartDate,
-                    EndDate = pn.EndDate,
-                    Comments = pn.Comments,
-                    Charity = db.Charities.Find(pn.Charity.CharityId),
-                    BVLocation = db.BvLocations.Find(pn.BVLocation.BvLocationId)
-                });
-            else
-            {
-                PartnershipNight dbEntry = db.PartnershipNights.Find(pn.PartnershipNightId);
-                if (dbEntry != null)
-                {
-                    dbEntry.StartDate = pn.StartDate;
-                    dbEntry.EndDate = pn.EndDate;
-                    dbEntry.Comments = pn.Comments;
-                    dbEntry.Charity = db.Charities.Find(pn.Charity.CharityId);
-                    dbEntry.BVLocation = db.BvLocations.Find(pn.BVLocation.BvLocationId);
+        //        db.PartnershipNights.Add(new PartnershipNight(){
+        //            StartDate = pn.StartDate,
+        //            EndDate = pn.EndDate,
+        //            Comments = pn.Comments,
+        //            Charity = db.Charities.Find(pn.Charity.CharityId),
+        //            BVLocation = db.BvLocations.Find(pn.BVLocation.BvLocationId)
+        //        });
+        //    else
+        //    {
+        //        PartnershipNight dbEntry = db.PartnershipNights.Find(pn.PartnershipNightId);
+        //        if (dbEntry != null)
+        //        {
+        //            dbEntry.StartDate = pn.StartDate;
+        //            dbEntry.EndDate = pn.EndDate;
+        //            dbEntry.Comments = pn.Comments;
+        //            dbEntry.Charity = db.Charities.Find(pn.Charity.CharityId);
+        //            dbEntry.BVLocation = db.BvLocations.Find(pn.BVLocation.BvLocationId);
                     
-                }
-            }
-            db.SaveChanges();
-        }
+        //        }
+        //    }
+        //    db.SaveChanges();
+        //}
         
         public PartnershipNight DeletePartnershipNight(int id) //should this take a partnership night or id as parameter?
         {

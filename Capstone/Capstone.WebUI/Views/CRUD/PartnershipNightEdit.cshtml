@@ -1,4 +1,4 @@
-﻿@model Capstone.WebUI.Models.PartnershipNightVM
+﻿@model Capstone.WebUI.Models.PNightEditViewModel
 @{
     if(TempData["Title"] == null)
     { 
@@ -16,62 +16,18 @@
 
 @using (Html.BeginForm("PartnershipNightEdit", "CRUD"))
 {
-    <div class="form-group">
-       
-        <div class="col-md-10">
-            @Html.EditorFor(x => x.CheckRequestFinished)  Calculator Form Complete
-        </div>
-    </div>
-    <br /><br />
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.EditorFor(x => x.BeforeTheEventFinished)  Before the Event PaperWork Complete
-        </div>
-    </div>
-    <br />
-    <div class="form-group">
-       
-        <div class="col-md-10">
-            @Html.EditorFor(x => x.AfterTheEventFinished)  After the Event PaperWork Complete
-        </div>
-    </div>
-    <br />
-    <div class="form-group">  
-        <div class="col-md-10">
-            Start Date Time:
-            @Html.EditorFor(x => x.StartDate)
-        </div>
-    </div>
-    <br />
-    <div class="form-group">
-        <div class="col-md-10">
-            End Date Time:
-            @Html.EditorFor(x => x.EndDate)
-        </div>
-    </div>
-    <br />
-    <div class="form-group">
-        <div class="col-md-10">
-            Check Request Number:
-            @Html.EditorFor(x => x.CheckRequestId)
-        </div>
-    </div>
-    <br />
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.Label("Comments")
-            @Html.EditorFor(x => x.Comments)
-        </div>
-        <br /><br />
-    </div>
+    @Html.HiddenFor(x => x.PartnershipNight.PartnershipNightId)
+    @Html.HiddenFor(x => x.PartnershipNight.StartDate)
+    @Html.HiddenFor(x => x.PartnershipNight.EndDate)
+   @Html.EditorFor(x => x.PartnershipNight)
     <br />
     <div class="form-group">
         <div class="col-md-10">
             BV Store Number:
-            @if (Model.BvLocations != null)
+            @if (Model.Locations != null)
             {
-                @Html.DropDownListFor(m => m.BvLocationId, new SelectList(Model.BvLocations, "BvLocationId", "BvStoreNum"));
-                @Html.HiddenFor(x => x.BvLocationId);
+                @Html.DropDownListFor(m => m.PartnershipNight.BVLocation.BvLocationId, new SelectList(Model.Locations, "BvLocationId", "BvStoreNum"));
+                @Html.HiddenFor(x => x.PartnershipNight.BVLocation.BvLocationId);
             }
             else
             {
@@ -85,8 +41,8 @@
             Charity Name:
             @if (Model.Charities != null)
             {
-                @Html.DropDownListFor(m => m.CharityId, new SelectList(Model.Charities, "CharityId", "Name"));
-                @Html.HiddenFor(x => x.CharityId);
+                @Html.DropDownListFor(m => m.PartnershipNight.Charity.CharityId, new SelectList(Model.Charities, "CharityId", "Name"));
+                @Html.HiddenFor(x => x.PartnershipNight.Charity.CharityId);
             }
             else
             {
