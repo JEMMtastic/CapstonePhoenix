@@ -10,7 +10,9 @@
 
 <table>
     <tr class ="tableHeadings">
+        <th>@Html.DisplayNameFor(model => model.CharityId)</th>
         <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.CharityContactNm)</th>
         <th>@Html.DisplayNameFor(model => model.Address)</th>
         <th>@Html.DisplayNameFor(model => model.City)</th>
         <th>@Html.DisplayNameFor(model => model.State)</th>
@@ -23,6 +25,8 @@
     @foreach (var item in Model) {
         <tr class="tableDataRow">
             <td>@Html.ActionLink(item.Name, "CharityEdit", new {item.CharityId})</td>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.CharityContactNm)</td>
             <td>@Html.DisplayFor(modelItem => item.Address)</td>
             <td>@Html.DisplayFor(modelItem => item.City)</td>
             <td>@Html.DisplayFor(modelItem => item.State)</td>
@@ -30,8 +34,7 @@
             <td>@Html.DisplayFor(modelItem => item.Phone)</td>
             <td>@Html.DisplayFor(modelItem => item.FederalTaxId)</td>
             <td>@Html.DisplayFor(modelItem => item.TypeOfCharity)</td>
-            <td>
-                @using (Html.BeginForm("CharityDelete", "CRUD"))
+            <td>@using (Html.BeginForm("CharityDelete", "CRUD"))
                 {
                     @Html.Hidden("CharityId", item.CharityId)
                     <input type="submit" value="Delete" />

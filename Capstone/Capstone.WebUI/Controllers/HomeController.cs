@@ -42,7 +42,7 @@ namespace Capstone.WebUI.Controllers
 
         public ViewResult Index()
         {
-            #region
+            #region Seed Method Stored Here
             //ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
             /*
              * PLEASE DO NOT DELETE
