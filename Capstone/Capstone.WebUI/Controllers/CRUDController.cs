@@ -39,6 +39,7 @@ namespace Capstone.WebUI.Controllers
 
         //Charity
         //***********************************
+        [Authorize(Roles = "Admin")]
         public ActionResult CharityIndex()
         {
             List<Charity> charities = charRepo.GetCharities().ToList<Charity>();
@@ -46,11 +47,13 @@ namespace Capstone.WebUI.Controllers
             return View(charities);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult CharityCreate()
         {
             return View("CharityEdit", new Charity());
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult CharityEdit(int charityId)
         {
             // Get the correct charity
@@ -60,6 +63,7 @@ namespace Capstone.WebUI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult CharityEdit(Charity charity)
         {
             if (ModelState.IsValid)
@@ -76,6 +80,7 @@ namespace Capstone.WebUI.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult CharityDelete(int charityId)
         {
             Charity deletedCharity = charRepo.DeleteCharity(charityId);
