@@ -1,18 +1,44 @@
-﻿@model Capstone.WebUI.Domain.Entities.User
+﻿@model Capstone.WebUI.Models.EditUserViewModel
 
 @{
-    ViewBag.Title = "Admin: Edit " + @Model.UserFName + @Model.UserLName;
+    ViewBag.Title = "Admin: Edit " + @Model.FirstName + @Model.LastName;
 }
 
-<h2>Edit @Model.UserFName @Model.UserLName</h2>
+<h2>Edit @Model.FirstName @Model.LastName</h2>
 
 @using (Html.BeginForm("UserEdit", "CRUD"))
 {
-    @Html.EditorForModel( )
-    <p>Store Number</p>
-    @Html.EditorFor(x => Model.BvLocation.BvStoreNum)
-   <!-- TODO:  figure out how to get BVLoc and list store num with ability to edit this for the user-->
+
+@Html.AntiForgeryToken()
+
+        @Html.LabelFor(m=>m.UserName)
+        @Html.EditorFor(m=>m.UserName)
+
+        @Html.LabelFor(m=>m.FirstName)
+        @Html.EditorFor(m=>m.FirstName)
+
+        @Html.LabelFor(m=>m.LastName)
+        @Html.EditorFor(m=>m.LastName)
+
+        @Html.LabelFor(m=>m.Email)
+        @Html.EditorFor(m=>m.Email)
+
+        @Html.LabelFor(m=>m.Role)
+        @Html.EditorFor(m=>m.Role)   
+
+        @Html.LabelFor(m=>m.BvLocationId)
+        if (Model.BvLocations != null)
+        {
+            @Html.DropDownListFor(m => m.BvLocationId, new SelectList(Model.BvLocations, "BvLocationId", "BvStoreNum"));
+            @Html.HiddenFor(x => x.BvLocationId);
+        }
+        else
+        {
+            @Html.Label("None")
+        }
    
     <input type ="submit" value ="Save" />
     @Html.ActionLink("Cancel and return to List", "UserIndex")
+
+
 }

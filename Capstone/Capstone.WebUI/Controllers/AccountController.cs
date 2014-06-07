@@ -95,7 +95,6 @@ namespace Capstone.WebUI.Controllers
                     UserName = model.UserName,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    AccessLevel = model.AccessLevel,
                     UserEmail = model.UserEmail,
                     PhoneNumber = model.PhoneNumber,
                     BvLocation = lRepo.GetBvLocations().FirstOrDefault(bvl => bvl.BvLocationId == model.BvLocationId)
@@ -426,5 +425,12 @@ namespace Capstone.WebUI.Controllers
             }
         }
         #endregion
+
+
+
+
+
+
+
     }
 }

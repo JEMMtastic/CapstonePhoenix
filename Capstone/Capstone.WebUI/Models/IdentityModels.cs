@@ -14,13 +14,14 @@ namespace Capstone.WebUI.Models
         //UserId, Username, and Password are done via Identity
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int AccessLevel { get; set; } //move to identities version for security?
+        //public int AccessLevel { get; set; } //move to identities version for security? replaced by role
         public string UserEmail { get; set; } //move to identities version for security?
-        public BvLocation BvLocation { get; set; }  //could put User in BvLocation, avoiding Identity complications  //Update: not that difficult ^_^
+        public string Role { get; set; }
+        public BvLocation BvLocation { get; set; } 
     }
 
     //public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
             : base("CapstoneDbContext")
@@ -32,6 +33,7 @@ namespace Capstone.WebUI.Models
         public DbSet<Charity> Charities { get; set; }
         public DbSet<PartnershipNight> PartnershipNights { get; set; }
         public DbSet<Form> Forms { get; set; }
+        
 
         /*public ApplicationDbContext()
             : base("DefaultConnection")
@@ -73,6 +75,7 @@ namespace Capstone.WebUI.Models
         }
 
 
+        //needed? rewrite?
         public void ClearUserRoles(string userId)
         {
             var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
