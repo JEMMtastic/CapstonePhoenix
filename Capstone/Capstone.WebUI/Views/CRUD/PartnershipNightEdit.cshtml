@@ -17,8 +17,6 @@
 @using (Html.BeginForm("PartnershipNightEdit", "CRUD"))
 {
     @Html.HiddenFor(x => x.PartnershipNight.PartnershipNightId)
-    @Html.HiddenFor(x => x.PartnershipNight.StartDate)
-    @Html.HiddenFor(x => x.PartnershipNight.EndDate)
    @Html.EditorFor(x => x.PartnershipNight)
     <br />
     <div class="form-group">
