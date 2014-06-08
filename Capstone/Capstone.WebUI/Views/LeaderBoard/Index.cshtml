@@ -1,8 +1,27 @@
-﻿
+﻿@model IEnumerable<Capstone.WebUI.Domain.Entities.Form>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Leader Board";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Leader Board</h2>
 
+<table>
+    <tr class="tableDataRow">
+        <td>Charity</td>
+        <td>BV Host</td>
+        <td>Partnership Date</td>
+        <td>Actual total sales</td>
+        <td>Posi Donations</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr class="tableDataRow">
+            <td>@Html.DisplayFor(modelItem => item.NameOnCheck)</td>
+            <td>@Html.DisplayFor(modelItem => item.HostingRestaurant)</td>
+            <td>@Html.DisplayFor(modelItem => item.DateOfPartnership)</td>
+            <td>@Html.DisplayFor(modelItem => item.ActualSalesTotal)</td>
+            <td>@Html.DisplayFor(modelItem => item.PosiDonations)</td>
+        </tr>
+    }
+</table>

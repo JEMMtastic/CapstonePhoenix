@@ -236,6 +236,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201406041752082_InitialCreate.cs" />
+    <Compile Include="Migrations\201406041752082_InitialCreate.Designer.cs">
+      <DependentUpon>201406041752082_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUserVM.cs" />
@@ -441,6 +445,7 @@
     <Content Include="Views\Form\Print.cshtml" />
     <Content Include="Views\LeaderBoard\Index.cshtml" />
     <Content Include="Views\Form\Print2.cshtml" />
+    <Content Include="Views\LeaderBoard\NoForms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -451,6 +456,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201406041752082_InitialCreate.resx">
+      <DependentUpon>201406041752082_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

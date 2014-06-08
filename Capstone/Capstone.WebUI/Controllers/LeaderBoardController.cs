@@ -23,19 +23,28 @@ namespace Capstone.WebUI.Controllers
         public ActionResult Index()
         {
             // TODO: Add a condtion so that if there are no complete forms, it just displays a nice message
-            GetCompleteLeaders();
-            return View();
+            List<Form> FormLeaders = GetCompleteLeaders();
+            if (FormLeaders.Count == 0)
+                return RedirectToAction("NoForms");
+            else
+                return View(FormLeaders);
         }
 
-        public string GetCompleteLeaders()
+        public ActionResult NoForms()
+        {
+            return View();
+        }
+    
+        
+        public List<Form> GetCompleteLeaders()
         {
             var db = new ApplicationDbContext();
             
             // Get a list of complete partnership night forms, in order by the actual total sales
             var leaderForms = (from f in db.Forms
                                 where f.IsComplete == true
-                                orderby f.ActualSalesTotal
-                                select f).ToList<Form>();
+                                orderby f.ActualSalesTotal descending
+                                select f).Take(10).ToList<Form>();
 
             var forms = new List<Form>();
 
@@ -48,8 +57,8 @@ namespace Capstone.WebUI.Controllers
                     ActualGuestCountTotal = f.ActualGuestCountTotal, PosiDonations = f.PosiDonations });
             }
 
-            // Display list
-            return leaderForms.ToString();
+            // Return the list of partnership nights
+            return forms;
         }
     }
 }
