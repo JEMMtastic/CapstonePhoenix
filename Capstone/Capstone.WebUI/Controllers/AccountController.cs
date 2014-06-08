@@ -57,7 +57,8 @@ namespace Capstone.WebUI.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "LeaderBoard");
+                    //return RedirectToLocal(returnUrl);
                 }
                 else
                 {
@@ -122,7 +123,6 @@ namespace Capstone.WebUI.Controllers
                             idManager.AddUserToRole(user.Id, "User");
                         }
                     }
-
 
                     return RedirectToAction("Index", "Home");
                 }
