@@ -98,7 +98,7 @@ namespace Capstone.WebUI.Controllers
                     LastName = model.LastName,
                     UserEmail = model.UserEmail,
                     PhoneNumber = model.PhoneNumber,
-                    Role = model.Role,
+                    Role = model.Role
                     
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
@@ -107,7 +107,13 @@ namespace Capstone.WebUI.Controllers
                     await SignInAsync(user, isPersistent: false);
                     TempData["message"] = string.Format("{0} has been registered.", user.UserName);
 
-                    user.BvLocation = lRepo.GetBvLocations().FirstOrDefault(bvl => bvl.BvLocationId == model.BvLocationId);
+
+                    var Db = new ApplicationDbContext();
+                    var user2 = Db.Users.First(u => u.UserName == user.UserName);
+                    user2.BvLocation = Db.BvLocations.Find(model.BvLocationId);
+                    //user.BvLocation = lRepo.GetBvLocations().FirstOrDefault(bvl => bvl.BvLocationId == model.BvLocationId);
+                    Db.Entry(user2).State = System.Data.Entity.EntityState.Modified;
+                    await Db.SaveChangesAsync();
 
                     var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
 
