@@ -325,8 +325,12 @@ namespace Capstone.WebUI.Controllers
         public ActionResult UserEdit(string id)
         {
             var Db = new ApplicationDbContext();
+
             var user = Db.Users.First(u => u.Id == id);
             var model = new EditUserViewModel(user);
+            //pNt.Locations = lRepo.GetBvLocations().ToList<BvLocation>();
+            model.BvLocations = lRepo.GetBvLocations().ToList<BvLocation>();
+
             return View(model);
         }
 
