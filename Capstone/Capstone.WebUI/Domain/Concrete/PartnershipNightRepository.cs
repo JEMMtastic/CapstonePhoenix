@@ -57,6 +57,10 @@ namespace Capstone.WebUI.Domain.Concrete
                 {
                     dbEntry.StartDate = pn.StartDate;
                     dbEntry.EndDate = pn.EndDate;
+                    dbEntry.AfterTheEventFinished = pn.AfterTheEventFinished;
+                    dbEntry.BeforeTheEventFinished = dbEntry.BeforeTheEventFinished;
+                    dbEntry.CheckRequestFinished = dbEntry.CheckRequestFinished;
+                    dbEntry.CheckRequestId = dbEntry.CheckRequestId;
                     dbEntry.Comments = pn.Comments;
                     dbEntry.Charity = db.Charities.Find(pn.Charity.CharityId);
                     dbEntry.BVLocation = db.BvLocations.Find(pn.BVLocation.BvLocationId);
