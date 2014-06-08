@@ -83,10 +83,34 @@ namespace Capstone.WebUI.Controllers
 
         public ActionResult Print(Form form)
         {
-            form = formRepo.GetFormById(form.FormId);
+            /*
+             * //Save the form (not working)
+            if (ModelState.IsValid)
+            {
+                // Save the changes to the Form 
+                form.CalculateSection1();
+                form.CalculateSection2();
+                form.CalculateSection3();
+                form.CalculateSection4();
+                form.CalculateSection5();
+                formRepo.UpdateForm(form);
+            }
+            else
+            {
+                // there is something wrong with the data values
+                return RedirectToAction("Index");
+            }*/
+
+            //Quick Fix:  In the view, the print button only shows up for forms that exist
+            //But it won't save changes yet - saving isn't working properly
+            if (form.FormId != 0)
+            {
+                form = formRepo.GetFormById(form.FormId);
+            }
             return View(form);
         }
 
+        //Alternate print with formatting - unfinished
         public ActionResult Print2(Form form)
         {
             return View(form);

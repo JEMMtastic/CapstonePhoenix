@@ -428,9 +428,12 @@
 </div>
 
 
-
+    @Html.HiddenFor(model => model.FormId)
 
     <input type="submit" value="Save" />
-    <input type="button" value="Print" onclick="location.href='@Url.Action("Print", "Form", new {formId = Model.FormId })'" />
+    if(Model.FormId != 0)
+    { 
+       <input type="button" value="Print" onclick="location.href='@Url.Action("Print", "Form", new {formId = Model.FormId })'" />
+    }
            @Html.ActionLink("Cancel and return to List", "Index")
            }
