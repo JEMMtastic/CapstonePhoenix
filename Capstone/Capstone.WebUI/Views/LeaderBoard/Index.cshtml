@@ -6,8 +6,8 @@
 
 <h2>Leader Board</h2>
 
-<table>
-    <tr class="tableDataRow">
+<table class="table">
+    <tr>
         <td>Charity</td>
         <td>BV Host</td>
         <td>Partnership Date</td>
@@ -16,7 +16,7 @@
     </tr>
     @foreach (var item in Model)
     {
-        <tr class="tableDataRow">
+        <tr>
             <td>@Html.DisplayFor(modelItem => item.NameOnCheck)</td>
             <td>@Html.DisplayFor(modelItem => item.HostingRestaurant)</td>
             <td>@Html.DisplayFor(modelItem => item.DateOfPartnership)</td>
