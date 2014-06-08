@@ -219,109 +219,19 @@ namespace Capstone.WebUI.Controllers
             return RedirectToAction("PartnershipNightIndex");
         }
 
-        //TEMPORARILY REMOVING WHILE WE GET IDENTITY TO HANDLE USER CRUD
-
-        //User
-        //***********************************
-/*        public ActionResult UserIndex()
-        {
-            //need to get a list of all users
-            var db = new ApplicationDbContext();
-            List<User> users = (from u in db.Users.Include("BvLocation")
-                                select u).ToList<User>();
-
-               
-            //TODO:  add functionality to get users by restaurant or city?
-            return View(users);
-        }
-
-        public ActionResult UserEdit(int userId)
-        {
-            User u = uRepo.GetUser(userId);
-            return View(u);
-        }
-        [HttpPost]
-        public ActionResult UserEdit(User u)
-        {
-            if (ModelState.IsValid)
-            {
-                BvLocation l = lRepo.GetBvLocation(u.BvLocation.BvStoreNum);
-                if (l != null)
-                {
-                    u.BvLocation = l;
-                    uRepo.SaveUser(u);
-                    TempData["message"] = string.Format("{0} has been saved", u.FName + " " + u.LName);
-                }
-                else
-                {
-                    TempData["message"] = string.Format("{0} is not a valid Restaurant", u.BvLocation.BvStoreNum);
-                }
-                return RedirectToAction("UserIndex");
-            }
-            else
-            {
-                return View(u);
-            }
-        }
-        public ViewResult UserCreate()
-        {
-            return View("UserEdit", new User());
-        }
-
-        [HttpPost]
-        public ActionResult UserDelete(int userId)
-        {
-            User deletedUser = uRepo.DeleteUser(userId);
-            if (deletedUser != null)
-            {
-                TempData["message"] = string.Format("{0} was deleted", deletedUser.FName + deletedUser.LName);
-            }
-            return RedirectToAction("UserIndex");
-        }
-
-*/
-
 
         //[Authorize(Roles = "Admin")]
         public ActionResult UserIndex()
         {
             var db = new ApplicationDbContext();
 
-            //this syntax not working here
-            //from pnight in db.PartnershipNights.Include("Charity").Include("BVLocation")
-            //        where pnight.PartnershipNightId == partnershipNightId
-            //        select pnight).FirstOrDefault()
-
             List<ApplicationUser> users = db.Users.ToList();
-            //List<ApplicationUser> users = new List<ApplicationUser>();
-            //int countOfUsers = db.Users.Count<ApplicationUser>();
-
-            //foreach (var u in db.Users)
-            //{
-                
-            //}
-
-            //for (int i = 0; i < countOfUsers; i++)
-            //{
-            //    var temp2 = db.Users.Include(x => x.BvLocation).FirstOfDefault()
-            //}
-
-           
-
-            List<ApplicationUserVM> users2 = new List<ApplicationUserVM>();
-            foreach (ApplicationUser a in users)
-            {
-                ApplicationUserVM temp = new ApplicationUserVM(){};
-                temp.AUser = a;
-                users2.Add(temp);
-            }
 
             return View(users);
         }
 
 
         //[Authorize(Roles = "Admin")]
-        //[ValidateAntiForgeryToken]
         public ActionResult UserEdit(string id)
         {
             var Db = new ApplicationDbContext();
@@ -388,14 +298,6 @@ namespace Capstone.WebUI.Controllers
         public ActionResult UserDelete(string id = null)
         {
             var Db = new ApplicationDbContext();
-            //var user = Db.Users.First(u => u.Id == id);
-            //var model = new EditUserViewModel(user);
-            //if (user == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(model);
-
 
             ApplicationUser deletedUser = Db.Users.First(u => u.Id == id);
 
@@ -405,6 +307,7 @@ namespace Capstone.WebUI.Controllers
                 Db.SaveChanges();
                 TempData["message"] = string.Format("{0} was deleted", deletedUser.UserName);
             }
+
             return RedirectToAction("UserIndex");
         }
 

@@ -14,7 +14,6 @@ namespace Capstone.WebUI.Models
         //UserId, Username, and Password are done via Identity
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        //public int AccessLevel { get; set; } //move to identities version for security? replaced by role
         public string UserEmail { get; set; } //move to identities version for security?
         public string Role { get; set; }
         public virtual BvLocation BvLocation { get; set; } 
@@ -22,8 +21,7 @@ namespace Capstone.WebUI.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("CapstoneDbContext")
+        public ApplicationDbContext() : base("CapstoneDbContext")
         {
 
         }
