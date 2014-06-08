@@ -20,7 +20,6 @@ namespace Capstone.WebUI.Models
         public BvLocation BvLocation { get; set; } 
     }
 
-    //public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()

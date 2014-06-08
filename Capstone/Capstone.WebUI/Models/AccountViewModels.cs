@@ -70,8 +70,10 @@ namespace Capstone.WebUI.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Display(Name = "Access Level")]
-        public int AccessLevel { get; set; }
+
+        [Display(Name = "Role")]
+        [RegularExpression(@"^(Admin|User)$", ErrorMessage = "Role must be 'Admin' or 'User'")]
+        public string Role { get; set; }
 
         [Display(Name = "Email")]
         public string UserEmail { get; set; }
@@ -123,6 +125,7 @@ namespace Capstone.WebUI.Models
 
         [Required]
         [Display(Name = "Role")]
+        [RegularExpression(@"^(Admin|User)$", ErrorMessage = "Role must be 'Admin' or 'User'")]
         public string Role { get; set; }
 
         [Required(ErrorMessage = "A BV Location is required.")]

@@ -4,3 +4,5 @@ I got the magic string, I know if I can replace once, I can replace twice
 
 
 $& = Math.Round\($&, 2\);
+
+^(Admin|User)$

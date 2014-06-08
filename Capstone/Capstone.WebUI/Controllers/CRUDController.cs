@@ -2,6 +2,8 @@
 using Capstone.WebUI.Domain.Concrete;
 using Capstone.WebUI.Domain.Entities;
 using Capstone.WebUI.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -342,7 +344,7 @@ namespace Capstone.WebUI.Controllers
                 users2.Add(temp);
             }
 
-            return View(users2);
+            return View(users);
         }
 
 
@@ -372,8 +374,22 @@ namespace Capstone.WebUI.Controllers
                     user.LastName = model.LastName;
                     user.Email = model.Email;
                     user.Role = model.Role;
-                    //actually change the role
                     user.BvLocation = Db.BvLocations.Find(model.BvLocationId);
+
+                    var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+
+                    if (rm.RoleExists("Admin") && rm.RoleExists("User"))
+                    {
+                        var idManager = new IdentityManager();
+                        if (user.Role == "Admin")
+                        {
+                            idManager.AddUserToRole(user.Id, "Admin");
+                        }
+                        if (user.Role == "User")
+                        {
+                            idManager.AddUserToRole(user.Id, "User");
+                        }
+                    }
 
 
                     Db.Entry(user).State = System.Data.Entity.EntityState.Modified;

@@ -97,13 +97,32 @@ namespace Capstone.WebUI.Controllers
                     LastName = model.LastName,
                     UserEmail = model.UserEmail,
                     PhoneNumber = model.PhoneNumber,
+                    Role = model.Role,
                     BvLocation = lRepo.GetBvLocations().FirstOrDefault(bvl => bvl.BvLocationId == model.BvLocationId)
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
-                    TempData["message"] = string.Format("{0} has been registered. Welcome :)", user.UserName);
+                    TempData["message"] = string.Format("{0} has been registered.", user.UserName);
+
+
+                    var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+
+                    if (rm.RoleExists("Admin") && rm.RoleExists("User"))
+                    {
+                        var idManager = new IdentityManager();
+                        if (user.Role == "Admin")
+                        {
+                            idManager.AddUserToRole(user.Id, "Admin");
+                        }
+                        if (user.Role == "User")
+                        {
+                            idManager.AddUserToRole(user.Id, "User");
+                        }
+                    }
+
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
