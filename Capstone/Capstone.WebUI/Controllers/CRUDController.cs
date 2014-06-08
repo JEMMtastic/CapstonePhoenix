@@ -15,13 +15,10 @@ namespace Capstone.WebUI.Controllers
 {
     public class CRUDController : Controller
     {
-        
-
         CharityRepository charRepo;
         PartnershipNightRepository pnRepo;
         UserInterface uRepo;
         BvLocationInterface lRepo;
-
 
         public CRUDController()
         {
@@ -31,7 +28,7 @@ namespace Capstone.WebUI.Controllers
             lRepo = new BvLocationRepository();
         }
 
-         // Use this for dependency injection
+        // Use this for dependency injection
         public CRUDController(BvLocationRepository iLoc, UserInterface iUser, BvLocationInterface iLocation)
         {
             lRepo = iLoc;
@@ -164,7 +161,9 @@ namespace Capstone.WebUI.Controllers
 
             pNt.Locations = lRepo.GetBvLocations().ToList<BvLocation>();
             pNt.Charities = charRepo.GetCharities().ToList<Charity>();
-
+            pNt.PartnershipNight = new PartnershipNight();
+            pNt.PartnershipNight.StartDate = DateTime.Today;
+            pNt.PartnershipNight.EndDate = DateTime.Today;
             return View("PartnershipNightEdit", pNt);
         }
 
@@ -186,7 +185,8 @@ namespace Capstone.WebUI.Controllers
         public ActionResult PartnershipNightEdit(PNightEditViewModel pn)
         {
             var pnEvent = new PartnershipNight();
-            pnEvent.PartnershipNightId = pn.PartnershipNight.PartnershipNightId;
+            if (pn.PartnershipNight.PartnershipNightId != 0)
+                pnEvent.PartnershipNightId = pn.PartnershipNight.PartnershipNightId;
             pnEvent.EndDate = pn.PartnershipNight.EndDate;
             pnEvent.StartDate = pn.PartnershipNight.StartDate;
             pnEvent.AfterTheEventFinished = pn.PartnershipNight.AfterTheEventFinished;
@@ -194,13 +194,13 @@ namespace Capstone.WebUI.Controllers
             pnEvent.CheckRequestFinished = pn.PartnershipNight.CheckRequestFinished;
             pnEvent.CheckRequestId= pn.PartnershipNight.CheckRequestId;
             pnEvent.Comments = pn.PartnershipNight.Comments;          
-            pnEvent.BVLocation = lRepo.GetBvLocation(pn.PartnershipNight.PartnershipNightId);
+            pnEvent.BVLocation = lRepo.GetBvLocation(pn.PartnershipNight.BVLocation.BvLocationId);
             pnEvent.Charity = charRepo.GetCharityById(pn.PartnershipNight.Charity.CharityId);
             
             if (pnEvent != null && pnEvent.BVLocation != null && pnEvent.Charity != null)
             {
                 pnRepo.UpdatePartnershipNight(pnEvent);
-
+                TempData["message"] = string.Format("Event for {0} has been saved", pn.PartnershipNight.Charity.Name);
                 return RedirectToAction("PartnershipNightIndex");
             }
             else        
