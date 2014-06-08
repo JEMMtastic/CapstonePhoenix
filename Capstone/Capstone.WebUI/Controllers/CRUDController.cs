@@ -190,7 +190,7 @@ namespace Capstone.WebUI.Controllers
             pnEvent.EndDate = pn.PartnershipNight.EndDate;
             pnEvent.StartDate = pn.PartnershipNight.StartDate;
             pnEvent.AfterTheEventFinished = pn.PartnershipNight.AfterTheEventFinished;
-            pnEvent.AfterTheEventFinished = pn.PartnershipNight.BeforeTheEventFinished;
+            pnEvent.BeforeTheEventFinished = pn.PartnershipNight.BeforeTheEventFinished;
             pnEvent.CheckRequestFinished = pn.PartnershipNight.CheckRequestFinished;
             pnEvent.CheckRequestId= pn.PartnershipNight.CheckRequestId;
             pnEvent.Comments = pn.PartnershipNight.Comments;          
@@ -219,7 +219,6 @@ namespace Capstone.WebUI.Controllers
             return RedirectToAction("PartnershipNightIndex");
         }
 
-
         //[Authorize(Roles = "Admin")]
         public ActionResult UserIndex()
         {
@@ -229,7 +228,6 @@ namespace Capstone.WebUI.Controllers
 
             return View(users);
         }
-
 
         //[Authorize(Roles = "Admin")]
         public ActionResult UserEdit(string id)
@@ -243,7 +241,6 @@ namespace Capstone.WebUI.Controllers
 
             return View(model);
         }
-
 
         [HttpPost]
         //[Authorize(Roles = "Admin")]
