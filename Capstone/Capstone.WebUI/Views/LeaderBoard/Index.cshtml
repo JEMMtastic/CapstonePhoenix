@@ -8,20 +8,22 @@
 
 <table class="table">
     <tr>
+        <td><center>BV Host</center></td>
         <td>Charity</td>
-        <td>BV Host</td>
         <td>Partnership Date</td>
-        <td>Actual total sales</td>
-        <td>Posi Donations</td>
+        <td><center>Actual Sales</center></td>
+        <td><center>Actual Guest Count</center></td>
+        <td><center>Posi Donations</center></td>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
+            <td><center>@Html.DisplayFor(modelItem => item.HostingRestaurant)</center></td>
             <td>@Html.DisplayFor(modelItem => item.NameOnCheck)</td>
-            <td>@Html.DisplayFor(modelItem => item.HostingRestaurant)</td>
             <td>@Html.DisplayFor(modelItem => item.DateOfPartnership)</td>
-            <td>@Html.DisplayFor(modelItem => item.ActualSalesTotal)</td>
-            <td>@Html.DisplayFor(modelItem => item.PosiDonations)</td>
+            <td><center>@Html.DisplayFor(modelItem => item.ActualSalesTotal)</center></td>
+            <td><center>@Html.DisplayFor(modelItem => item.ActualGuestCountTotal)</center></td>
+            <td><center>@Html.DisplayFor(modelItem => item.PosiDonations)</center></td>
         </tr>
     }
 </table>
