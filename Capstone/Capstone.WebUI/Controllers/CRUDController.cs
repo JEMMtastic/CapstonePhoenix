@@ -39,7 +39,6 @@ namespace Capstone.WebUI.Controllers
             lRepo = iLocation;
         }
 
-
         //Charity
         //***********************************
         [Authorize(Roles = "Admin")]
@@ -143,12 +142,6 @@ namespace Capstone.WebUI.Controllers
             return RedirectToAction("LocationIndex");
         }
 
-
-
-
-
-
-
         //PartnershipNight
         //***********************************
         public ActionResult PartnershipNightIndex()
@@ -186,15 +179,6 @@ namespace Capstone.WebUI.Controllers
                 temp.Locations = lRepo.GetBvLocations().ToList<BvLocation>();
                 temp.Charities = charRepo.GetCharities().ToList<Charity>();
 
-                //PNightEditViewModel vModel = new PNightEditViewModel();
-
-                ////Set view model to corresponding partnership night values
-                //vModel.PartnershipNight = pnight;
-
-                //Set List variables to contain lists of child objects for selection in the view
-                //vModel.Charities = charRepo.GetCharities().ToList<Charity>();
-                //vModel.Locations = lRepo.GetBvLocations().ToList<BvLocation>();
-
                 return View(temp);
         }
 
@@ -209,8 +193,7 @@ namespace Capstone.WebUI.Controllers
             pnEvent.AfterTheEventFinished = pn.PartnershipNight.BeforeTheEventFinished;
             pnEvent.CheckRequestFinished = pn.PartnershipNight.CheckRequestFinished;
             pnEvent.CheckRequestId= pn.PartnershipNight.CheckRequestId;
-            pnEvent.Comments = pn.PartnershipNight.Comments;
-            
+            pnEvent.Comments = pn.PartnershipNight.Comments;          
             pnEvent.BVLocation = lRepo.GetBvLocation(pn.PartnershipNight.PartnershipNightId);
             pnEvent.Charity = charRepo.GetCharityById(pn.PartnershipNight.Charity.CharityId);
             
@@ -220,37 +203,14 @@ namespace Capstone.WebUI.Controllers
 
                 return RedirectToAction("PartnershipNightIndex");
             }
-                    
-            return View();
-
-            #region
-            //PartnershipNight pnight = pnRepo.GetPartnershipNights().FirstOrDefault<PartnershipNight>(pn => pn.PartnershipNightId)
-            //if (ModelState.IsValid)
-            //{
-            //    // Transfer view model values to a partnership night object
-            //    PartnershipNight pnight = new PartnershipNight();
-
-            //    // Store the correct child objects 
-            //    pnight.Charity = charRepo.GetCharityById(partnershipNight.Charity.CharityId);
-            //    pnight.BVLocation = lRepo.GetBvLocation(partnershipNight.BVLocation.BvLocationId);
-                
-            //    // Save the changes to the partnership night 
-            //    pnRepo.UpdatePartnershipNight(pnight);
-            //    TempData["message"] = string.Format("Partnership Night for BV Location {0}, {1} has been saved", pnight.StartDate.ToShortDateString(), pnight.BVLocation.BvStoreNum);
-            //    return RedirectToAction("PartnershipNightIndex");
-            //}
-            //else
-            //{
-            //    // there is something wrong with the data values
-            //    return View();
-            //}
-            #endregion
+            else        
+                return View();   
         }
 
         [HttpPost]
-        public ActionResult PartnershipNightDelete(int pnightId)
+        public ActionResult PartnershipNightDelete(int partnershipNightId)
         {
-            PartnershipNight deletedPNight = pnRepo.DeletePartnershipNight(pnightId);
+            PartnershipNight deletedPNight = pnRepo.DeletePartnershipNight(partnershipNightId);
             if (deletedPNight != null)
             {
                 TempData["message"] = string.Format("Event on {0} was deleted",

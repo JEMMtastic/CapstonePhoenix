@@ -23,7 +23,6 @@
             <th>Post-Event Form</th>
         </tr>
 
-
         @if (Model != null)
         {
             foreach (var item in Model)
@@ -41,9 +40,8 @@
                     <td>@item.BeforeTheEventFinished <!--Html.DisplayFor(modelItem => item.BeforeTheEventFinished)--></td>
                     <td>@item.AfterTheEventFinished <!--Html.DisplayFor(modelItem => item.AfterTheEventFinished)--></td>
                     <td>
-                        @using (@Html.BeginForm("PartnershipNightDelete", "CRUD"))
+                        @using (Html.BeginForm("PartnershipNightDelete", "CRUD", new { item.PartnershipNightId }))
                         {
-                            @Html.Hidden("PartnershipNightId", item.PartnershipNightId)
                             <input type="submit" value="Delete" />
                         }
                         <!--Html.ActionLink("Edit", "Edit", new { id=item.PartnershipNightId }) |
