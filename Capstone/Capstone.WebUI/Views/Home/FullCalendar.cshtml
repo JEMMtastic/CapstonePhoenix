@@ -29,9 +29,8 @@
             maxTime: 23,
             events: "/home/getevents",
             eventClick: function (calEvent, jsEvent, view) {
-                alert('You clicked on event id: ' + calEvent.id
-                   
-                    + "\nAnd the title is: " + calEvent.title);
+                alert('Store: ' + calEvent.title             
+                    + "Charity: " + calEvent.charityName);
             },
 
             eventDrop: function (event, dayDelta, minuteDelta, allDay, revertFunc) {
@@ -55,8 +54,8 @@
 
             dayClick: function (date, allDay, jsEvent, view) {
                 $('#eventTitle').val("");
-                $('#eventDate').val($.fullCalendar.formatDate(date, 'dd/MM/yyyy'));
-                $('#eventTime').val($.fullCalendar.formatDate(date, 'HH:mm'));
+                $('#eventStart').val($.fullCalendar.formatDate(date, 'dd/MM/yyyy H:mm tt'));
+                $('#eventEnd').val($.fullCalendar.formatDate(date, 'H:mm tt'));
                 ShowEventPopup(date);
             },
 
@@ -90,8 +89,8 @@
 
             var dataRow = {
                 'Title': $('#eventTitle').val(),
-                'NewEventDate': $('#startDate').val(),
-                'NewEventTime': $('#endDate').val(),
+                'NewEventStart': $('#startDate').val(),
+                'NewEventEnd': $('#endDate').val(),
             }
 
             ClearPopupFormValues();

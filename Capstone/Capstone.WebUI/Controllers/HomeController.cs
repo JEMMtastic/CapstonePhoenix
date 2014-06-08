@@ -147,8 +147,8 @@ namespace Capstone.WebUI.Controllers
             {
                 var stDt = ToUnixTimespan(p.StartDate);
                 var endDt = ToUnixTimespan(p.EndDate);
-               
-                events.Add(new Event { id = p.PartnershipNightId, title = p.Charity.Name + "," + p.BVLocation.BvStoreNum, start = stDt, end = endDt, allDay = false});
+                
+                events.Add(new Event { id = p.PartnershipNightId, someImportantKey = p.Charity.CharityId, charityName = p.Charity.Name, title = p.Charity.Name + " " + p.BVLocation.BvStoreNum, storeNum = p.BVLocation.BvStoreNum, start = stDt, end = endDt, allDay = false});
             }
             var rows = events.ToArray();
             return Json(rows, JsonRequestBehavior.AllowGet);
@@ -182,9 +182,9 @@ namespace Capstone.WebUI.Controllers
             pnRepo.UpdatePartnershipNight(pn);
         }
 
-        public bool SaveEvent(string Title, int id, string NewStartDt, string NewStartTime, string NewEndDt, string NewEndTime)
+        public bool SaveEvent(string Title, int id, string NewStartDt, string NewEndDt)
         {
-            return pnRepo.CreateNewEvent(Title, id, NewStartDt, NewStartTime, NewEndDt, NewEndTime);
+            return pnRepo.CreateNewEvent(Title, id, NewStartDt, NewEndDt);
         }
 
     }

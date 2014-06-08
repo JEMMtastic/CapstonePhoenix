@@ -13,7 +13,7 @@ namespace Capstone.WebUI.Domain.Abstract
         PartnershipNight GetPartnershipNightById(int eventId);
         PartnershipNight GetPartnershipNightByDate(DateTime date, BvLocation loc); // returns a particular partnership night, given the bv locaion and date
         IQueryable<PartnershipNight> GetPartnershipNights();
-        bool CreateNewEvent(string Title, int id, string NewStartDate, string NewStartTime, string NewEndDt, string NewEndTime);
+        bool CreateNewEvent(string Title, int id, string NewStartDate, string NewEndDt);
         /*
         Implement later if needed
         IQueryable<PartnershipNight> GetPartnershipNightsByMonth(DateTime extractMonthAndYear); // For calendar:  gets all partnership nights scheduled for a given month.  Might not be necessary - just sticking it in for now.

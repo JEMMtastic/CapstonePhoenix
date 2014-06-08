@@ -113,7 +113,7 @@ namespace Capstone.WebUI.Domain.Concrete
         }
 
         //TODO:  need use event props to create pnight props and save that to db
-        public bool CreateNewEvent(string Title, int id ,string NewStartDate, string NewStartTime, string NewEndDt, string NewEndTime)
+        public bool CreateNewEvent(string Title, int id ,string NewStartDate, string NewEndDt)
         {
             try
             {
@@ -121,8 +121,8 @@ namespace Capstone.WebUI.Domain.Concrete
                 PartnershipNight rec = new PartnershipNight();
                 rec.Charity = db.Charities.Find(Title);
                 rec.BVLocation = db.BvLocations.Find(id);
-                rec.StartDate = DateTime.ParseExact(NewStartDate + " " + NewStartTime, "MM/dd/yyyy HH:mm tt", CultureInfo.InvariantCulture);
-                rec.EndDate = DateTime.ParseExact(NewEndDt + " " + NewEndTime, "MM/dd/yyyy H:mm tt", CultureInfo.InvariantCulture);
+                rec.StartDate = DateTime.ParseExact(NewStartDate, "MM/dd/yyyy HH:mm tt", CultureInfo.InvariantCulture);
+                rec.EndDate = DateTime.ParseExact(NewEndDt, "MM/dd/yyyy H:mm tt", CultureInfo.InvariantCulture);
                 db.PartnershipNights.Add(rec);
                 db.SaveChanges();
             }
