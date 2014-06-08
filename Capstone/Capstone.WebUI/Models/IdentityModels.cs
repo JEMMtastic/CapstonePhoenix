@@ -17,7 +17,7 @@ namespace Capstone.WebUI.Models
         //public int AccessLevel { get; set; } //move to identities version for security? replaced by role
         public string UserEmail { get; set; } //move to identities version for security?
         public string Role { get; set; }
-        public BvLocation BvLocation { get; set; } 
+        public virtual BvLocation BvLocation { get; set; } 
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

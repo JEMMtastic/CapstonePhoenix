@@ -117,7 +117,7 @@ namespace Capstone.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 lRepo.SaveBvLocation(l);
-                TempData["message"] = string.Format("{0} has been saved", l.BvLocationId);
+                TempData["message"] = string.Format("{0} has been saved", l.BvStoreNum);
                 return RedirectToAction("LocationIndex");
             }
             else
@@ -293,6 +293,18 @@ namespace Capstone.WebUI.Controllers
             //        select pnight).FirstOrDefault()
 
             List<ApplicationUser> users = db.Users.ToList();
+            //List<ApplicationUser> users = new List<ApplicationUser>();
+            //int countOfUsers = db.Users.Count<ApplicationUser>();
+
+            //foreach (var u in db.Users)
+            //{
+                
+            //}
+
+            //for (int i = 0; i < countOfUsers; i++)
+            //{
+            //    var temp2 = db.Users.Include(x => x.BvLocation).FirstOfDefault()
+            //}
 
            
 
