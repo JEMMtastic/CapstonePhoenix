@@ -1,4 +1,4 @@
-﻿.alert + div {
+﻿.warning + div {
     display: none;
     position: absolute;
     margin-left: 100px;
@@ -9,7 +9,7 @@
     width: 250px;
 }
 
-    .alert:hover + div, .alert + div:hover {
+    .warning:hover + div, .warning + div:hover {
         display: block;
     }
 
