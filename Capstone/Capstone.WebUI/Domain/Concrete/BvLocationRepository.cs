@@ -20,11 +20,11 @@ namespace Capstone.WebUI.Domain.Concrete
                     select l).FirstOrDefault();
         }
 
-        public IQueryable<BvLocation> GetBvLocations()
+        public List<BvLocation> GetBvLocations()
         {
             var db = new ApplicationDbContext();
             return (from l in db.BvLocations
-                    select l).AsQueryable<BvLocation>();
+                    select l).ToList<BvLocation>();
         }
 
         public BvLocation GetBvLocation(string storeNum)

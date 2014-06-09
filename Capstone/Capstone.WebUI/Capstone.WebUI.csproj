@@ -218,6 +218,7 @@
     <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeaderBoardController.cs" />
+    <Compile Include="Controllers\ProfilesController.cs" />
     <Compile Include="Domain\Abstract\BvLocationInterface.cs" />
     <Compile Include="Domain\Abstract\CharityInterface.cs" />
     <Compile Include="Domain\Abstract\FormInterface.cs" />
@@ -441,6 +442,7 @@
     <Content Include="Views\LeaderBoard\Index.cshtml" />
     <Content Include="Views\Form\Print2.cshtml" />
     <Content Include="Views\LeaderBoard\NoForms.cshtml" />
+    <Content Include="Views\Profiles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
