@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Capstone.WebUI.Domain.Entities.PartnershipNight>
+@using System.Web.Mvc.Html
+
+@{
+    ViewBag.Title = "Partnership Nights";
+}
+
+<h2>Partnership Nights</h2>
+
+<p>@Html.ActionLink("Add a new Partnership Night", "PartnershipNightCreate")</p>
+
+    <table class="table">
+        <tr>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Store</th>
+            <th>Charity</th>
+            <th>Chk Req Id</th>
+            <th>Comments</th>
+        </tr>
+
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(item.StartDate.ToShortDateString(), "PartnershipNightEdit", "CRUD", new { item.PartnershipNightId }, null)</td>
+                    <td>@item.StartDate.ToShortTimeString()</td>
+                    <td>@item.EndDate.ToShortTimeString()</td>
+                    <td>@item.BVLocation.BvStoreNum</td>
+                    <td>@item.Charity.Name</td>
+                    <td>@item.CheckRequestId <!-- Html.DisplayFor(modelItem => item.CheckRequestId)--></td>
+                    <td>@item.Comments <!--Html.DisplayFor(modelItem => item.Comments)--></td>
+                    <td>
+                        @using (Html.BeginForm("PartnershipNightDelete", "CRUD", new { item.PartnershipNightId }))
+                        {
+                            <input type="submit" value="Delete" />
+                        }
+                        <!--Html.ActionLink("Edit", "Edit", new { id=item.PartnershipNightId }) |
+                        Html.ActionLink("Details", "Details", new { id=item.PartnershipNightId }) |
+                        Html.ActionLink("Delete", "Delete", new { id=item.PartnershipNightId }) -->
+                    </td>
+                </tr>
+            }
+
+
+        }
+    </table>
+
+
+

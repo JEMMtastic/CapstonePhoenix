@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Capstone.WebUI.Domain.Entities.Form>
+
+@{
+    ViewBag.Title = "Calculator Forms";
+}
+
+<h2>Calculator Forms</h2>
+
+<p>@Html.ActionLink("Add a new calculator form", "Create")</p>
+
+
+
+<table class="table">
+    <tr> <!--class ="tableHeadings"-->
+        <th>Edit</th>
+        <th>Date of Partnership</th>
+        <th>Hosting Location</th>
+        <th>Charity</th>
+        
+    </tr>
+
+
+    @foreach (var item in Model) {
+        <tr> <!--class="tableDataRow"-->
+            <td>@Html.ActionLink("Edit this form", "Edit", new {item.FormId})</td>
+            <td>@Html.DisplayFor(modelItem => item.DateOfPartnership)</td>
+            <td>@Html.DisplayFor(modelItem => item.HostingRestaurant)</td>
+            <td>@Html.DisplayFor(modelItem => item.NameOnCheck)</td>
+            <td>
+                @using (Html.BeginForm("Print", "Form"))
+                {
+                    @Html.Hidden("PrintFormId", item.FormId)
+                    <input type="submit" value="Print" />
+                }
+            </td>
+            <td>
+                @using (Html.BeginForm("Delete", "Form"))
+                {
+                    @Html.Hidden("FormId", item.FormId)
+                    <input type="submit" value="Delete" />
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@{/*
+<table>
+   
+</table>
+  */}

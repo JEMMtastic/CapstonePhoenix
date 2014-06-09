@@ -1,0 +1,50 @@
+﻿@model Capstone.WebUI.Models.EditUserViewModel
+
+@{
+    ViewBag.Title = "Admin: Edit " + @Model.FirstName + @Model.LastName;
+}
+
+<h2>Edit @Model.FirstName @Model.LastName</h2>
+
+@using (Html.BeginForm("UserEdit", "CRUD"))
+{
+
+@Html.AntiForgeryToken()
+@Html.HiddenFor(x => x.UserId);
+
+        @Html.LabelFor(m=>m.UserName)
+        @Html.EditorFor(m=>m.UserName)
+        <br />
+
+        @Html.LabelFor(m=>m.FirstName)
+        @Html.EditorFor(m=>m.FirstName)
+        <br />
+
+        @Html.LabelFor(m=>m.LastName)
+        @Html.EditorFor(m=>m.LastName)
+        <br />
+
+        @Html.LabelFor(m=>m.Email)
+        @Html.EditorFor(m=>m.Email)
+        <br />
+
+        @Html.LabelFor(m=>m.Role)
+        @Html.EditorFor(m=>m.Role)   
+        <br />
+
+        @Html.LabelFor(m=>m.BvLocationId)
+        if (Model.BvLocations != null)
+        {
+            @Html.DropDownListFor(m => m.BvLocationId, new SelectList(Model.BvLocations, "BvLocationId", "BvStoreNum"));
+            @Html.HiddenFor(x => x.BvLocationId);
+        }
+        else
+        {
+            @Html.Label("No BvLocations available at this time")
+        }
+   
+    <input type ="submit" value ="Save" />
+    @Html.ActionLink("Cancel and return to List", "UserIndex")
+
+
+}

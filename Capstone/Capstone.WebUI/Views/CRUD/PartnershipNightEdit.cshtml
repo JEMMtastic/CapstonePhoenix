@@ -1,0 +1,59 @@
+﻿@model Capstone.WebUI.Models.PNightEditViewModel
+@{
+    if(TempData["Title"] == null)
+    { 
+        ViewBag.Title = "Add a New Partnership Night";
+    }
+    else
+    { 
+        ViewBag.Title = TempData["Title"];
+    }
+}
+
+<h1> @TempData["Title"] </h1>
+
+<!-- Commenting out but add these back in when I have time to match the list item names to the id: Charity: Model.Charity.Name <br /> Store#: Model.BVLocation.BvStoreNum -->
+
+@using (Html.BeginForm("PartnershipNightEdit", "CRUD"))
+{
+    @Html.HiddenFor(x => x.PartnershipNight.PartnershipNightId)
+   @Html.EditorFor(x => x.PartnershipNight)
+    <br />
+    <div class="form-group">
+        <div class="col-md-10">
+            BV Store Number:
+            @if (Model.Locations != null)
+            {
+                @Html.DropDownListFor(m => m.PartnershipNight.BVLocation.BvLocationId, new SelectList(Model.Locations, "BvLocationId", "BvStoreNum"));
+                //@Html.HiddenFor(x => x.PartnershipNight.BVLocation.BvLocationId);
+            }
+            else
+            {
+                @Html.Label("None")
+            }
+        </div>
+    </div>                   
+    <br /><br />
+    <div class="form-group">
+        <div class="col-md-10">
+            Charity Name:
+            @if (Model.Charities != null)
+            {
+                @Html.DropDownListFor(m => m.PartnershipNight.Charity.CharityId, new SelectList(Model.Charities, "CharityId", "Name"));
+                //@Html.HiddenFor(x => x.PartnershipNight.Charity.CharityId);
+            }
+            else
+            {
+                @Html.Label("None")
+            }
+        </div>
+    </div>
+                
+    <br /><br />
+     <div class="form-group">
+        <div class="col-md-10">        
+            <input type="submit" value="Save" />   &nbsp;&nbsp; @Html.ActionLink("Cancel and return to List", "PartnershipNightIndex")
+        </div>
+    </div>
+    <br /><br />
+}

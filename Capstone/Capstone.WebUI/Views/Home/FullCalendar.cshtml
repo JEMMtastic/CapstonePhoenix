@@ -1,0 +1,188 @@
+﻿@{
+    ViewBag.Title = "Partnership Night Event Calendar";
+}
+
+<!DOCTYPE html>
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/scripts")
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/fullcalendar.js"></script>
+    <link href="~/Content/fullcalendar.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-ui-1.10.4.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var CalLoading = true;
+           
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            type: 'GET',
+            allDaySlot: false,
+            defaultView: 'agendaWeek',
+            editable: true,
+            selectable: true,
+            slotMinutes: 30,
+            minTime: 6,
+            maxTime: 23,
+            events: "/home/getevents",
+            eventClick: function (calEvent, jsEvent, view) {
+                alert('Store: ' + calEvent.title             
+                    + "Charity: " + calEvent.charityName);
+            },
+
+            eventDrop: function (event, dayDelta, minuteDelta, allDay, revertFunc) {
+                if (confirm("Confirm move?")) {
+                    UpdateEvent(event.id, event.start, event.end);
+                }
+                else {
+                    revertFunc();
+                }
+            },
+
+            eventResize: function (event, dayDelta, minuteDelta, revertFunc) {
+
+                if (confirm("Confirm change appointment length?")) {
+                    UpdateEvent(event.id, event.start, event.end);
+                }
+                else {
+                    revertFunc();
+                }
+            },
+
+            dayClick: function (date, allDay, jsEvent, view) {
+                $('#eventTitle').val("");
+                $('#eventDate').val($.fullCalendar.formatDate(date, 'dd/MM/yyyy'));
+                $('#eventTime').val($.fullCalendar.formatDate(date, 'HH:mm'));
+                ShowEventPopup(date);
+            },
+
+            viewRender: function (view, element) {
+                if (!CalLoading) {
+                    if (view.name == 'month') {
+                        $('#calendar').fullCalendar('removeEventSource', JSON);
+                        $('#calendar').fullCalendar('removeEvents');
+                        $('#calendar').fullCalendar('addEventSource', JSON);
+                    }
+                    else {
+                        $('#calendar').fullCalendar('removeEventSource', JSON);
+                        $('#calendar').fullCalendar('removeEvents');
+                        $('#calendar').fullCalendar('addEventSource', JSON);
+                    }
+                }
+            }
+        });
+
+        CalLoading = false;
+        });
+
+        $('#btnPopupCancel').click(function () {
+            ClearPopupFormValues();
+            $('#popupEventForm').hide();
+        });
+
+        $('#btnPopupSave').click(function () {
+
+            $('#popupEventForm').hide();
+
+            var dataRow = {
+                'Title': $('#eventTitle').val(),
+                'NewEventDate': $('#startDate').val(),
+                'NewEventTime': $('#endDate').val(),
+            }
+
+            ClearPopupFormValues();
+
+            $.ajax({
+                type: 'POST',
+                url: "/Home/SaveEvent",
+                data: dataRow,
+                success: function (response) {
+                    if (response == 'True') {
+                        $('#calendar').fullCalendar('refetchEvents');
+                        alert('New event saved!');
+                    }
+                    else {
+                        alert('Error, could not save event!');
+                    }
+                }
+            });
+        });
+
+        function ShowEventPopup(date) {
+            ClearPopupFormValues();
+            $('#popupEventForm').show();
+            $('#eventTitle').focus();
+        }
+
+        function ClearPopupFormValues() {
+            $('#eventID').val("");
+            $('#eventTitle').val("");
+            $('#eventDateTime').val("");
+            $('#eventDuration').val("");
+        }
+
+        function UpdateEvent(EventID, EventStart, EventEnd) {
+
+            var dataRow = {
+                'ID': EventID,
+                'NewEventStart': EventStart,
+                'NewEventEnd': EventEnd
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: "/Home/UpdateEvent",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(dataRow)
+            });
+        }
+    </script>  
+   
+    <div id="calendar"></div>
+
+    <div id="popupEventForm" class="modal hide" style="display: none;">
+        <div class="modal-header"><h3>Add new event</h3></div>
+        <div class="modal-body">
+            <form id="EventForm" class="well">
+                <input type="hidden" id="eventID">
+                <label>Event title</label>
+                <input type="text" id="eventTitle" placeholder="Title here"><br />
+                <label>Scheduled date</label>
+                <input type="text" id="startDate"><br />
+                <label>Scheduled time</label>
+                <input type="text" id="endDate"><br />
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" id="btnPopupCancel" data-dismiss="modal" class="btn">Cancel</button>
+            <button type="button" id="btnPopupSave" data-dismiss="modal" class="btn btn-primary">Save event</button>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

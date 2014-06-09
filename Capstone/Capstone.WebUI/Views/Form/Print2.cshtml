@@ -1,0 +1,416 @@
+﻿@model Capstone.WebUI.Domain.Entities.Form
+@using Capstone.WebUI.Domain.Entities;
+
+@{
+    ViewBag.Title = "Print";
+}
+
+<h2>Print</h2>
+<link href="~/Content/calculator.css" rel="stylesheet" />
+
+<h2>Partnership Calculator & Check Request</h2>
+<h3>All fields must be filled out completely or your form will be sent back to restaurant.</h3>
+@using (Html.BeginForm("Calculator", "Home"))
+{
+    <table>
+        <tr class="tableHeadings">
+            <th colspan="5">Organization Information</th>
+        </tr>
+        <tr>
+            <td>Name to appear on the check:</td>
+            <td>
+                @Html.DisplayFor(model => model.NameOnCheck)  <!--TextBoxFor(PartnershipNight.Charity.Name) -->
+                <img src="~/Images/alert_button.png" width="20" height="20" class="alert" />
+                <div>
+                    <b>Do NOT abbreviate Partnership Name</b><br />
+                    The name needs to match the name on the Vendor Add/Change Request Form.
+                </div>
+            </td>
+            <td>Is this a New Partner?</td>
+            <td>
+                @Html.DisplayFor(model => model.NewPartner)
+            </td>
+                <!--
+                Yes:  Html.CheckBox("yes")
+                <img src="~/Images/alert_button.png" width="20" height="20" class="alert" />
+                <div>
+                    <b>If new partnership</b><br />
+                    Remember to submit a W-9 form and add a vendor form!
+                </div>
+            </td>
+            <td>No:  Html.CheckBox("no")</td>
+            -->
+            <td></td>
+        </tr>
+        <tr>
+            <td>Purpose of the Partnership:</td>
+            <td>@Html.DisplayFor(model => model.Purpose)</td>
+            <td colspan="3" rowspan="3"></td>
+        </tr>
+        <tr>
+            <td>Contact Name:</td>
+            <td>@Html.DisplayFor(model => model.ContactName)</td>
+
+        </tr>
+        <tr>
+            <td>Organization Mailing Address:</td>
+            <td>@Html.DisplayFor(model => model.OrganizationMailingAddress)</td>
+        </tr>
+        <tr>
+            <td>City, State:</td>
+            <td>@Html.DisplayFor(model => model.OrganizationMailingCity), @Html.DisplayFor(model => model.OrganizationMailingState)</td>
+            <td>Restaurant Hosting Partnership:</td>
+            <td>@Html.DisplayFor(model => model.HostingRestaurant)</td>
+        </tr>
+        <tr>
+            <td>Zip:</td>
+            <td>@Html.DisplayFor(model => model.OrganizationMailingZip)</td>
+        </tr>
+        <tr>
+            <td>Organization Phone Number:</td>
+            <td>@Html.DisplayFor(model => model.OrganizationPhone)</td>
+        </tr>
+        <tr>
+            <td>Federal Tax ID Number:</td>
+            <td>@Html.DisplayFor(model => model.FederalTaxID)</td>
+        </tr>
+    </table>
+    <br />
+
+    <table>
+        <tr>
+            <td>Day of week of Partnership:</td>
+            <td>@Html.DisplayFor(model => model.WeekDayOfPartnership)</td>
+            <td>Date of Partnership:</td>
+            <td>@Html.DisplayFor(model => model.DateOfPartnership)</td>
+        </tr>
+    </table>
+    <br />
+
+    <h3>1. Actual Sales Information from Prior Year - 3 Weeks</h3>
+    <table>
+        <tr class="tableHeadings">
+            <th>
+            </th>
+            <th>Prior Year</th>
+            <td>@Html.DisplayFor(model => model.Week1Date)</td>
+            <th>Prior Year</th>
+            <td>@Html.DisplayFor(model => model.Week2Date)</td>
+            <th>Prior Year</th>
+            <td>@Html.DisplayFor(model => model.Week3Date)</td>
+            <th colspan="2">Average</th>
+            <th>Last week This Year</th>
+        </tr>
+        <tr>
+            <td>Hours of Partnership</td>
+            <td>Adj Sales</td>
+            <td>
+                G.C.
+                <img src="~/Images/info_button.png" width="20" height="20" class="info" />
+                <div>
+                    <b>Use iControls or PosiTouch to determine:</b><br />
+                    Guest count for prior year.
+                </div>
+            </td>
+            <td>Adj Sales</td>
+            <td>G.C.</td>
+            <td>Adj Sales</td>
+            <td>G.C.</td>
+            <td>Sales</td>
+            <td>G.C.</td>
+            <td>
+                Average Check
+                <img src="~/Images/info_button.png" width="20" height="20" class="info" />
+                <div>
+                    <b>Use iControls or PosiTouch to determine:</b><br />
+                    Average check from prior week.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>4-5</td>
+            <td>@Html.DisplayFor(model => model.Week1_45_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week1_45_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week2_45_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week2_45_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week3_45_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week3_45_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Average_45_Sales)</td>
+            <td>@Html.DisplayFor(model => model.Average_45_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.LastWeekAverageCheck_45)</td>
+        </tr>
+        <tr>
+            <td>5-6</td>
+            <td>@Html.DisplayFor(model => model.Week1_56_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week1_56_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week2_56_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week2_56_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week3_56_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week3_56_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Average_56_Sales)</td>
+            <td>@Html.DisplayFor(model => model.Average_56_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.LastWeekAverageCheck_56)</td>
+        </tr>
+        <tr>
+            <td>6-7</td>
+            <td>@Html.DisplayFor(model => model.Week1_67_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week1_67_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week2_67_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week2_67_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week3_67_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week3_67_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Average_67_Sales)</td>
+            <td>@Html.DisplayFor(model => model.Average_67_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.LastWeekAverageCheck_67)</td>
+        </tr>
+        <tr>
+            <td>7-8</td>
+            <td>@Html.DisplayFor(model => model.Week1_78_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week1_78_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week2_78_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week2_78_GuestCount)</td> <!-- This needs to be changed to Wk2SevenGc when the form is fixed. -->
+            <td>@Html.DisplayFor(model => model.Week3_78_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week3_78_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Average_78_Sales)</td>
+            <td>@Html.DisplayFor(model => model.Average_78_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.LastWeekAverageCheck_78)</td>
+        </tr>
+        <tr>
+            <td>8-9</td>
+            <td>@Html.DisplayFor(model => model.Week1_89_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week1_89_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week2_89_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week2_89_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Week3_89_AdjustedSales)</td>
+            <td>@Html.DisplayFor(model => model.Week3_89_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.Average_89_Sales)</td>
+            <td>@Html.DisplayFor(model => model.Average_89_GuestCount)</td>
+            <td>@Html.DisplayFor(model => model.LastWeekAverageCheck_89)</td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td>@Html.DisplayFor(model => model.Week1_AdjustedSalesTotal)</td>
+            <td>@Html.DisplayFor(model => model.Week1_GuestCountTotal)</td>
+            <td>@Html.DisplayFor(model => model.Week2_AdjustedSalesTotal)</td>
+            <td>@Html.DisplayFor(model => model.Week2_GuestCountTotal)</td>
+            <td>@Html.DisplayFor(model => model.Week3_AdjustedSalesTotal)</td>
+            <td>@Html.DisplayFor(model => model.Week3_GuestCountTotal)</td>
+            <td>@Html.DisplayFor(model => model.Average_SalesTotal)</td>
+            <td>@Html.DisplayFor(model => model.Average_GuestCountTotal)</td>
+            <td>@Html.DisplayFor(model => model.LastWeekAverageCheckTotal)</td>
+        </tr>
+    </table>
+    <br />
+
+    <h3>2. Scenario Donation Based on Projections</h3>
+    <table>
+        <tr class="tableHeadings">
+            <th colspan="2">Scenario 1</th>
+            <th colspan="2">Scenario 2</th>
+        </tr>
+        <tr>
+            <td>Organization intends to invite</td>
+            <td>@Html.DisplayFor(model => model.Scenario1_GuestCountInvited)</td>
+            <td>Organization intends to invite</td>
+            <td>@Html.DisplayFor(model => model.Scenario2_GuestCountInvited)</td>
+        </tr>
+        <tr>
+            <td>Estimated Partnership Guests</td>
+            <td>@Html.DisplayFor(model => model.Scenario1_EstimatedGuestCount)</td>
+            <td>Estimated Partnership Guests</td>
+            <td>@Html.DisplayFor(model => model.Scenario2_EstimatedGuestCount)</td>
+        </tr>
+        <tr>
+            <td>3 Week Average Guest Count</td>
+            <td>@Html.DisplayFor(model => model.Scenario1_ThreeWeekAverageGuestCount)</td>
+            <td>3 Week Average Guest Count</td>
+            <td>@Html.DisplayFor(model => model.Scenario2_ThreeWeekAverageGuestCount)</td>
+        </tr>
+        <tr>
+            <td>Targeted Guest Count</td>
+            <td>@Html.DisplayFor(model => model.Scenario1_TargetedGuestCount)</td>
+            <td>Targeted Guest Count</td>
+            <td>@Html.DisplayFor(model => model.Scenario2_TargetedGuestCount)</td>
+        </tr>
+        <tr>
+            <td>Estimated Donation</td>
+            <td>@Html.DisplayFor(model => model.Scenario1_EstimatedDonation)</td>
+            <td>Estimated Donation</td>
+            <td>@Html.DisplayFor(model => model.Scenario2_EstimatedDonation)</td>
+        </tr>
+    </table>
+    <br />
+
+    <h3>3. Day of Partnership - Actual Sales & Guest Count Results Per PosiTouch</h3>
+    <table>
+        <tr class="tableHeadings">
+            <th></th>
+            <th colspan="3"><center>Partnership Date @Html.DisplayFor(model => model.DateOfPartnership)</center></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>Hours of Partnership</td>
+            <td>
+                Sales
+                <img src="~/Images/info_button.png" width="20" height="20" class="info" />
+                <div>
+                    <b>Use iControls or PosiTouch to determine:</b><br />
+                    Sales for Partnership hours.
+                </div>
+            </td>
+            <td>
+                G.C.
+                <img src="~/Images/info_button.png" width="20" height="20" class="info" />
+                <div>
+                    <b>Use iControls or PosiTouch to determine:</b><br />
+                    Guest count for Partnership hours.
+                </div>
+            </td>
+            <td>Avg. Chk</td>
+            <td>Notes from Partnership</td>
+        </tr>
+        <tr>
+            <td>4-5</td>
+            <td>@Html.DisplayFor(model => model.ActualSales_45)</td>
+            <td>@Html.DisplayFor(model => model.ActualGuestCount_45)</td>
+            <td>calc</td>
+            <td rowspan="8">@Html.DisplayFor(model => model.Notes)</td>
+        </tr>
+        <tr>
+            <td>5-6</td>
+            <td>@Html.DisplayFor(model => model.ActualSales_56)</td>
+            <td>@Html.DisplayFor(model => model.ActualGuestCount_56)</td>
+            <td>calc</td>
+        </tr>
+        <tr>
+            <td>6-7</td>
+            <td>@Html.DisplayFor(model => model.ActualSales_67)</td>
+            <td>@Html.DisplayFor(model => model.ActualGuestCount_67)</td>
+            <td>calc</td>
+        </tr>
+        <tr>
+            <td>7-8</td>
+            <td>@Html.DisplayFor(model => model.ActualSales_78)</td>
+            <td>@Html.DisplayFor(model => model.ActualGuestCount_67)</td>
+            <td>calc</td>
+        </tr>
+        <tr>
+            <td>8-9</td>
+            <td>@Html.DisplayFor(model => model.ActualSales_89)</td>
+            <td>@Html.DisplayFor(model => model.ActualGuestCount_89)</td>
+            <td>calc</td>
+        </tr>
+        <tr>
+            <td>Totals</td>
+            <td>calc</td>
+            <td>calc</td>
+            <td>calc</td>
+        </tr>
+        <tr>
+            <td>10% Donation</td>
+            <td>calc</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                Posi Donations
+                <img src="~/Images/info_button.png" width="20" height="20" class="info" />
+                <div>
+                    <b>Posi Donations</b><br />
+                    Donations taken on the Posi register.
+                </div>
+                <img src="~/Images/alert_button.png" width="20" height="20" class="alert" />
+                <div>
+                    <b>Enter donations received thru register ONLY</b><br />
+                    Jar donations need to be entered into the register system that night under the donation key.
+                </div>
+            </td>
+            <td>@Html.TextBoxFor(model => model.PosiDonations)</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <br />
+
+    <h3>4. Sales & Guest Count Contribution Calculation</h3>
+    <table>
+        <tr class="tableHeadings">
+            <th colspan="5">Sales Contribution</th>
+            <th colspan="3">Guest Count Contribution</th>
+        </tr>
+        <tr>
+            <td>3 week ave</td>
+            <td>Actual</td>
+            <td>Difference</td>
+            <td>Donation</td>
+            <td>Sales Contribution</td>
+            <td>3 week ave #</td>
+            <td>Actual #</td>
+            <td>GC Contribution</td>
+        </tr>
+        <tr>
+            <td>calc</td>
+            <td>calc</td>
+            <td>calc</td>
+            <td>calc</td>
+            <td>calc</td>
+            <td>calc</td>
+            <td>calc</td>
+            <td>calc</td>
+        </tr>
+    </table>
+    <br />
+
+    <h3>5. Donation Check Request</h3>
+    <table>
+        <tr>
+            <td colspan="2">Donation 10% of Sales Code to GL 7700</td>
+            <td>calc</td>
+            <td>GL Code</td>
+            <td>Concat</td> <!-- 7700-BV# -->
+        </tr>
+        <tr>
+            <td colspan="2">Donations Taken on the Posi Register Code to GL 2005</td>
+            <td>@Html.TextBoxFor(model => model.PosiDonations)</td>
+            <td>GL Code</td>
+            <td>Concat</td> <!-- 2005-BV# -->
+        </tr>
+        <tr>
+            <td>Mail Partnership Check to the Checked Box Below</td>
+            <td>
+                Total Donation For Check Request <br />
+                (10% of Sales Including Other Donations)
+            </td>
+            <td>calc</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>@Html.CheckBox("BVLocation") BV</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>@Html.CheckBox("Charity") Charity</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>General Manager Signature/Approval</td>
+            <td>@Html.TextBox("signature", "signature here")</td> <!-- This should be just _____ ? -->
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FormId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+}
+

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Capstone.WebUI.Domain.Entities.PartnershipNight>
+
+@{
+    ViewBag.Title = "Store Profile";
+}
+
+<h2>Store Profile</h2>
+
+<table class="table">
+    <tr>
+        <th>Start Date Time</th>
+        <th>End Date Time</th>
+        <th>Check Request Id</th>
+        <th>@Html.DisplayNameFor(model => model.Comments)</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.StartDate)</td>
+        <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+        <td>@Html.DisplayFor(modelItem => item.CheckRequestId)</td>
+        <td>@Html.DisplayFor(modelItem => item.Comments)</td>
+    </tr>
+}
+
+</table>

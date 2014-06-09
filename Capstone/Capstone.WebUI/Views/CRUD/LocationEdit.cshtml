@@ -1,0 +1,15 @@
+﻿@model Capstone.WebUI.Domain.Entities.BvLocation
+
+@{
+    ViewBag.Title = "Edit BV Location";
+}
+
+<h2>Edit @Model.BvStoreNum</h2>
+
+@using (Html.BeginForm("LocationEdit", "CRUD"))
+{
+    @Html.EditorForModel()
+   <!-- TODO:  figure out how to get BVLoc and list store num with ability to edit this for the user-->
+    <input type ="submit" value ="Save" />
+    @Html.ActionLink("Cancel and return to List", "LocationIndex")
+}

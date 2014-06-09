@@ -1,0 +1,6 @@
+ApplicationUser in IdentityModels.cs
+RegisterViewModel in AccountViewModels.cs
+RegisterViewPage (Register.cshtml)
+Account Controller’s Register action (Post Version) in AccountController
+
+http://www.itorian.com/2013/11/customize-users-profile-in-aspnet.html

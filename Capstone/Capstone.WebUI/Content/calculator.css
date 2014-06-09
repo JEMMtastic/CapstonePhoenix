@@ -1,0 +1,29 @@
+﻿.alert + div {
+    display: none;
+    position: absolute;
+    margin-left: 100px;
+    margin-top: -5px;
+    border: 2px solid black;
+    background-color: #ffd800;
+    padding: 5px 5px 5px 5px;
+    width: 250px;
+}
+
+    .alert:hover + div, .alert + div:hover {
+        display: block;
+    }
+
+.info + div {
+    display: none;
+    position: absolute;
+    margin-left: 100px;
+    margin-top: -5px;
+    border: 2px solid black;
+    background-color: #ffffff;
+    padding: 5px 5px 5px 5px;
+    width: 250px;
+}
+
+    .info:hover + div, .info + div:hover {
+        display: block;
+    }

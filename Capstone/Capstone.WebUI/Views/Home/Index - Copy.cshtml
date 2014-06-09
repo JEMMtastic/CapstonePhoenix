@@ -1,0 +1,59 @@
+﻿
+
+@{/*  COPY OF INDEX as a backup, so I can change the original to implement identity
+@model Capstone.WebUI.Models.LoginViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css" />
+    <style>
+        body {
+            background-color: #d6e8ff;
+        }
+    </style>
+    <title>Partnerships</title>
+</head>
+<body>
+    <div id="SplashWrapper">
+
+        <img src="~/Images/splashGraphic.png" width="510" height="147" /><br />
+@using(Html.BeginForm("Login", "Account", new {Request.Url.AbsoluteUri}))
+        {
+        <table>
+            <tr>
+                <td>@Html.TextBoxFor(m => m.UserName, new { style = "width:200px" })</td>
+                <td>@Html.TextBoxFor(m => m.Password, new { style = "width:200px" })</td>
+                <td><button type="submit">Login</button></td>
+                <td style="text-align:right;">Register</td> 
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td>Password</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align:right;">@Html.CheckBoxFor(m => m.RememberMe) Remember Me</td>
+            </tr>
+            <tr>
+                <td colspan="4">@Html.ActionLink("Forgot username or password?", "Forgot", "Account")</td>
+            </tr>
+        </table>
+}
+     <h1>@Html.ActionLink("Bypass Login (for Development)", "Empty", "Home")</h1>
+    
+    </div>
+</body>
+</html>
+
+@{       //       <td>@Html.TextBoxFor("username", "", new { style="width:200px" })</td>
+           //     <td>@Html.TextBoxFor("password", "", new { style = "width:200px" })</td>} 
+   
+   */}

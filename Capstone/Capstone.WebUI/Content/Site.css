@@ -1,0 +1,193 @@
+﻿body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #EEE;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+h3 {
+color: #5b5b5b}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+
+/* New
+-----------------------------------------------------------*/
+
+DIV#Content {
+    border: 2px solid #111;
+    margin-left: 15em;
+    margin-right: 2em;
+    padding: 1em;
+    border-radius: 10px;
+    background-color: #EBF3FF;
+}
+
+DIV#Navigation {
+    float: left;
+    margin-left: 1em;
+    width: 12em;
+    padding: .3em;
+    border: 2px solid #111;
+    border-radius: 10px;
+    background-color: #EBF3FF;
+}
+
+DIV.Message {
+    background: #D6E8FF;
+    padding: 14px;
+    margin-top: 4px;
+    color: #931;
+    font: bold 22px "Arial Narrow", "Franklin Gothic Medium", Arial;
+    /*border: 2px groove #931;*/
+}
+
+
+DIV#Header {
+    background-color: #039;
+    border-bottom: 2px solid #111;
+    border-left: 2px solid #111;
+    border-right: 2px solid #111;
+    /*color: #888;*/
+    color: floralwhite;
+    padding: 14px;
+    font: bold 30px "Arial Narrow", "Franklin Gothic Medium", Arial;
+    text-align: center;
+}
+
+DIV#BreadCrumb {
+    background-color: #6AC;
+    padding: 6px;
+    font: bold 14px "Helvetica";
+    margin-bottom: 5px;
+}
+
+DIV#NavTitle {
+    font: bold 18px "Helvetica";
+    /*text-decoration: underline;*/
+    text-align: center;
+}
+
+DIV#SplashWrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -255px;
+}
+
+
+
+.tableHeadings
+{
+    background-color: #9fc5ff;
+    /*#9fc5ff*/
+}
+
+
+.backgroundTableColorTest
+{
+    background-color:lightblue;
+    /*other two override this one*/
+}
+
+.tableDataRow
+{
+    background-color: #b8d4ff;
+    /*#b8d4ff*/
+}
+
+
+
+
+
+
+/* Tables
+-----------------------------------------------------------*/
+.table th {
+    color: #5b5b5b;
+}
+.table tr:nth-child(odd) {
+    background: #f6f9fd;
+}
+.table th:nth-of-type(even) {
+    background: #e7ebf7;
+}
+
+.links ul li
+{
+    /*padding: 5px;
+    padding-top: 10px;
+    margin-top: 30px;*/
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.links ul
+{
+    margin-left: -20px;
+    list-style-type:none;
+    list-style:none;
+    padding-left:4px;
+    padding-right:2px;
+    margin:0;
+}
+
+
+
+
+
+
