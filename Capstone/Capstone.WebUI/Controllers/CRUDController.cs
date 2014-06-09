@@ -39,7 +39,7 @@ namespace Capstone.WebUI.Controllers
 
         //Charity
         //***********************************
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult CharityIndex()
         {
             List<Charity> charities = charRepo.GetCharities().ToList<Charity>();
@@ -94,6 +94,8 @@ namespace Capstone.WebUI.Controllers
 
         //Location
         //***********************************
+
+        //[Authorize(Roles = "Admin")]
         public ActionResult LocationIndex()
         {
             //need to get a list of all users
@@ -103,13 +105,16 @@ namespace Capstone.WebUI.Controllers
             return View(locations);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult LocationEdit(int bvLocationId)
         {
             TempData["Title"] = "Edit BV Location";
             BvLocation l = lRepo.GetBvLocation(bvLocationId);
             return View(l);
         }
+
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult LocationEdit(BvLocation l)
         {
             if (ModelState.IsValid)
@@ -123,6 +128,8 @@ namespace Capstone.WebUI.Controllers
                 return View(l);
             }
         }
+
+        [Authorize(Roles = "Admin")]
         public ViewResult LocationCreate()
         {
             TempData["Title"] = "Add a new BV Location"; 
@@ -130,6 +137,7 @@ namespace Capstone.WebUI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult LocationDelete(int bvLocationId)
         {
             BvLocation deletedLoc = lRepo.DeleteBvLocation(bvLocationId);
@@ -142,6 +150,7 @@ namespace Capstone.WebUI.Controllers
 
         //PartnershipNight
         //***********************************
+        //[Authorize(Roles = "Admin")]
         public ActionResult PartnershipNightIndex()
         {
             List<PartnershipNight> pnightEvents = pnRepo.GetPartnershipNights().ToList<PartnershipNight>();
@@ -149,6 +158,7 @@ namespace Capstone.WebUI.Controllers
             return View(pnightEvents);
         }
 
+        [Authorize(Roles = "Admin")]
         public ViewResult PartnershipNightCreate()
         {
             var pNt = new PNightEditViewModel();
@@ -168,6 +178,7 @@ namespace Capstone.WebUI.Controllers
             return View("PartnershipNightEdit", pNt);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult PartnershipNightEdit(int partnershipNightId)
         {
                 TempData["Title"] = "Edit";
@@ -183,6 +194,7 @@ namespace Capstone.WebUI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult PartnershipNightEdit(PNightEditViewModel pn)
         {
             var pnEvent = new PartnershipNight();
@@ -209,6 +221,7 @@ namespace Capstone.WebUI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult PartnershipNightDelete(int partnershipNightId)
         {
             PartnershipNight deletedPNight = pnRepo.DeletePartnershipNight(partnershipNightId);
@@ -229,7 +242,7 @@ namespace Capstone.WebUI.Controllers
             return View(users);
         }
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult UserEdit(string id)
         {
             var Db = new ApplicationDbContext();
@@ -243,7 +256,7 @@ namespace Capstone.WebUI.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> UserEdit(EditUserViewModel model)
         {
@@ -286,13 +299,13 @@ namespace Capstone.WebUI.Controllers
             return View(model);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public ViewResult UserCreate()
         {
             return View("UserEdit", new EditUserViewModel());
         }
 
-        
+        [Authorize(Roles = "Admin")]
         public ActionResult UserDelete(string id = null)
         {
             var Db = new ApplicationDbContext();

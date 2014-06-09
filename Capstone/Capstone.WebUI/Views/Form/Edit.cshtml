@@ -5,8 +5,8 @@
 }
 
 <h2>Partnership Calculator & Check Request</h2>
-<h3>All fields must be filled out completely or your form will be sent back to restaurant.</h3>
-<div>Edit Form, @Model.DateOfPartnership</div>
+<h3>Editing Form for: @Model.DateOfPartnership</h3>
+<br />
 
 @using (Html.BeginForm("Edit", "Form")) {
 
@@ -22,20 +22,10 @@
             <td>Name to appear on the check:</td>
             <td>
                 @Html.EditorFor(x => x.NameOnCheck)  
-                <img src="~/Images/alert_button.png" width="20" height="20" class="alert" />
-                <div>
-                    <b>Do NOT abbreviate Partnership Name</b><br />
-                    The name needs to match the name on the Vendor Add/Change Request Form.
-                </div>
             </td>
             <td>Is this a New Partner?</td>
             <td>
                 @Html.EditorFor(x => x.NewPartner)
-                <img src="~/Images/alert_button.png" width="20" height="20" class="alert" />
-                <div>
-                    <b>If new partnership</b><br />
-                    Remember to submit a W-9 form and add a vendor form!
-                </div>
             </td>
             <td></td>
         </tr>
@@ -103,11 +93,7 @@
             <td>Adj Sales</td>
             <td>
                 G.C.
-                <img src="~/Images/info_button.png" width="20" height="20" class="info" />
-                <div>
-                    <b>Use iControls or PosiTouch to determine:</b><br />
-                    Guest count for prior year.
-                </div>
+              
             </td>
             <td>Adj Sales</td>
             <td>G.C.</td>
@@ -117,11 +103,7 @@
             <td>G.C.</td>
             <td>
                 Average Check
-                <img src="~/Images/info_button.png" width="20" height="20" class="info" />
-                <div>
-                    <b>Use iControls or PosiTouch to determine:</b><br />
-                    Average check from prior week.
-                </div>
+            
             </td>
         </tr>
         <tr>
@@ -276,19 +258,11 @@
             <td>Hours of Partnership</td>
             <td>
                 Sales
-                <img src="~/Images/info_button.png" width="20" height="20" class="info" />
-                <div>
-                    <b>Use iControls or PosiTouch to determine:</b><br />
-                    Sales for Partnership hours.
-                </div>
+         
             </td>
             <td>
                 G.C.
-                <img src="~/Images/info_button.png" width="20" height="20" class="info" />
-                <div>
-                    <b>Use iControls or PosiTouch to determine:</b><br />
-                    Guest count for Partnership hours.
-                </div>
+          
             </td>
             <td>Avg. Chk</td>
             <td>Notes from Partnership</td>
