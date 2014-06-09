@@ -926,7 +926,7 @@
             </tr>
             <tr>
                 <td colspan="4">
-                    @Html.CheckBox("mailtoBV") BurgerVille Location #@Model.HostingRestaurant
+                    @Html.CheckBox("mailtoBV") BurgerVille Location @{/*Model.HostingRestaurant*/}
                 </td>
                 <th style="border-style:none;"></th>
                 <th style="border-style:none;"></th>
@@ -951,7 +951,7 @@
 </div>
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.FormId }) |
+    @{/*Html.ActionLink("Edit", "Edit", new { id = Model.FormId }) |*/}
     @Html.ActionLink("Back to List", "Index")
 </p>
 

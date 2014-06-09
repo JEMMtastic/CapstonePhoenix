@@ -27,6 +27,13 @@
             <td>@Html.DisplayFor(modelItem => item.HostingRestaurant)</td>
             <td>@Html.DisplayFor(modelItem => item.NameOnCheck)</td>
             <td>
+                @using (Html.BeginForm("Print", "Form"))
+                {
+                    @Html.Hidden("PrintFormId", item.FormId)
+                    <input type="submit" value="Print" />
+                }
+            </td>
+            <td>
                 @using (Html.BeginForm("Delete", "Form"))
                 {
                     @Html.Hidden("FormId", item.FormId)
