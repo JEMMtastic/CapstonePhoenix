@@ -12,21 +12,32 @@
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
-   
+    <style>
+        .login {
+            float: right;
+            font-size: .47em;
+        }
+
+            .login a {
+                color: #EBF3FF;
+                /*font-weight:normal;*/
+            }
+    </style>
+
 </head>
 <body>
     @RenderSection("scripts", required: false)
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/scripts")
 
-    @if (TempData["message"] != null) 
-        {
-            <div class="Message">@TempData["message"]</div>
-        }
-            @*<div class="Message">Temp data will be here</div>*@
- @Html.Partial("_LoginPartial")
+    @if (TempData["message"] != null)
+    {
+        <div class="Message">@TempData["message"]</div>
+    }
+    @*<div class="Message">Temp data will be here</div>*@
 
     <div id="Header">
+        <div class="login">@Html.Partial("_LoginPartial")</div>
         Burgerville Partnership Nights
     </div>
 
