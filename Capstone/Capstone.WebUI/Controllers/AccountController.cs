@@ -21,8 +21,7 @@ namespace Capstone.WebUI.Controllers
 
         BvLocationInterface lRepo;
 
-        public AccountController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+        public AccountController() : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
             lRepo = new BvLocationRepository();
         }
@@ -111,7 +110,6 @@ namespace Capstone.WebUI.Controllers
                     var Db = new ApplicationDbContext();
                     var user2 = Db.Users.First(u => u.UserName == user.UserName);
                     user2.BvLocation = Db.BvLocations.Find(model.BvLocationId);
-                    //user.BvLocation = lRepo.GetBvLocations().FirstOrDefault(bvl => bvl.BvLocationId == model.BvLocationId);
                     Db.Entry(user2).State = System.Data.Entity.EntityState.Modified;
                     await Db.SaveChangesAsync();
 
@@ -246,6 +244,7 @@ namespace Capstone.WebUI.Controllers
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
+                TempData["message"] = string.Format("You do not have the appropriate permissions to access this page.");
                 return RedirectToAction("Login");
             }
 
@@ -310,6 +309,7 @@ namespace Capstone.WebUI.Controllers
                 var info = await AuthenticationManager.GetExternalLoginInfoAsync();
                 if (info == null)
                 {
+                    TempData["message"] = string.Format("You do not have the appropriate permissions to access this page.");
                     return View("ExternalLoginFailure");
                 }
                 var user = new ApplicationUser() { UserName = model.UserName };

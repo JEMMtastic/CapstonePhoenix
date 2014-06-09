@@ -10,6 +10,7 @@
 {
 
 @Html.AntiForgeryToken()
+@Html.HiddenFor(x => x.UserId);
 
         @Html.LabelFor(m=>m.UserName)
         @Html.EditorFor(m=>m.UserName)
@@ -23,8 +24,8 @@
         @Html.EditorFor(m=>m.LastName)
         <br />
 
-        @Html.LabelFor(m=>m.Email)
-        @Html.EditorFor(m=>m.Email)
+        @Html.LabelFor(m=>m.UserEmail)
+        @Html.EditorFor(m=>m.UserEmail)
         <br />
 
         @Html.LabelFor(m=>m.Role)

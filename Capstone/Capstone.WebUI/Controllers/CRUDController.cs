@@ -214,8 +214,7 @@ namespace Capstone.WebUI.Controllers
             PartnershipNight deletedPNight = pnRepo.DeletePartnershipNight(partnershipNightId);
             if (deletedPNight != null)
             {
-                TempData["message"] = string.Format("Event on {0} was deleted",
-                deletedPNight.StartDate.ToShortDateString());
+                TempData["message"] = string.Format("Event on {0} was deleted", deletedPNight.StartDate.ToShortDateString());
             }
             return RedirectToAction("PartnershipNightIndex");
         }
@@ -251,12 +250,13 @@ namespace Capstone.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 var Db = new ApplicationDbContext();
-                var user = Db.Users.First(u => u.UserName == model.UserName);
+                var user = Db.Users.First(u => u.Id == model.UserId);
                 if (user != null)
                 {
+                    user.UserName = model.UserName;
                     user.FirstName = model.FirstName;
                     user.LastName = model.LastName;
-                    user.Email = model.Email;
+                    user.UserEmail = model.UserEmail;
                     user.Role = model.Role;
                     user.BvLocation = Db.BvLocations.Find(model.BvLocationId);
 
