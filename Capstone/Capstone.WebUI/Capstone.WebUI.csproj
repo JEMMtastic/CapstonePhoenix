@@ -242,8 +242,8 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MyDateTimeModelBinder.cs" />
-    <Compile Include="Models\PartnershipNightVM.cs" />
     <Compile Include="Models\PNightEditViewModel.cs" />
+    <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

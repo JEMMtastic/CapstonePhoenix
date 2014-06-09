@@ -56,8 +56,7 @@ namespace Capstone.WebUI.Controllers
                 TempData["message"] = string.Format("Profile for Restaurant Number:  {0}", loc.BvStoreNum);
 
                 return View(events);
-            }
-                
+            }              
             else
             {
                 TempData["message"] = string.Format("Restaurant {0} has no Partnership Nights Yet", loc.BvStoreNum);
