@@ -76,7 +76,7 @@ namespace Capstone.WebUI.Models
         public string Role { get; set; }
 
         [Display(Name = "Email")]
-        public string UserEmail { get; set; }
+        public string Email { get; set; }
 
         [Display(Name = "Phone number")]
         public string PhoneNumber { get; set; }
@@ -101,7 +101,7 @@ namespace Capstone.WebUI.Models
             this.UserName = user.UserName;
             this.FirstName = user.FirstName;
             this.LastName = user.LastName;
-            this.UserEmail = user.UserEmail;
+            this.Email = user.Email;
             this.Role = user.Role;
             if(user.BvLocation != null)  //this should be unnecesary once the query child object thing gets fixed
             this.BvLocationId = user.BvLocation.BvLocationId;
@@ -124,7 +124,7 @@ namespace Capstone.WebUI.Models
 
         [Required]
         [Display(Name = "Email")]
-        public string UserEmail { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [Display(Name = "Role")]

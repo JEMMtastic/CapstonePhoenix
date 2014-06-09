@@ -14,7 +14,7 @@ namespace Capstone.WebUI.Models
         //UserId, Username, and Password are done via Identity
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string UserEmail { get; set; } //move to identities version for security?
+        public string Email { get; set; } 
         public string Role { get; set; }
         public virtual BvLocation BvLocation { get; set; } 
     }
@@ -30,8 +30,9 @@ namespace Capstone.WebUI.Models
         public DbSet<Charity> Charities { get; set; }
         public DbSet<PartnershipNight> PartnershipNights { get; set; }
         public DbSet<Form> Forms { get; set; }
-        
 
+        IdentityUser temp = new IdentityUser();
+        
         /*public ApplicationDbContext()
             : base("DefaultConnection")
         {

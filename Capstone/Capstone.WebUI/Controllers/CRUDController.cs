@@ -269,7 +269,7 @@ namespace Capstone.WebUI.Controllers
                     user.UserName = model.UserName;
                     user.FirstName = model.FirstName;
                     user.LastName = model.LastName;
-                    user.UserEmail = model.UserEmail;
+                    user.Email = model.Email;
                     user.Role = model.Role;
                     user.BvLocation = Db.BvLocations.Find(model.BvLocationId);
 

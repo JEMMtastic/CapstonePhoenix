@@ -95,7 +95,7 @@ namespace Capstone.WebUI.Controllers
                     UserName = model.UserName,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    UserEmail = model.UserEmail,
+                    Email = model.Email,
                     PhoneNumber = model.PhoneNumber,
                     Role = model.Role
                     
