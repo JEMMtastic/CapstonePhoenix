@@ -1,6 +1,7 @@
 ﻿using Capstone.WebUI.Domain.Abstract;
 using Capstone.WebUI.Domain.Concrete;
 using Capstone.WebUI.Domain.Entities;
+using Capstone.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,24 @@ namespace Capstone.WebUI.Controllers
         {
             List<BvLocation> locs = lRepo.GetBvLocations(); 
             return View(locs);
+        }
+
+        public ActionResult StoreProfile(int bvLocationId)
+        {
+            var db = new ApplicationDbContext();
+            var loc = lRepo.GetBvLocation(bvLocationId);
+            List<PartnershipNight> events = (from e in db.PartnershipNights.Include("BvLocation").Include("Charity")
+                                         where e.BVLocation.BvLocationId == bvLocationId
+                                         select e).ToList<PartnershipNight>();
+            if (events.Count > 0)
+                return View(events);
+            else
+            {
+                TempData["message"] = string.Format("Restaurant {0} has no Partnership Nights Yet", loc.BvStoreNum);
+
+                return RedirectToAction("Index", "Profiles");
+            }
+                
         }
     }
 }

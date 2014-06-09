@@ -443,6 +443,7 @@
     <Content Include="Views\Form\Print2.cshtml" />
     <Content Include="Views\LeaderBoard\NoForms.cshtml" />
     <Content Include="Views\Profiles\Index.cshtml" />
+    <Content Include="Views\Profiles\StoreProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

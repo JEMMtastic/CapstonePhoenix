@@ -27,7 +27,6 @@
         {
             foreach (var item in Model)
             {
-
                 <tr class="tableDataRow">
                     <td>@Html.ActionLink(item.StartDate.ToShortDateString(), "PartnershipNightEdit", "CRUD", new { item.PartnershipNightId }, null)</td>
                     <td>@item.StartDate.ToShortTimeString()</td>
