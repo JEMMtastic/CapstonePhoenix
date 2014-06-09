@@ -3,15 +3,15 @@
     <div class="links">
         <ul>
             <li>@Html.ActionLink("Home", "Index", "LeaderBoard")</li>
-            <li>@Html.ActionLink("Restaurant Profiles", "Index", "Profiles")</li>
-            <li>@Html.ActionLink("Add a new event", "PartnershipNightCreate", "CRUD")</li>
             <li>@Html.ActionLink("Calendar", "FullCalendar", "Home")</li>
+            <li>@Html.ActionLink("Add a new event", "PartnershipNightCreate", "CRUD")</li>
+            <li>@Html.ActionLink("Restaurant Profiles", "Index", "Profiles")</li>
             <li>@Html.ActionLink("Documents", "Documents", "Home") </li>
-            <li>@Html.ActionLink("Users", "UserIndex", "CRUD") </li>
+            <li>@Html.ActionLink("Edit Users", "UserIndex", "CRUD") </li> <!--TODO: Make this invisible for auth Users vs. Admins-->
             <li>@Html.ActionLink("Edit Charities", "CharityIndex", "CRUD")</li>
             <li>@Html.ActionLink("Edit BV Locations", "LocationIndex", "CRUD") </li>
             <li>@Html.ActionLink("Edit Partnership Nights", "PartnershipNightIndex", "CRUD") </li>
-            <li>@Html.ActionLink("Calculator Forms", "Index", "Form") </li>
+            <li>@Html.ActionLink("Edit Calc Forms", "Index", "Form") </li>
 
            @*<li>@Html.ActionLink("Calculator", "Calculator", "Home") </li>*@
                     
