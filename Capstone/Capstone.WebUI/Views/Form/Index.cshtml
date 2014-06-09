@@ -10,8 +10,8 @@
 
 
 
-<table>
-    <tr class ="tableHeadings">
+<table class="table">
+    <tr> <!--class ="tableHeadings"-->
         <th>Edit</th>
         <th>Date of Partnership</th>
         <th>Hosting Location</th>
@@ -21,7 +21,7 @@
 
 
     @foreach (var item in Model) {
-        <tr class="tableDataRow">
+        <tr> <!--class="tableDataRow"-->
             <td>@Html.ActionLink("Edit this form", "Edit", new {item.FormId})</td>
             <td>@Html.DisplayFor(modelItem => item.DateOfPartnership)</td>
             <td>@Html.DisplayFor(modelItem => item.HostingRestaurant)</td>

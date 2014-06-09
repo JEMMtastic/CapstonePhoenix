@@ -8,8 +8,8 @@
 
 <p>@Html.ActionLink("Add a new Charity", "CharityCreate")</p>
 
-<table>
-    <tr class ="tableHeadings">
+<table class="table">
+    <tr> <!--class ="tableHeadings"-->
         <th>@Html.DisplayNameFor(model => model.CharityId)</th>
         <th>@Html.DisplayNameFor(model => model.Name)</th>
         <th>@Html.DisplayNameFor(model => model.CharityContactNm)</th>
@@ -23,7 +23,7 @@
     </tr>
 
     @foreach (var item in Model) {
-        <tr class="tableDataRow">
+        <tr><!--class="tableDataRow"-->
             <td>@Html.ActionLink(item.Name, "CharityEdit", new {item.CharityId})</td>
             <td>@Html.DisplayFor(modelItem => item.Name)</td>
             <td>@Html.DisplayFor(modelItem => item.CharityContactNm)</td>
