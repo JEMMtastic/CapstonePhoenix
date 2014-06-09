@@ -237,19 +237,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201406091253536_Init.cs" />
-    <Compile Include="Migrations\201406091253536_Init.Designer.cs">
-      <DependentUpon>201406091253536_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201406091306314_Stuff.cs" />
-    <Compile Include="Migrations\201406091306314_Stuff.Designer.cs">
-      <DependentUpon>201406091306314_Stuff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201406091334227_Phone.cs" />
-    <Compile Include="Migrations\201406091334227_Phone.Designer.cs">
-      <DependentUpon>201406091334227_Phone.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUserVM.cs" />
     <Compile Include="Models\Event.cs" />
@@ -467,17 +454,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201406091253536_Init.resx">
-      <DependentUpon>201406091253536_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201406091306314_Stuff.resx">
-      <DependentUpon>201406091306314_Stuff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201406091334227_Phone.resx">
-      <DependentUpon>201406091334227_Phone.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
