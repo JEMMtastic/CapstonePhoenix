@@ -49,7 +49,11 @@ namespace Capstone.WebUI.Domain.Concrete
         {
             var db = new ApplicationDbContext();
             if (pn.PartnershipNightId == 0)
+            {
+                pn.BVLocation = db.BvLocations.Find(pn.BVLocation.BvLocationId);
+                pn.Charity = db.Charities.Find(pn.Charity.CharityId);
                 db.PartnershipNights.Add(pn);
+            }
             else
             {
                 PartnershipNight dbEntry = db.PartnershipNights.Find(pn.PartnershipNightId);
