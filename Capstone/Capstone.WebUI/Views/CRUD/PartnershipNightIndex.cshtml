@@ -10,24 +10,21 @@
 <p>@Html.ActionLink("Add a new Partnership Night", "PartnershipNightCreate")</p>
 
     <table class="table">
-        <tr class ="tableHeadings">
+        <tr>
             <th>Date</th>
             <th>Start Time</th>
             <th>End Time</th>
-            <th>Store #</th>
+            <th>Store</th>
             <th>Charity</th>
             <th>Chk Req Id</th>
             <th>Comments</th>
-            <th>Chk Req Finished</th>
-            <th>Pre-Event Form</th>
-            <th>Post-Event Form</th>
         </tr>
 
         @if (Model != null)
         {
             foreach (var item in Model)
             {
-                <tr class="tableDataRow">
+                <tr>
                     <td>@Html.ActionLink(item.StartDate.ToShortDateString(), "PartnershipNightEdit", "CRUD", new { item.PartnershipNightId }, null)</td>
                     <td>@item.StartDate.ToShortTimeString()</td>
                     <td>@item.EndDate.ToShortTimeString()</td>
@@ -35,9 +32,6 @@
                     <td>@item.Charity.Name</td>
                     <td>@item.CheckRequestId <!-- Html.DisplayFor(modelItem => item.CheckRequestId)--></td>
                     <td>@item.Comments <!--Html.DisplayFor(modelItem => item.Comments)--></td>
-                    <td>@item.CheckRequestFinished <!--Html.DisplayFor(modelItem => item.CheckRequestFinished)--></td>
-                    <td>@item.BeforeTheEventFinished <!--Html.DisplayFor(modelItem => item.BeforeTheEventFinished)--></td>
-                    <td>@item.AfterTheEventFinished <!--Html.DisplayFor(modelItem => item.AfterTheEventFinished)--></td>
                     <td>
                         @using (Html.BeginForm("PartnershipNightDelete", "CRUD", new { item.PartnershipNightId }))
                         {

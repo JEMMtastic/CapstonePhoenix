@@ -8,8 +8,8 @@
 
 <p>@Html.ActionLink("Add a new restaurant", "LocationCreate")</p>
 
-    <table>
-        <tr class ="tableHeadings">
+    <table class="table">
+        <tr>
             <th>Store Number</th>
             <th>Address</th>
             <th>City</th>
@@ -19,7 +19,7 @@
 
         @foreach (var item in Model)
         {
-            <tr class="tableDataRow">
+            <tr>
                 <td>@Html.ActionLink(item.BvStoreNum, "LocationEdit", "CRUD", new { item.BvLocationId }, null)</td>
                 <td>@Html.DisplayFor(modelItem => item.Address)</td>
                 <td>@Html.DisplayFor(modelItem => item.City)</td>
