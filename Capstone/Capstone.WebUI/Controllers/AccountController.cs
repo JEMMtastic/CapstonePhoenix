@@ -130,7 +130,7 @@ namespace Capstone.WebUI.Controllers
                         }
                     }
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("UserIndex", "CRUD");
                 }
                 else
                 {
