@@ -101,11 +101,14 @@ namespace Capstone.WebUI.Models
             this.UserName = user.UserName;
             this.FirstName = user.FirstName;
             this.LastName = user.LastName;
-            this.Email = user.Email;
+            this.UserEmail = user.UserEmail;
             this.Role = user.Role;
             if(user.BvLocation != null)  //this should be unnecesary once the query child object thing gets fixed
             this.BvLocationId = user.BvLocation.BvLocationId;
+            this.UserId = user.Id;
         }
+
+        public string UserId { get; set; }
 
         [Required]
         [Display(Name = "User Name")]
@@ -121,7 +124,7 @@ namespace Capstone.WebUI.Models
 
         [Required]
         [Display(Name = "Email")]
-        public string Email { get; set; }
+        public string UserEmail { get; set; }
 
         [Required]
         [Display(Name = "Role")]

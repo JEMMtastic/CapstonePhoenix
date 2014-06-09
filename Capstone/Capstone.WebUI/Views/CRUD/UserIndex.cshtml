@@ -5,9 +5,10 @@
 }
 
 <h2>All Users</h2>
-<table>
+<table class="table">
     <tr class="tableHeadings">
         <th>Name</th>
+        <th>Username</th>
         <th>Role</th>
         <th>Email</th>
         <th>Phone</th>
@@ -17,6 +18,7 @@
 @foreach (var item in Model) {
     <tr class="tableDataRow">
         <td>@Html.ActionLink(item.FirstName + " " + item.LastName, "UserEdit", "CRUD", new { item.Id }, null)</td>
+        <td>@Html.DisplayFor(modelItem => item.UserName)</td>
         <td>@Html.DisplayFor(modelItem => item.Role)</td>
         <td>@Html.DisplayFor(modelItem => item.UserEmail)</td>
         <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
