@@ -25,7 +25,7 @@
             @if (Model.Locations != null)
             {
                 @Html.DropDownListFor(m => m.PartnershipNight.BVLocation.BvLocationId, new SelectList(Model.Locations, "BvLocationId", "BvStoreNum"));
-                @Html.HiddenFor(x => x.PartnershipNight.BVLocation.BvLocationId);
+                //@Html.HiddenFor(x => x.PartnershipNight.BVLocation.BvLocationId);
             }
             else
             {
@@ -40,7 +40,7 @@
             @if (Model.Charities != null)
             {
                 @Html.DropDownListFor(m => m.PartnershipNight.Charity.CharityId, new SelectList(Model.Charities, "CharityId", "Name"));
-                @Html.HiddenFor(x => x.PartnershipNight.Charity.CharityId);
+                //@Html.HiddenFor(x => x.PartnershipNight.Charity.CharityId);
             }
             else
             {
