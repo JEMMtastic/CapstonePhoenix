@@ -12,7 +12,8 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var CalLoading = true;
-           
+            var sourceFullView = { url: '/Home/GetEvents/' };
+            var sourceSummaryView = { url: '/Home/GetEvents/' };
         $('#calendar').fullCalendar({
             header: {
                 left: 'prev,next today',
@@ -60,16 +61,17 @@
             },
 
             viewRender: function (view, element) {
+
                 if (!CalLoading) {
                     if (view.name == 'month') {
-                        $('#calendar').fullCalendar('removeEventSource', JSON);
+                        $('#calendar').fullCalendar('removeEventSource', sourceFullView);
                         $('#calendar').fullCalendar('removeEvents');
-                        $('#calendar').fullCalendar('addEventSource', JSON);
+                        $('#calendar').fullCalendar('addEventSource', sourceSummaryView);
                     }
                     else {
-                        $('#calendar').fullCalendar('removeEventSource', JSON);
+                        $('#calendar').fullCalendar('removeEventSource', sourceSummaryView);
                         $('#calendar').fullCalendar('removeEvents');
-                        $('#calendar').fullCalendar('addEventSource', JSON);
+                        $('#calendar').fullCalendar('addEventSource', sourceFullView);
                     }
                 }
             }

@@ -241,6 +241,10 @@
     <Compile Include="Migrations\201406091849350_pleaseWork.Designer.cs">
       <DependentUpon>201406091849350_pleaseWork.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201406101500145_whatevs.cs" />
+    <Compile Include="Migrations\201406101500145_whatevs.Designer.cs">
+      <DependentUpon>201406101500145_whatevs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUserVM.cs" />
@@ -463,6 +467,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201406091849350_pleaseWork.resx">
       <DependentUpon>201406091849350_pleaseWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406101500145_whatevs.resx">
+      <DependentUpon>201406101500145_whatevs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
